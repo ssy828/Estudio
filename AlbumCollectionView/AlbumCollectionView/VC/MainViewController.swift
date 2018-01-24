@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     // MARK: property
     let cellId = "CustomCell"
     var imageCollection = [UIImage]()
+    var images: [Img] = ImageData.fetchImages()
     
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,24 +21,7 @@ class MainViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
-        imageCollection.append(UIImage(named: "loveme")!)
+        // ToDo: change the layout the collectionView
         let width = view.frame.size.width / 4
         let collectionLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         collectionLayout.itemSize = CGSize(width: width, height: width)
@@ -47,15 +31,22 @@ class MainViewController: UIViewController {
 }
 // MARK: -UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return images.count
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageCollection.count
+        return images[section].imgNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let index = indexPath.row
+        let indexSection = indexPath.section
+        let indexItem = indexPath.item
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ImgCollectionViewCell
-        
-        cell.mainImgView.image = imageCollection[index]
+       let img = images[indexSection]
+       let imageNames = img.imgNames
+       let imageName = imageNames[indexItem]
+       cell.imageName = imageName
         
         return cell
     }
