@@ -14,6 +14,7 @@
 		CE1EA9AC20175D8100D3B90D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1EA9AB20175D8100D3B90D /* Assets.xcassets */; };
 		CE1EA9AF20175D8100D3B90D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1EA9AD20175D8100D3B90D /* LaunchScreen.storyboard */; };
 		CEB213E8201870FC00F06444 /* ImageData .swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB213E7201870FC00F06444 /* ImageData .swift */; };
+		CEB5A73B2019A01000559E24 /* ImagePropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEB5A73A2019A01000559E24 /* ImagePropertyList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE1EA9AE20175D8100D3B90D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE1EA9B020175D8100D3B90D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB213E7201870FC00F06444 /* ImageData .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageData .swift"; sourceTree = "<group>"; };
+		CEB5A73A2019A01000559E24 /* ImagePropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ImagePropertyList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB213E7201870FC00F06444 /* ImageData .swift */,
+				CEB5A73A2019A01000559E24 /* ImagePropertyList.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1EA9AF20175D8100D3B90D /* LaunchScreen.storyboard in Resources */,
+				CEB5A73B2019A01000559E24 /* ImagePropertyList.plist in Resources */,
 				CE1EA9AC20175D8100D3B90D /* Assets.xcassets in Resources */,
 				CE1EA9AA20175D8100D3B90D /* Main.storyboard in Resources */,
 			);
@@ -315,7 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = AlbumCollectionView/Info.plist;
+				INFOPLIST_FILE = AlbumCollectionView/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssy.AlbumCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -329,7 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = AlbumCollectionView/Info.plist;
+				INFOPLIST_FILE = AlbumCollectionView/Resource/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssy.AlbumCollectionView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
