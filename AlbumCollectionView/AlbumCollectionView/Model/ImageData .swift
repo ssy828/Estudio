@@ -3,49 +3,30 @@
 //  AlbumCollectionView
 //
 //  Created by SSY on 2018. 1. 24..
-//  Copyright © 2018년 SONGYEE SHIN. All rights reserved.
-//
 
 import Foundation
 
-struct Img {
-    var title: String
-    var imgNames: [String]
+
+struct Images: Decodable {
     
-    func getImageDetail() -> String {
-        return ""
+    let title: String
+    let items: [Img]
+    
+    enum CodingKeys: String,CodingKey {
+        case title = "Section_Title"
+        case items
     }
 }
 
-class ImageData {
+
+struct Img: Decodable {
     
-   class func fetchImages() -> [Img] {
-        var imageList: [Img] = []
-        let imageData = ImageData.downloadphotoData()
-        for (imageTitle, dictionary) in imageData {
-            if let dic = dictionary as? [String: Any] {
-                if let images = dic["imageNames"] as? [String] {
-                // configuerImages -> [String]  반환하므로
-                    let image = Img(title: imageTitle, imgNames: images)
-                    imageList.append(image)
-                }
-            }
-        }
-        return imageList
-    }
+    let imageName: String
     
-    class func downloadphotoData() -> [String: Any] {
-        return ["Flowers": [ "imageNames" : ImageData.configuerImages("flower", number: 6)],
-                "Cities": ["imageNames" : ImageData.configuerImages("kyoto", number: 1)]]
+    enum CodingKeys: String,CodingKey {
+        case imageName = "Image_Name"
     }
-    
-   class func configuerImages(_ prefix: String,
-                         number ofImg: Int ) -> [String] {
-        var imageNames: [String] = []
-        
-        for index in 1...ofImg {
-            imageNames.append("\(prefix)\(index)")
-        }
-        return imageNames
-    }
+ 
 }
+
+
