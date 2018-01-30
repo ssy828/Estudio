@@ -10,7 +10,7 @@ class MainViewController: UIViewController {
     
     // MARK: property
     let cellId = "CustomCell"
-    var imageData: [ImageData]?
+    var imageData: [ImageModel]?
     
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
-        
+        fetchUpData()
     }
     
     // MARK: change the layout the collectionView
@@ -30,6 +30,10 @@ class MainViewController: UIViewController {
         collectionLayout.itemSize = CGSize(width: width, height: width)
     }
     
+    // MARK: fetch up data
+    func fetchUpData() {
+        ImageData.fetchUp()
+    }
 }
 // MARK: -UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {

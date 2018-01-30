@@ -6,7 +6,7 @@
 
 import Foundation
 // MARK: 이미지 데이터 모델
-struct ImageData: Decodable {
+struct ImageModel: Decodable {
     let title: String
     let items: [Img]
     
