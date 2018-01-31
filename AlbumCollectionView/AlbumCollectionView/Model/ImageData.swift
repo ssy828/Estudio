@@ -16,7 +16,8 @@ struct ImageData {
         
         do {
             let data = try Data(contentsOf: plistURL)
-            _ = try PropertyListDecoder().decode(ImageModel.self, from: data)
+            let plistDecoder = try PropertyListDecoder().decode([ImageModel].self, from: data)
+            print(plistDecoder)
         } catch (let error) {
             print("Erros:\(error.localizedDescription)")
         }

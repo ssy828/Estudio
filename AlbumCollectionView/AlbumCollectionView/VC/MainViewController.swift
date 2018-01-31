@@ -43,7 +43,7 @@ extension MainViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return imageData?.count ?? 0
+        return imageData?[section].items.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
