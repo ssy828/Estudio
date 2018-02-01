@@ -7,10 +7,14 @@ import UIKit
 
 class ImgCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var mainImgView: UIImageView! 
+    @IBOutlet weak var mainImgView: UIImageView!
     
-    // MARK: configure cell image
-    func configureImage(for cell: Img) {
-        mainImgView.image = UIImage(named: cell.name)
+    var image: Img? {
+        didSet{
+            if let img = image{
+                mainImgView.image = UIImage(named: img.name)
+            }
+        }
     }
+   
 }

@@ -32,7 +32,12 @@ class MainViewController: UIViewController {
     
     // MARK: fetch up data
     func fetchUpData() {
-        ImageData.fetchUp()
+        ImageData.fetchUp { [weak self] response in
+            guard let `self` = self else { return }
+            print(response)
+            self.imageData = response
+        }
+        // 데이터가 이쪽으로 어차피 넘어오질 못함. 변수에 담아두고 사용하질 않았음
     }
 }
 // MARK: -UICollectionViewDataSource
@@ -48,14 +53,12 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let data = imageData?[indexPath.section].items[indexPath.item]
-                                        else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
-                                                      for: indexPath) as! ImgCollectionViewCell
-        cell.configureImage(for: data)
+        let cell =
+            collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
+                                               for: indexPath) as! ImgCollectionViewCell
+        cell.image = imageData?[indexPath.section].items[indexPath.item]
         return cell
     }
-    
     
 }
 // MARK: -UICollectionViewDelegate
