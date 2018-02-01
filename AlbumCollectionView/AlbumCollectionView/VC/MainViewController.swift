@@ -38,6 +38,9 @@ class MainViewController: UIViewController {
             self.imageData = response
         }
         // 데이터가 이쪽으로 어차피 넘어오질 못함. 변수에 담아두고 사용하질 않았음
+        // [weak self] : self가 클로저에서 살아있는지 불확실한 경우
+        // 명시적인 수명 연장 -> 옵셔널 언래핑([unowned self])보다 선호
+        // guard let `self` = self else { return } : 객체 수명 연장
     }
 }
 // MARK: -UICollectionViewDataSource
