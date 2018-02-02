@@ -9,6 +9,18 @@
 		<array>
 			<dict>
 				<key>Image_Name</key>
+				<string>flower9</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>flower8</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>flower7</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
 				<string>flower1</string>
 			</dict>
 			<dict>
@@ -41,6 +53,30 @@
 			<dict>
 				<key>Image_Name</key>
 				<string>kyoto1</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto5</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto4</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto6</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto3</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto1</string>
+			</dict>
+			<dict>
+				<key>Image_Name</key>
+				<string>kyoto5</string>
 			</dict>
 		</array>
 	</dict>

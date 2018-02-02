@@ -15,6 +15,5 @@ class ImgCollectionViewCell: UICollectionViewCell {
                 mainImgView.image = UIImage(named: img.name)
             }
         }
-    }
-   
+    }   
 }

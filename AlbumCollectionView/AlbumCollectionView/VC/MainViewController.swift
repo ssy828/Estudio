@@ -63,6 +63,15 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
     
+    // MARK:
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let reusableView =
+            collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                            withReuseIdentifier: "SectionHeader",
+                                                            for: indexPath) as! SectionHeader
+        reusableView.categories = imageData?[indexPath.section]
+        return reusableView
+    }
 }
 // MARK: -UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
