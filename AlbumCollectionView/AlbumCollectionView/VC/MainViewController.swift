@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var choiceButton: UIBarButtonItem!
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -21,7 +22,18 @@ class MainViewController: UIViewController {
         configureLayout()
         fetchUpData()
     }
-    
+    // MARK: setEditing
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        choiceButton.isEnabled = !editing
+        collectionView.allowsMultipleSelection = editing
+        let indexPathList = collectionView.indexPathsForVisibleItems
+        for index in indexPathList {
+            let cell =
+                collectionView.cellForItem(at: index) as! ImgCollectionViewCell
+            cell.isSelecting = isEditing
+        }
+    }
     // MARK: change the layout the collectionView
     private func configureLayout() {
         let width = view.frame.size.width / 4
@@ -60,6 +72,7 @@ extension MainViewController: UICollectionViewDataSource {
             collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                for: indexPath) as! ImgCollectionViewCell
         cell.image = imageData?[indexPath.section].items[indexPath.item]
+        cell.isSelecting = isEditing
         return cell
     }
     

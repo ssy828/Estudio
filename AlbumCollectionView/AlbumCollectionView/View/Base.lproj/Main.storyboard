@@ -40,18 +40,28 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loveme" translatesAutoresizingMaskIntoConstraints="NO" id="Shl-tZ-O4J">
                                                     <rect key="frame" x="2" y="2" width="246" height="246"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon8" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-7e-Mje">
+                                                    <rect key="frame" x="225" y="225" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="9MV-7e-Mje" secondAttribute="height" multiplier="1:1" id="0oa-mT-mbR"/>
+                                                        <constraint firstAttribute="width" constant="20" id="qfi-XU-Zog"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Shl-tZ-O4J" secondAttribute="trailing" constant="2" id="AZw-Du-3Ct"/>
+                                            <constraint firstAttribute="trailing" secondItem="9MV-7e-Mje" secondAttribute="trailing" constant="5" id="GjV-2J-Esu"/>
                                             <constraint firstAttribute="bottom" secondItem="Shl-tZ-O4J" secondAttribute="bottom" constant="2" id="Pyh-sT-Iu4"/>
                                             <constraint firstItem="Shl-tZ-O4J" firstAttribute="top" secondItem="QdT-Uf-SSq" secondAttribute="top" constant="2" id="a2d-bg-CGe"/>
                                             <constraint firstItem="Shl-tZ-O4J" firstAttribute="centerX" secondItem="QdT-Uf-SSq" secondAttribute="centerX" id="g2p-1o-oKK"/>
+                                            <constraint firstAttribute="bottom" secondItem="9MV-7e-Mje" secondAttribute="bottom" constant="5" id="t19-Ol-odA"/>
                                             <constraint firstItem="Shl-tZ-O4J" firstAttribute="centerY" secondItem="QdT-Uf-SSq" secondAttribute="centerY" id="umQ-Of-i7M"/>
                                             <constraint firstItem="Shl-tZ-O4J" firstAttribute="leading" secondItem="QdT-Uf-SSq" secondAttribute="leading" constant="2" id="vfN-gn-IGP"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="mainImgView" destination="Shl-tZ-O4J" id="iuG-nT-0GF"/>
+                                            <outlet property="selectionImgView" destination="9MV-7e-Mje" id="dPr-xZ-KfE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -102,7 +112,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="사진" id="tjE-VA-HCn"/>
+                    <navigationItem key="navigationItem" title="사진" id="tjE-VA-HCn">
+                        <barButtonItem key="rightBarButtonItem" title="선택" id="soT-mQ-gPG">
+                            <color key="tintColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="z8V-em-1rk" id="ukh-vO-z8f"/>
                     </connections>
@@ -131,6 +145,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon8" width="50" height="50"/>
         <image name="loveme" width="328" height="330"/>
         <image name="센과치히로" width="420" height="747"/>
     </resources>
