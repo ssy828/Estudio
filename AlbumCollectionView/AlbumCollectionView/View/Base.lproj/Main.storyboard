@@ -40,7 +40,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loveme" translatesAutoresizingMaskIntoConstraints="NO" id="Shl-tZ-O4J">
                                                     <rect key="frame" x="2" y="2" width="246" height="246"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon8" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-7e-Mje">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9MV-7e-Mje">
                                                     <rect key="frame" x="225" y="225" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="9MV-7e-Mje" secondAttribute="height" multiplier="1:1" id="0oa-mT-mbR"/>
@@ -118,7 +118,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="choiceButton" destination="soT-mQ-gPG" id="0Ar-Kj-7kV"/>
                         <outlet property="collectionView" destination="z8V-em-1rk" id="ukh-vO-z8f"/>
                     </connections>
                 </viewController>
@@ -146,7 +145,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon8" width="50" height="50"/>
         <image name="loveme" width="328" height="330"/>
         <image name="센과치히로" width="420" height="747"/>
     </resources>

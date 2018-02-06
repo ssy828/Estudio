@@ -14,7 +14,8 @@ class MainViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var choiceButton: UIBarButtonItem!
+//    @IBOutlet weak var choiceButton: UIBarButtonItem!
+    // 선택버튼 누를 경우 : ToDo
     
     // MARK: Life Cycle
     override func viewDidLoad() {

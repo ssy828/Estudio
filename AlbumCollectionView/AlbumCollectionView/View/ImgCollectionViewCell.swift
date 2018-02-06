@@ -31,7 +31,7 @@ class ImgCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet{
             if isEditing {
-                selectionImgView.image = isSelected ? UIImage(named: "icon8") : nil
+                selectionImgView.image = isSelected ? UIImage(named: "icon2") : nil
             }
         }
     }
