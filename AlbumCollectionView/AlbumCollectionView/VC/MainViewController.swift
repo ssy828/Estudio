@@ -21,17 +21,17 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configureLayout()
         fetchUpData()
+        navigationItem.rightBarButtonItem = editButtonItem
     }
     // MARK: setEditing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        choiceButton.isEnabled = !editing
         collectionView.allowsMultipleSelection = editing
         let indexPathList = collectionView.indexPathsForVisibleItems
         for index in indexPathList {
             let cell =
                 collectionView.cellForItem(at: index) as! ImgCollectionViewCell
-            cell.isSelecting = isEditing
+            cell.isEditing = isEditing
         }
     }
     // MARK: change the layout the collectionView
@@ -72,7 +72,7 @@ extension MainViewController: UICollectionViewDataSource {
             collectionView.dequeueReusableCell(withReuseIdentifier: cellId,
                                                for: indexPath) as! ImgCollectionViewCell
         cell.image = imageData?[indexPath.section].items[indexPath.item]
-        cell.isSelecting = isEditing
+        cell.isEditing = isEditing
         return cell
     }
     
@@ -84,6 +84,10 @@ extension MainViewController: UICollectionViewDataSource {
                                                             for: indexPath) as! SectionHeader
         reusableView.categories = imageData?[indexPath.section]
         return reusableView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected: \(indexPath.item)")
     }
 }
 // MARK: -UICollectionViewDelegate

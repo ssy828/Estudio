@@ -19,18 +19,18 @@ class ImgCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-   
+    
     // in case select photo
-    var isSelecting: Bool = false {
+    var isEditing: Bool = false {
         didSet{
-            selectionImgView.isHidden = !isSelecting
+            selectionImgView.isHidden = !isEditing
         }
     }
     
     // isSelected
     override var isSelected: Bool {
         didSet{
-            if isSelecting {
+            if isEditing {
                 selectionImgView.image = isSelected ? UIImage(named: "icon8") : nil
             }
         }

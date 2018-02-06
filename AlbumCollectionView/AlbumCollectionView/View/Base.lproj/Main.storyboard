@@ -118,6 +118,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="choiceButton" destination="soT-mQ-gPG" id="0Ar-Kj-7kV"/>
                         <outlet property="collectionView" destination="z8V-em-1rk" id="ukh-vO-z8f"/>
                     </connections>
                 </viewController>
