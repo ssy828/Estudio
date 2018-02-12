@@ -14,8 +14,6 @@ class MainViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
-//    @IBOutlet weak var choiceButton: UIBarButtonItem!
-    // 선택버튼 누를 경우 : ToDo
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -23,28 +21,36 @@ class MainViewController: UIViewController {
         configureLayout()
         fetchUpData()
         navigationItem.rightBarButtonItem = editButtonItem
+        editButtonItem.title = "선택"
+        
     }
     // MARK: setEditing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        collectionView.allowsMultipleSelection = editing
-        let indexPathList = collectionView.indexPathsForVisibleItems
-        for index in indexPathList {
-            let cell =
-                collectionView.cellForItem(at: index) as! ImgCollectionViewCell
-            cell.isEditing = isEditing
+        if editing {
+            editButtonItem.title = "Done"
+            collectionView.allowsMultipleSelection = editing
+            let indexPathList = collectionView.indexPathsForVisibleItems
+            for index in indexPathList {
+                let cell =
+                    collectionView.cellForItem(at: index) as! ImgCollectionViewCell
+                cell.isEditing = isEditing
+            }
+        } else {
+            editButtonItem.title = "선택"
+            collectionView.allowsMultipleSelection = !editing
         }
     }
     // MARK: change the layout the collectionView
     private func configureLayout() {
         let width = view.frame.size.width / 4
         let collectionLayout = collectionView.collectionViewLayout
-                                        as! UICollectionViewFlowLayout
+            as! UICollectionViewFlowLayout
         collectionLayout.itemSize = CGSize(width: width, height: width)
     }
     
     // MARK: fetch up data
-    func fetchUpData() {
+    private func fetchUpData() {
         ImageData.fetchUp { [weak self] response in
             guard let `self` = self else { return }
             print(response)
