@@ -4,15 +4,16 @@
 //
 //  Created by SSY on 2018. 1. 23..
 import UIKit
-
+// MARK: - CollectionViewCell
 class ImgCollectionViewCell: UICollectionViewCell {
     
     // IBOutlet
     @IBOutlet weak var mainImgView: UIImageView!
     @IBOutlet weak var selectionImgView: UIImageView!
 
+    // property
     // Loading Image
-    var image: Img? {
+    public var image: Img? {
         didSet{
             if let img = image{
                 mainImgView.image = UIImage(named: img.name)
@@ -21,7 +22,7 @@ class ImgCollectionViewCell: UICollectionViewCell {
     }
     
     // in case select photo
-    var isEditing: Bool = false {
+    public var isEditing: Bool = false {
         didSet{
             selectionImgView.isHidden = !isEditing
         }

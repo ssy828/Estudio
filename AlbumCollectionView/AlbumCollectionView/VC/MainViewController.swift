@@ -5,7 +5,7 @@
 //  Created by SSY on 2018. 1. 23..
 
 import UIKit
-
+// MARK: - UIViewController
 class MainViewController: UIViewController {
     
     // MARK: property
@@ -21,16 +21,17 @@ class MainViewController: UIViewController {
         configureLayout()
         fetchUpData()
         navigationItem.rightBarButtonItem = editButtonItem
-        editButtonItem.title = "선택"
         
     }
     // MARK: setEditing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        collectionView.allowsMultipleSelection = editing
+        // 왜 이쪽으로 빼면 !isEditing 경우 다중 선택 안 될까?
         if editing {
             editButtonItem.title = "Done"
-            collectionView.allowsMultipleSelection = editing
             let indexPathList = collectionView.indexPathsForVisibleItems
+            collectionView.allowsMultipleSelection = editing
             for index in indexPathList {
                 let cell =
                     collectionView.cellForItem(at: index) as! ImgCollectionViewCell
@@ -38,8 +39,9 @@ class MainViewController: UIViewController {
             }
         } else {
             editButtonItem.title = "선택"
-            collectionView.allowsMultipleSelection = !editing
+            collectionView.allowsSelection = false
         }
+
     }
     // MARK: change the layout the collectionView
     private func configureLayout() {
@@ -62,17 +64,18 @@ class MainViewController: UIViewController {
         // guard let `self` = self else { return } : 객체 수명 연장
     }
 }
-// MARK: -UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
-    
+    // MARK: numberOfSections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return imageData?.count ?? 0
     }
+    // MARK: numberOfItemInSection
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return imageData?[section].items.count ?? 0
     }
-    
+    // MARK: cell
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell =
@@ -83,7 +86,7 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
     
-    // MARK:
+    // MARK: Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reusableView =
             collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -92,12 +95,12 @@ extension MainViewController: UICollectionViewDataSource {
         reusableView.categories = imageData?[indexPath.section]
         return reusableView
     }
-    
+    //MARK: didselectItem
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected: \(indexPath.item)")
     }
 }
-// MARK: -UICollectionViewDelegate
+// MARK: - UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     
 }
