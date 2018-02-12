@@ -20,8 +20,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configureLayout()
         fetchUpData()
-        navigationItem.rightBarButtonItem = editButtonItem
-        
+        configureEditButton()
     }
     // MARK: setEditing
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -50,7 +49,6 @@ class MainViewController: UIViewController {
             as! UICollectionViewFlowLayout
         collectionLayout.itemSize = CGSize(width: width, height: width)
     }
-    
     // MARK: fetch up data
     private func fetchUpData() {
         ImageData.fetchUp { [weak self] response in
@@ -62,6 +60,11 @@ class MainViewController: UIViewController {
         // [weak self] : self가 클로저에서 살아있는지 불확실한 경우
         // 명시적인 수명 연장 -> 옵셔널 언래핑([unowned self])보다 선호
         // guard let `self` = self else { return } : 객체 수명 연장
+    }
+    // MARK: editButtonItem
+    private func configureEditButton() {
+        navigationItem.rightBarButtonItem = editButtonItem
+        editButtonItem.title = "선택"
     }
 }
 // MARK: - UICollectionViewDataSource
@@ -85,7 +88,6 @@ extension MainViewController: UICollectionViewDataSource {
         cell.isEditing = isEditing
         return cell
     }
-    
     // MARK: Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let reusableView =
