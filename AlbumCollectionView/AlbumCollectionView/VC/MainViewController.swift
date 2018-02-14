@@ -20,11 +20,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configureLayout()
         fetchUpData()
-        configureEditButton()
+        configureNavigationBar()
     }
     // MARK: setEditing
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        navigationController?.isToolbarHidden = !editing
         collectionView.allowsMultipleSelection = editing
         if editing {
             editButtonItem.title = "Done"
@@ -61,9 +62,11 @@ class MainViewController: UIViewController {
         // guard let `self` = self else { return } : 객체 수명 연장
     }
     // MARK: editButtonItem
-    private func configureEditButton() {
+    private func configureNavigationBar() {
         navigationItem.rightBarButtonItem = editButtonItem
         editButtonItem.title = "선택"
+        navigationController?.isToolbarHidden = true
+        
     }
 }
 // MARK: - UICollectionViewDataSource
