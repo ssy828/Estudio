@@ -26,7 +26,6 @@ class MainViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView.allowsMultipleSelection = editing
-        // 왜 이쪽으로 빼면 !isEditing 경우 다중 선택 안 될까?
         if editing {
             editButtonItem.title = "Done"
             let indexPathList = collectionView.indexPathsForVisibleItems
