@@ -113,6 +113,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems>
+                        <barButtonItem systemItem="action" id="Iqn-JY-fFX"/>
+                        <barButtonItem title="추가" width="500" id="C70-p4-2hG"/>
                         <barButtonItem systemItem="trash" id="dq4-yK-gf7"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="사진" id="tjE-VA-HCn">

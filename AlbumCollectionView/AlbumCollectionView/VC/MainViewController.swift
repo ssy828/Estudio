@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         navigationController?.isToolbarHidden = !editing
+        
         collectionView.allowsMultipleSelection = editing
         if editing {
             editButtonItem.title = "Done"
@@ -53,7 +54,6 @@ class MainViewController: UIViewController {
     private func fetchUpData() {
         ImageData.fetchUp { [weak self] response in
             guard let `self` = self else { return }
-            print(response)
             self.imageData = response
         }
         // 데이터가 이쪽으로 어차피 넘어오질 못함. 변수에 담아두고 사용하질 않았음
@@ -66,7 +66,6 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = editButtonItem
         editButtonItem.title = "선택"
         navigationController?.isToolbarHidden = true
-        
     }
 }
 // MARK: - UICollectionViewDataSource
@@ -105,6 +104,4 @@ extension MainViewController: UICollectionViewDataSource {
     }
 }
 // MARK: - UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
-    
-}
+extension MainViewController: UICollectionViewDelegate { }
