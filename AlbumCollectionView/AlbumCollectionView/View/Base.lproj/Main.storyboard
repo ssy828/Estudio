@@ -113,7 +113,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="Iqn-JY-fFX"/>
+                        <barButtonItem systemItem="action" id="Iqn-JY-fFX">
+                            <connections>
+                                <action selector="Action:" destination="BYZ-38-t0r" id="aAb-5n-evZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="추가" width="500" id="C70-p4-2hG"/>
                         <barButtonItem systemItem="trash" id="dq4-yK-gf7"/>
                     </toolbarItems>

@@ -15,6 +15,10 @@ class MainViewController: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBAction func Action(_ sender: Any) {
+        print("\(sender)")
+        // To do
+    }
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +27,10 @@ class MainViewController: UIViewController {
         configureNavigationBar()
     }
     // MARK: setEditing
+    // To do: 사진을 선택했을 경우에만 toolbar 선택가능하게 하기
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         navigationController?.isToolbarHidden = !editing
-        
         collectionView.allowsMultipleSelection = editing
         if editing {
             editButtonItem.title = "Done"
