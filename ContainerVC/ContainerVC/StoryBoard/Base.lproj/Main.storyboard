@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ContainerVC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqr-xr-idB">
+                                <rect key="frame" x="0.0" y="81" width="375" height="586"/>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jcj-CR-uwr">
+                                <rect key="frame" x="127" y="52.5" width="121" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="7be-uc-AoJ"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jcj-CR-uwr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CkP-2d-X4d"/>
+                            <constraint firstItem="kqr-xr-idB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MRD-HK-Tu1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kqr-xr-idB" secondAttribute="bottom" id="TkE-Gm-b8W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqr-xr-idB" secondAttribute="trailing" id="fbo-NI-mUS"/>
+                            <constraint firstItem="kqr-xr-idB" firstAttribute="top" secondItem="jcj-CR-uwr" secondAttribute="bottom" id="g2F-zs-scO"/>
+                            <constraint firstItem="jcj-CR-uwr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1:5" id="nlH-99-3Ll"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="kqr-xr-idB" id="u5R-We-1DO"/>
+                        <outlet property="segmentedControl" destination="jcj-CR-uwr" id="QBk-JB-xzq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42" y="161"/>
+        </scene>
+        <!--Today-->
+        <scene sceneID="JO8-5z-Pty">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Today" id="Ogz-a8-QBo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCQ-W7-wbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663" y="-54"/>
+        </scene>
+        <!--Yesterday-->
+        <scene sceneID="mbU-cL-Dzv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Yesterday" id="Gw5-01-s5k" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rxd-VG-IKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663" y="125"/>
+        </scene>
+    </scenes>
+</document>
