@@ -10,10 +10,10 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var currencyImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +32,20 @@ class TodayViewController: UIViewController {
     }
     */
 
+}
+// MARK: - UITableViewDataSource
+extension TodayViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
+}
+// MARK: - UITableViewDelegate
+extension TodayViewController: UITableViewDelegate {
+    
 }

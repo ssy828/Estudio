@@ -42,13 +42,9 @@ class MainViewController: UIViewController {
     // MARK: -view Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.segmentedControl.selectedSegmentIndex = 0
-        
-        
+        self.setUp()
     }
 
-    
     // MARK: -methods
     // 자식 뷰 추가하기
    private func addViewController(asChild viewController: UIViewController) {
@@ -87,7 +83,8 @@ class MainViewController: UIViewController {
         }
         
     }
-    
+    // MAKR: set up
+    private func setUp() { self.updateView() }
   
 }
 

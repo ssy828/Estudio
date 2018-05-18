@@ -1,29 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vcX-5E-7i1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K0p-be-pCM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
-        <scene sceneID="eGj-zn-fjf">
+        <scene sceneID="t7x-Vs-vba">
             <objects>
-                <viewController storyboardIdentifier="TodayViewController" id="vcX-5E-7i1" customClass="TodayViewController" customModule="ContainerVC" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mwp-Cn-0NO">
+                <viewController storyboardIdentifier="TodayViewController" id="K0p-be-pCM" customClass="TodayViewController" customModule="ContainerVC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlt-qX-wAz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.98641097550000001" green="0.93894499539999998" blue="0.46216401460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="UL8-Ok-re6"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxb-uT-uh0">
+                                <rect key="frame" x="37.5" y="25.5" width="300" height="44.5"/>
+                                <color key="backgroundColor" red="0.99865251779999997" green="0.7113095773" blue="0.67999213049999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Qh-p8-tOM">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GJ5-uD-0y0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GJ5-uD-0y0" id="QQq-SB-eot">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="K0p-be-pCM" id="kp7-di-rhI"/>
+                                    <outlet property="delegate" destination="K0p-be-pCM" id="oKD-Pd-yke"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MMd-6d-kdm">
+                                <rect key="frame" x="44" y="29" width="37" height="37.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MMd-6d-kdm" secondAttribute="height" multiplier="1:1" id="klM-HZ-Mc8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3nP-7P-SYA" firstAttribute="trailing" secondItem="0Qh-p8-tOM" secondAttribute="trailing" id="2xn-jQ-rSZ"/>
+                            <constraint firstItem="yxb-uT-uh0" firstAttribute="height" secondItem="Xlt-qX-wAz" secondAttribute="height" multiplier="1:15" id="BAm-oy-mOq"/>
+                            <constraint firstItem="MMd-6d-kdm" firstAttribute="centerY" secondItem="yxb-uT-uh0" secondAttribute="centerY" id="Bep-ze-GnX"/>
+                            <constraint firstItem="yxb-uT-uh0" firstAttribute="centerX" secondItem="Xlt-qX-wAz" secondAttribute="centerX" id="KjO-1s-2gH"/>
+                            <constraint firstItem="MMd-6d-kdm" firstAttribute="centerX" secondItem="0Qh-p8-tOM" secondAttribute="centerX" multiplier="1:3" id="Lit-eT-bnz"/>
+                            <constraint firstItem="0Qh-p8-tOM" firstAttribute="leading" secondItem="3nP-7P-SYA" secondAttribute="leading" id="TsE-Pm-MT8"/>
+                            <constraint firstItem="MMd-6d-kdm" firstAttribute="width" secondItem="yxb-uT-uh0" secondAttribute="width" multiplier="1:8" id="ell-bX-vSJ"/>
+                            <constraint firstItem="0Qh-p8-tOM" firstAttribute="top" secondItem="yxb-uT-uh0" secondAttribute="bottom" id="kF8-dw-g0E"/>
+                            <constraint firstItem="yxb-uT-uh0" firstAttribute="centerY" secondItem="Xlt-qX-wAz" secondAttribute="centerY" multiplier="1:7" id="rNc-lg-T21"/>
+                            <constraint firstItem="3nP-7P-SYA" firstAttribute="bottom" secondItem="0Qh-p8-tOM" secondAttribute="bottom" id="vF6-Q9-k7V"/>
+                            <constraint firstItem="yxb-uT-uh0" firstAttribute="width" secondItem="Xlt-qX-wAz" secondAttribute="width" multiplier="0.8:1" id="xvV-Ls-d46"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3nP-7P-SYA"/>
                     </view>
+                    <connections>
+                        <outlet property="currencyImageView" destination="MMd-6d-kdm" id="DEM-Sf-x8x"/>
+                        <outlet property="currencyLabel" destination="yxb-uT-uh0" id="Mr1-de-ym4"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F0c-Ig-HYm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVB-Sg-YDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="149"/>
+            <point key="canvasLocation" x="98" y="-18"/>
         </scene>
     </scenes>
 </document>
