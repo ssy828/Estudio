@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        self.segmentedControl.selectedSegmentIndex = 0
+        self.segmentedControl.selectedSegmentIndex = 0
         
         
     }
