@@ -10,8 +10,12 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
+    // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyImageView: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,14 +39,23 @@ class TodayViewController: UIViewController {
 }
 // MARK: - UITableViewDataSource
 extension TodayViewController: UITableViewDataSource {
+    // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
-    
+    // MARK: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+        return cell
+        
     }
-    
+    // MARK: viewForHeaderInSection
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "CustomHeaderCell") as! CustomHeaderCell
+        return headerCell
+    }
     
 }
 // MARK: - UITableViewDelegate

@@ -53,18 +53,18 @@
             </objects>
             <point key="canvasLocation" x="42" y="161"/>
         </scene>
-        <!--Today-->
+        <!--TodayViewController-->
         <scene sceneID="JO8-5z-Pty">
             <objects>
-                <viewControllerPlaceholder storyboardName="Today" id="Ogz-a8-QBo" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Today" referencedIdentifier="TodayViewController" id="Ogz-a8-QBo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCQ-W7-wbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="663" y="-54"/>
         </scene>
-        <!--Yesterday-->
+        <!--YesterdayViewController-->
         <scene sceneID="mbU-cL-Dzv">
             <objects>
-                <viewControllerPlaceholder storyboardName="Yesterday" id="Gw5-01-s5k" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Yesterday" referencedIdentifier="YesterdayViewController" id="Gw5-01-s5k" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxd-VG-IKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="663" y="125"/>
