@@ -11,9 +11,9 @@ import UIKit
 class TodayViewController: UIViewController {
 
     var sections: [Section] = [
-        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"]),
-        Section(title: "Transportaion Fee", items: ["bus","subway"]),
-        Section(title: "Communication Fee", items: ["cellPhone","Ipad"])
+        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"], isCollapsed: true),
+        Section(title: "Transportaion Fee", items: ["bus","subway"], isCollapsed: true),
+        Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
     ]
     
     
@@ -67,6 +67,10 @@ extension TodayViewController: UITableViewDataSource {
     }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !sections[section].isCollapsed {
+           return 0
+        }
+        
         return sections[section].items.count
     }
     // MARK: cellForRowAt
@@ -83,21 +87,28 @@ extension TodayViewController: UITableViewDataSource {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
         headerView.categoryTitleLabel.text = sections[section].title
         headerView.openCloseButton.addTarget(self, action: #selector(handleExpandedClose), for: .touchUpInside)
+        headerView.openCloseButton.tag = section
         return headerView
     }
-    
+    // MARK: @objc func handleExpandedClose
     @objc func handleExpandedClose(_ button: UIButton) {
         let section = button.tag
-        let row = 0
         var indexPaths = [IndexPath]()
-
         for item in sections[section].items.indices{
             print(0,item)
-            let indexPath = IndexPath(row: row, section: section)
+            let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)
         }
+        let isCollapsed = sections[section].isCollapsed
+        sections[section].isCollapsed = !isCollapsed
         
-        self.tableView.deleteRows(at: indexPaths, with: .fade)
+        button.setTitle(isCollapsed ? "Open" : "Close" , for: .normal)
+        
+        if isCollapsed {
+             self.tableView.deleteRows(at: indexPaths, with: .fade)
+        }else{
+          self.tableView.insertRows(at: indexPaths, with: .fade)
+        }
     }
     
     // MARK: heightForRowAt

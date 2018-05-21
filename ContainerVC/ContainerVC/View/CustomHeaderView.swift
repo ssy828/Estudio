@@ -11,10 +11,7 @@ import UIKit
 class CustomHeaderView: UITableViewHeaderFooterView {
 
     // IBAction
-    @IBAction func openCloseBtn(_ sender: UIButton) {
-        sender.setTitle("Close", for: .normal)
-        
-    }
+    @IBAction func openCloseBtn(_ sender: UIButton) { }
     // IBOutlet
     @IBOutlet weak var categoryTitleLabel: UILabel!
     @IBOutlet weak var openCloseButton: UIButton!

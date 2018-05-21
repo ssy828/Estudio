@@ -12,6 +12,6 @@ import UIKit
 struct Section {
     var title: String
     var items: [String]
-   
+    var isCollapsed: Bool
 }
 
