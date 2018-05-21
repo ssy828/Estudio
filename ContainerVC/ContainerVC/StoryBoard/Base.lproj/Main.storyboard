@@ -28,6 +28,7 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="didChangeValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="7be-uc-AoJ"/>
                                 </connections>
