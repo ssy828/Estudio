@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CustomHeaderView" id="tga-JG-OUb" customClass="CustomHeaderView" customModule="ContainerVC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzj-DL-7hI">
+                    <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="openCloseBtn:" destination="tga-JG-OUb" eventType="touchUpInside" id="9PZ-M7-y0N"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJO-QO-Ccr">
+                    <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yJO-QO-Ccr" firstAttribute="top" secondItem="E6H-8H-mdQ" secondAttribute="top" id="1S0-4u-We0"/>
+                <constraint firstItem="tzj-DL-7hI" firstAttribute="height" secondItem="tga-JG-OUb" secondAttribute="height" id="RL9-mq-uho"/>
+                <constraint firstItem="yJO-QO-Ccr" firstAttribute="width" secondItem="tga-JG-OUb" secondAttribute="width" multiplier="1:1.5" id="d6e-cF-IrC"/>
+                <constraint firstItem="yJO-QO-Ccr" firstAttribute="leading" secondItem="E6H-8H-mdQ" secondAttribute="leading" id="eEX-0L-sNx"/>
+                <constraint firstItem="tzj-DL-7hI" firstAttribute="leading" secondItem="yJO-QO-Ccr" secondAttribute="trailing" id="gWZ-zU-7mb"/>
+                <constraint firstItem="E6H-8H-mdQ" firstAttribute="trailing" secondItem="tzj-DL-7hI" secondAttribute="trailing" id="gdA-on-Mcj"/>
+                <constraint firstItem="tzj-DL-7hI" firstAttribute="top" secondItem="E6H-8H-mdQ" secondAttribute="top" id="hk8-hf-sFY"/>
+                <constraint firstItem="yJO-QO-Ccr" firstAttribute="height" secondItem="tga-JG-OUb" secondAttribute="height" id="kdI-nS-Kog"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="E6H-8H-mdQ"/>
+            <connections>
+                <outlet property="categoryTitleLabel" destination="yJO-QO-Ccr" id="cVe-4L-nOM"/>
+            </connections>
+            <point key="canvasLocation" x="321" y="-50"/>
+        </view>
+    </objects>
+</document>
