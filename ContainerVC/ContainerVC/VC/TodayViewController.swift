@@ -10,6 +10,13 @@ import UIKit
 
 class TodayViewController: UIViewController {
 
+    var sections: [Section] = [
+        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"]),
+        Section(title: "Transportaion Fee", items: ["bus","subway"]),
+        Section(title: "Communication Fee", items: ["cellPhone","Ipad"])
+    ]
+    
+    
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyImageView: UIImageView!
@@ -20,6 +27,7 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         // 헤더뷰 nib 사용하므로 forHeaderFooterViewReuseIdentifier로 등록해야함!!
         self.tableView.register(CustomHeaderView.nib, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
+
 
     }
 
@@ -53,24 +61,45 @@ class TodayViewController: UIViewController {
 }
 // MARK: - UITableViewDataSource
 extension TodayViewController: UITableViewDataSource {
+    // MARK: numberOfSections
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return sections[section].items.count
     }
     // MARK: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+        let itemTitle = sections[indexPath.section].items[indexPath.row]
+        print(itemTitle)
+        cell.titleLb?.text = itemTitle
         return cell
         
     }
     // MARK: viewForHeaderInSection
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier)
-
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
+        headerView.categoryTitleLabel.text = sections[section].title
+        headerView.openCloseButton.addTarget(self, action: #selector(handleExpandedClose), for: .touchUpInside)
         return headerView
     }
+    
+    @objc func handleExpandedClose(_ button: UIButton) {
+        let section = button.tag
+        let row = 0
+        var indexPaths = [IndexPath]()
+
+        for item in sections[section].items.indices{
+            print(0,item)
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
+        }
+        
+        self.tableView.deleteRows(at: indexPaths, with: .fade)
+    }
+    
     // MARK: heightForRowAt
     // 행의 높이
     // 헤더 높이 바꾸는 메소드 사용 - heightForHeaderInSection

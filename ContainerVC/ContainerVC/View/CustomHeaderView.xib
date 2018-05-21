@@ -48,6 +48,7 @@
             <viewLayoutGuide key="safeArea" id="E6H-8H-mdQ"/>
             <connections>
                 <outlet property="categoryTitleLabel" destination="yJO-QO-Ccr" id="cVe-4L-nOM"/>
+                <outlet property="openCloseButton" destination="tzj-DL-7hI" id="iAS-mD-eam"/>
             </connections>
             <point key="canvasLocation" x="321" y="-50"/>
         </view>

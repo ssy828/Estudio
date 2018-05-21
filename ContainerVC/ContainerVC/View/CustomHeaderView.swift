@@ -17,7 +17,8 @@ class CustomHeaderView: UITableViewHeaderFooterView {
     }
     // IBOutlet
     @IBOutlet weak var categoryTitleLabel: UILabel!
-
+    @IBOutlet weak var openCloseButton: UIButton!
+    
     // Properties
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)
