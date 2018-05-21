@@ -27,8 +27,6 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         // 헤더뷰 nib 사용하므로 forHeaderFooterViewReuseIdentifier로 등록해야함!!
         self.tableView.register(CustomHeaderView.nib, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,17 +44,6 @@ class TodayViewController: UIViewController {
         // 높입값을 동적으로 설정 될 것을 테이블 뷰에 알려주는 역할
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 // MARK: - UITableViewDataSource
@@ -77,7 +64,6 @@ extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let itemTitle = sections[indexPath.section].items[indexPath.row]
-        print(itemTitle)
         cell.titleLb?.text = itemTitle
         return cell
         
@@ -90,12 +76,13 @@ extension TodayViewController: UITableViewDataSource {
         headerView.openCloseButton.tag = section
         return headerView
     }
-    // MARK: @objc func handleExpandedClose
+    // MARK: - @objc func handleExpandedClose
     @objc func handleExpandedClose(_ button: UIButton) {
         let section = button.tag
         var indexPaths = [IndexPath]()
+        // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
+        // 유효한 값의 범위를 가짐
         for item in sections[section].items.indices{
-            print(0,item)
             let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)
         }

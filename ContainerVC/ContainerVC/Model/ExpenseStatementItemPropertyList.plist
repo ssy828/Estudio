@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Section_title</key>
+		<string>Food Expense</string>
+		<key>Items</key>
+		<array>
+			<dict>
+				<key>Title</key>
+				<string>저녁</string>
+				<key>Price</key>
+				<string>11,000</string>
+				<key>Content</key>
+				<string>탕수육+짬봉 세트</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>아침</string>
+				<key>Price</key>
+				<string>9,800</string>
+				<key>Content</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>점심</string>
+				<key>Price</key>
+				<string>5600</string>
+				<key>Content</key>
+				<string>버거킹 세트</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Section_title</key>
+		<string>Transportaion Fee</string>
+		<key>Items</key>
+		<array>
+			<dict>
+				<key>Title</key>
+				<string>버스</string>
+				<key>Price</key>
+				<string>3,200</string>
+			</dict>
+			<dict>
+				<key>Title</key>
+				<string>택시</string>
+				<key>Price</key>
+				<string>10,500</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

@@ -15,3 +15,9 @@ struct Section {
     var isCollapsed: Bool
 }
 
+struct ExpenseStatementItem {
+    var title: String
+    var price: String
+    var content: String?
+}
+
