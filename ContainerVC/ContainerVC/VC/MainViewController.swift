@@ -23,7 +23,6 @@ class MainViewController: UIViewController {
         // 메인 뷰 컨트롤러에 자식 뷰 컨트롤러 추가
         // 이때 lazy 설정해줘야함
         self.addViewController(asChild: yesterdayVC)
-        
         return yesterdayVC
     }()
     
@@ -81,10 +80,9 @@ class MainViewController: UIViewController {
         default:
             break
         }
-        
     }
     // MAKR: set up
     private func setUp() { self.updateView() }
-  
+    
 }
 

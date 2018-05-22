@@ -16,7 +16,6 @@ class TodayViewController: UIViewController {
         Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
     ]
     
-    
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyImageView: UIImageView!
@@ -39,7 +38,7 @@ class TodayViewController: UIViewController {
     // viewWillAppear에 설정하기
     override func viewWillAppear(_ animated: Bool) {
         // estimatedRowHeight - 임시로 사용할 셀의 높이
-        self.tableView.estimatedRowHeight = 70
+        self.tableView.estimatedRowHeight = 50
         // UITableViewAutomaticDimension - 테이블 뷰의 rowHeight 속성에 대입되어
         // 높입값을 동적으로 설정 될 것을 테이블 뷰에 알려주는 역할
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -54,11 +53,12 @@ extension TodayViewController: UITableViewDataSource {
     }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !sections[section].isCollapsed {
-           return 0
-        }
-        
-        return sections[section].items.count
+//        if !sections[section].isCollapsed {
+//           return 0
+//        }
+//        return sections[section].items.count
+        let isCollapsed = sections[section].isCollapsed
+        return isCollapsed ? sections[section].items.count : 0
     }
     // MARK: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,32 +72,10 @@ extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
         headerView.categoryTitleLabel.text = sections[section].title
-        headerView.openCloseButton.addTarget(self, action: #selector(handleExpandedClose), for: .touchUpInside)
-        headerView.openCloseButton.tag = section
+        headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
+        headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!
         return headerView
     }
-    // MARK: - @objc func handleExpandedClose
-    @objc func handleExpandedClose(_ button: UIButton) {
-        let section = button.tag
-        var indexPaths = [IndexPath]()
-        // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
-        // 유효한 값의 범위를 가짐
-        for item in sections[section].items.indices{
-            let indexPath = IndexPath(row: item, section: section)
-            indexPaths.append(indexPath)
-        }
-        let isCollapsed = sections[section].isCollapsed
-        sections[section].isCollapsed = !isCollapsed
-        
-        button.setTitle(isCollapsed ? "Open" : "Close" , for: .normal)
-        
-        if isCollapsed {
-             self.tableView.deleteRows(at: indexPaths, with: .fade)
-        }else{
-          self.tableView.insertRows(at: indexPaths, with: .fade)
-        }
-    }
-    
     // MARK: heightForRowAt
     // 행의 높이
     // 헤더 높이 바꾸는 메소드 사용 - heightForHeaderInSection
@@ -108,5 +86,30 @@ extension TodayViewController: UITableViewDataSource {
 }
 // MARK: - UITableViewDelegate
 extension TodayViewController: UITableViewDelegate {
+    
+}
+// MARK: - CustomHeaderViewDelegate
+extension TodayViewController: CustomHeaderViewDelegate {
+    // Toggle collapse
+    func toggleSection(_ button: UIButton) {
+        let section = button.tag
+        var indexPaths = [IndexPath]()
+        let isCollapsed = sections[section].isCollapsed
+        sections[section].isCollapsed = !isCollapsed // isCollpase의 반대를 넣어줌
+        button.setTitle(isCollapsed ? "Open" : "Close", for: .normal) // 버튼 타이틀 변경
+        // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
+        // 유효한 값의 범위를 가짐
+        for item in sections[section].items.indices {
+            let indexPath = IndexPath(row: item, section: section)
+            indexPaths.append(indexPath)
+        }
+        if isCollapsed { // isCollpase = true -> deleteRows
+            tableView.deleteRows(at: indexPaths, with: .fade)
+        }else{// isCollpase = false -> insertRows
+            tableView.insertRows(at: indexPaths, with: .fade)
+        }
+        
+    }
+    
     
 }
