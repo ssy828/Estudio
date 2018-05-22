@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="ContainerVC" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,6 +45,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="sk7-kc-TFF"/>
                     <connections>
                         <outlet property="containerView" destination="kqr-xr-idB" id="u5R-We-1DO"/>
                         <outlet property="segmentedControl" destination="jcj-CR-uwr" id="QBk-JB-xzq"/>
@@ -52,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="161"/>
+            <point key="canvasLocation" x="980" y="160.56971514242881"/>
         </scene>
         <!--TodayViewController-->
         <scene sceneID="JO8-5z-Pty">
@@ -60,7 +61,7 @@
                 <viewControllerPlaceholder storyboardName="Today" referencedIdentifier="TodayViewController" id="Ogz-a8-QBo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCQ-W7-wbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663" y="-54"/>
+            <point key="canvasLocation" x="1600.8" y="-54.872563718140931"/>
         </scene>
         <!--YesterdayViewController-->
         <scene sceneID="mbU-cL-Dzv">
@@ -68,7 +69,7 @@
                 <viewControllerPlaceholder storyboardName="Yesterday" referencedIdentifier="YesterdayViewController" id="Gw5-01-s5k" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxd-VG-IKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663" y="125"/>
+            <point key="canvasLocation" x="1600.8" y="124.13793103448276"/>
         </scene>
     </scenes>
 </document>

@@ -5,11 +5,11 @@
 //  Created by SSY on 2018. 5. 16..
 //  Copyright © 2018년 LittleMe. All rights reserved.
 //
-
 import UIKit
 
 class TodayViewController: UIViewController {
-
+    
+    // MARK: - properties
     var sections: [Section] = [
         Section(title: "Food Expense", items: ["breakfast","lunch","dinner"], isCollapsed: true),
         Section(title: "Transportaion Fee", items: ["bus","subway"], isCollapsed: true),
@@ -27,7 +27,7 @@ class TodayViewController: UIViewController {
         // 헤더뷰 nib 사용하므로 forHeaderFooterViewReuseIdentifier로 등록해야함!!
         self.tableView.register(CustomHeaderView.nib, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,7 +43,7 @@ class TodayViewController: UIViewController {
         // 높입값을 동적으로 설정 될 것을 테이블 뷰에 알려주는 역할
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-
+    
 }
 // MARK: - UITableViewDataSource
 extension TodayViewController: UITableViewDataSource {
@@ -53,10 +53,6 @@ extension TodayViewController: UITableViewDataSource {
     }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if !sections[section].isCollapsed {
-//           return 0
-//        }
-//        return sections[section].items.count
         let isCollapsed = sections[section].isCollapsed
         return isCollapsed ? sections[section].items.count : 0
     }
@@ -82,11 +78,15 @@ extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-   
+    
 }
 // MARK: - UITableViewDelegate
 extension TodayViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
+        navigationController?.pushViewController(detailVC, animated: false)
+    }
 }
 // MARK: - CustomHeaderViewDelegate
 extension TodayViewController: CustomHeaderViewDelegate {
@@ -103,13 +103,7 @@ extension TodayViewController: CustomHeaderViewDelegate {
             let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)
         }
-        if isCollapsed { // isCollpase = true -> deleteRows
-            tableView.deleteRows(at: indexPaths, with: .fade)
-        }else{// isCollpase = false -> insertRows
-            tableView.insertRows(at: indexPaths, with: .fade)
-        }
-        
+        // isCollpase가 true - deleteRows / false - insertRows
+        isCollapsed ? tableView.deleteRows(at: indexPaths, with: .fade) : tableView.insertRows(at: indexPaths, with: .fade)
     }
-    
-    
 }

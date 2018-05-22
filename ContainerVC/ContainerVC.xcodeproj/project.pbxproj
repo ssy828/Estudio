@@ -12,6 +12,7 @@
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
 		CE9A002A20B33FFA00446918 /* ExpenseStatementItemPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */; };
+		CEEB260020B4BE7F00C029A0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB25FF20B4BE7F00C029A0 /* DetailViewController.swift */; };
 		CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */; };
 		CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */; };
 		CEF41BB020ABD07E0097EDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BAE20ABD07E0097EDBB /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
 		CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExpenseStatementItemPropertyList.plist; sourceTree = "<group>"; };
+		CEEB25FF20B4BE7F00C029A0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEF41BA720ABD07E0097EDBB /* ContainerVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */,
 				CEF41BC020ABD4440097EDBB /* TodayViewController.swift */,
 				CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */,
+				CEEB25FF20B4BE7F00C029A0 /* DetailViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
 				CEF41BC120ABD4440097EDBB /* TodayViewController.swift in Sources */,
+				CEEB260020B4BE7F00C029A0 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
