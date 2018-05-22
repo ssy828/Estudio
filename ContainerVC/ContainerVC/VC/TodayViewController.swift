@@ -86,6 +86,7 @@ extension TodayViewController: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
         let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
         navigationController?.pushViewController(detailVC, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false) // 선택한 줄에서 선택 표시 지움
     }
 }
 // MARK: - CustomHeaderViewDelegate
