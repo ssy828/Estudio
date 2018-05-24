@@ -85,7 +85,7 @@ extension TodayViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
         let detailVC = storyboard.instantiateViewController(withIdentifier: DetailSuperViewController.identifier)
-        navigationController?.pushViewController(detailVC, animated: false)
+        self.navigationController?.pushViewController(detailVC, animated: false)
         tableView.deselectRow(at: indexPath, animated: false) // 선택한 줄에서 선택 표시 지움
     }
 }

@@ -20,8 +20,8 @@ class DetailSuperViewController: UIViewController {
         self.addChildViewController(detailVC)
         return detailVC
     }()
-    // MARK: Methods
-    // addViewController
+    // Methods
+    // MARK: addViewController
     private func addViewController(asChild viewController: UIViewController) {
         // 자식 뷰 컨트롤러 추가
         addChildViewController(viewController)
@@ -33,7 +33,7 @@ class DetailSuperViewController: UIViewController {
         // 컨테이너 뷰에게 자식 뷰 알려주기
         viewController.didMove(toParentViewController: self)
     }
-    // removeViewController
+    // MARK: removeViewController
     private func removeViewController(asChild viewController: UIViewController) {
         // 자식 뷰 알리기
         viewController.willMove(toParentViewController: nil)
@@ -42,7 +42,7 @@ class DetailSuperViewController: UIViewController {
         // 컨테이너 뷰에게 자식 뷰가 삭제 된 것을 알려주기
         viewController.removeFromParentViewController()
     }
-    // setUp
+    // MARK: setUpView
     private func setUpView() {
         addViewController(asChild: detailVC)
 //        removeViewController(asChild: detailVC)
