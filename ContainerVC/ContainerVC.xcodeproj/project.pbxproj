@@ -66,12 +66,70 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CE192ADB20AEE4E5002A98B9 /* View */ = {
+		CE037C8720B651CD00CF2C6B /* MainPart */ = {
+			isa = PBXGroup;
+			children = (
+				CE192ADB20AEE4E5002A98B9 /* View */,
+				CEF41BC420ABD4680097EDBB /* VC */,
+			);
+			path = MainPart;
+			sourceTree = "<group>";
+		};
+		CE037C8820B651D000CF2C6B /* DetailPart */ = {
+			isa = PBXGroup;
+			children = (
+				CE037C8A20B6520B00CF2C6B /* VC */,
+				CE037C8920B6520200CF2C6B /* View */,
+			);
+			path = DetailPart;
+			sourceTree = "<group>";
+		};
+		CE037C8920B6520200CF2C6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE037C8A20B6520B00CF2C6B /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				CE07D7B120B50C6500F93306 /* DetailTableViewController.swift */,
+				CE07D7B320B5120800F93306 /* DetailSuperViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		CE037C8B20B6522400CF2C6B /* TodayPart */ = {
+			isa = PBXGroup;
+			children = (
+				CE037C8D20B6523C00CF2C6B /* VC */,
+				CE037C8C20B6523500CF2C6B /* View */,
+			);
+			path = TodayPart;
+			sourceTree = "<group>";
+		};
+		CE037C8C20B6523500CF2C6B /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */,
 				CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */,
 				CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE037C8D20B6523C00CF2C6B /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				CEF41BC020ABD4440097EDBB /* TodayViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		CE192ADB20AEE4E5002A98B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,10 +153,11 @@
 		CEF41BA920ABD07E0097EDBB /* ContainerVC */ = {
 			isa = PBXGroup;
 			children = (
+				CE037C8B20B6522400CF2C6B /* TodayPart */,
+				CE037C8820B651D000CF2C6B /* DetailPart */,
+				CE037C8720B651CD00CF2C6B /* MainPart */,
 				CEF41BC520ABD47B0097EDBB /* SupportingFiles */,
 				CE025C7020B25815003D4819 /* Model */,
-				CE192ADB20AEE4E5002A98B9 /* View */,
-				CEF41BC420ABD4680097EDBB /* VC */,
 				CEF41BC620ABD4950097EDBB /* StoryBoard */,
 				CEF41BB620ABD0800097EDBB /* Info.plist */,
 			);
@@ -109,10 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */,
-				CEF41BC020ABD4440097EDBB /* TodayViewController.swift */,
 				CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */,
-				CE07D7B120B50C6500F93306 /* DetailTableViewController.swift */,
-				CE07D7B320B5120800F93306 /* DetailSuperViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
