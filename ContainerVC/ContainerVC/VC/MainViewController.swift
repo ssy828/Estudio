@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
         self.setUp()
     }
 
-    // MARK: -methods
+    // MARK: - methods
     // 자식 뷰 추가하기
    private func addViewController(asChild viewController: UIViewController) {
         // 자식 뷰 컨트롤러 추가

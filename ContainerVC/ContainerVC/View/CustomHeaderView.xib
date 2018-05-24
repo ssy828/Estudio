@@ -20,7 +20,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzj-DL-7hI">
                     <rect key="frame" x="250" y="0.0" width="125" height="50"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" title="Open"/>
+                    <state key="normal" title="Close"/>
                     <connections>
                         <action selector="openCloseBtn:" destination="tga-JG-OUb" eventType="touchUpInside" id="9PZ-M7-y0N"/>
                     </connections>
