@@ -97,6 +97,8 @@ class DetailTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (1,1):
             self.toggleDatePicker()
+        case (1,0):
+            self.performSegue(withIdentifier: "GoToCategoryVC", sender: nil)
         default:
             break
         }
