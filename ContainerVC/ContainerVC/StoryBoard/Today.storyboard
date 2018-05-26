@@ -355,6 +355,7 @@
                         <outlet property="dateLB" destination="dcy-YA-RwN" id="16N-sh-xdp"/>
                         <outlet property="datePicker" destination="fHr-mI-P9p" id="cmT-Sv-huw"/>
                         <outlet property="memoTextView" destination="JES-eX-CoB" id="S7w-G6-Eae"/>
+                        <segue destination="VMn-aB-x8q" kind="show" identifier="GoToCategoryVC" id="WAf-yC-GSc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6y-ub-yXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,7 +369,7 @@
                     <view key="view" contentMode="scaleToFill" id="mkm-iS-bCg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="l8l-U5-9ka"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -376,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cw8-Jb-CCN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4660" y="-20"/>
+            <point key="canvasLocation" x="4662" y="-20"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MYc-fr-gFe">
