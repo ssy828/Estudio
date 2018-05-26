@@ -14,9 +14,6 @@
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
 		CE9A002A20B33FFA00446918 /* ExpenseStatementItemPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */; };
-		CED03B3C20B7C60E0061AB3D /* CustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED03B3B20B7C60E0061AB3D /* CustomFooterView.swift */; };
-		CED03B3E20B7C61E0061AB3D /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED03B3D20B7C61E0061AB3D /* CustomFooterView.xib */; };
-		CEE9C43620B6E5AB0017EC0D /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9C43520B6E5AB0017EC0D /* DatePickerTableViewCell.swift */; };
 		CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */; };
 		CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */; };
 		CEF41BB020ABD07E0097EDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BAE20ABD07E0097EDBB /* Main.storyboard */; };
@@ -36,9 +33,6 @@
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
 		CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExpenseStatementItemPropertyList.plist; sourceTree = "<group>"; };
-		CED03B3B20B7C60E0061AB3D /* CustomFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFooterView.swift; sourceTree = "<group>"; };
-		CED03B3D20B7C61E0061AB3D /* CustomFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
-		CEE9C43520B6E5AB0017EC0D /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		CEF41BA720ABD07E0097EDBB /* ContainerVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -85,19 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				CE037C8A20B6520B00CF2C6B /* VC */,
-				CE037C8920B6520200CF2C6B /* View */,
 			);
 			path = DetailPart;
-			sourceTree = "<group>";
-		};
-		CE037C8920B6520200CF2C6B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CEE9C43520B6E5AB0017EC0D /* DatePickerTableViewCell.swift */,
-				CED03B3B20B7C60E0061AB3D /* CustomFooterView.swift */,
-				CED03B3D20B7C61E0061AB3D /* CustomFooterView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		CE037C8A20B6520B00CF2C6B /* VC */ = {
@@ -262,7 +245,6 @@
 			files = (
 				CEF41BBD20ABD2FB0097EDBB /* Today.storyboard in Resources */,
 				CEF41BB520ABD0800097EDBB /* LaunchScreen.storyboard in Resources */,
-				CED03B3E20B7C61E0061AB3D /* CustomFooterView.xib in Resources */,
 				CEF41BB220ABD0800097EDBB /* Assets.xcassets in Resources */,
 				CE9A002A20B33FFA00446918 /* ExpenseStatementItemPropertyList.plist in Resources */,
 				CEF41BB020ABD07E0097EDBB /* Main.storyboard in Resources */,
@@ -286,9 +268,7 @@
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
 				CEF41BC120ABD4440097EDBB /* TodayViewController.swift in Sources */,
-				CED03B3C20B7C60E0061AB3D /* CustomFooterView.swift in Sources */,
 				CE07D7B420B5120800F93306 /* DetailSuperViewController.swift in Sources */,
-				CEE9C43620B6E5AB0017EC0D /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
