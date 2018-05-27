@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE04E45120BA9A5A0091E8B6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE04E45020BA9A5A0091E8B6 /* FirstViewController.swift */; };
 		CEEA233320B946F600836178 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA233220B946F600836178 /* AppDelegate.swift */; };
 		CEEA233520B946F600836178 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEA233420B946F600836178 /* ViewController.swift */; };
 		CEEA233820B946F600836178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEA233620B946F600836178 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE04E45020BA9A5A0091E8B6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		CEEA232F20B946F600836178 /* calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEA233220B946F600836178 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEA233420B946F600836178 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				CEEA233220B946F600836178 /* AppDelegate.swift */,
 				CEEA233420B946F600836178 /* ViewController.swift */,
+				CE04E45020BA9A5A0091E8B6 /* FirstViewController.swift */,
 				CEEA234420B952B900836178 /* CustomRoundButton.swift */,
 				CEEA233620B946F600836178 /* Main.storyboard */,
 				CEEA233920B946F700836178 /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 				CEEA233520B946F600836178 /* ViewController.swift in Sources */,
 				CEEA233320B946F600836178 /* AppDelegate.swift in Sources */,
 				CEEA234520B952B900836178 /* CustomRoundButton.swift in Sources */,
+				CE04E45120BA9A5A0091E8B6 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
