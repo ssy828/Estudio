@@ -11,10 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: Properties
-    private var currentNumber: String = ""
+    private var runningValue: Double = 0
     private var currentValue: Double = 0
-    private var previousValue: Double = 0
-    private var resultValue: Double = 0
+    private var previousValue:Double = 0
+    private var resultValue: String = ""
     private var isClicked: Bool = false
     var displayNumber: Double? {
         willSet {
@@ -27,11 +27,35 @@ class ViewController: UIViewController {
     }
     
     // MARK: Methods
-    private func division(a: Int, to b:Int) -> Double {
-        guard b != 0 else { return 0 }
-        return Double(a / b)
-    }
+//    private func division(a: Int, to b:Int) -> Double {
+//        guard b != 0 else { return 0 }
+//        return Double(a / b)
+//    }
     
+//    private func didCalculate(using opertians: Operations) {
+//        switch opertians {
+//        case .addtion:
+//            self.convertToString(previousValue: previousValue, currentValue: currentValue, c: <#T##ViewController.Operations#>)
+//        default:
+//            break
+//        }
+//    }
+    
+//    func convertToString(previousValue: Double, currentValue:Double, c: Operations) -> String {
+//        switch c {
+//        case .addtion:
+//            runningValue = previousValue + currentValue
+//        case .subtraction:
+//            runningValue = previousValue - currentValue
+//        case .division:
+//            if currentValue != 0 { return "0" }
+//            runningValue = previousValue / currentValue
+//        case.multipication:
+//            runningValue = previousValue * currentValue
+//        }
+////        return resultValue
+//         return String(runningValue)
+//    }
     
     
     // MARK: - IBOutlet
@@ -55,8 +79,8 @@ class ViewController: UIViewController {
         NSLog("!isClicked")
     }
     @IBAction func doClickNumberButton(_ sender: CustomRoundButton){
-        currentNumber += "\(sender.tag)"
-        self.displayLB.text = currentNumber
+//        currentValue += "\(sender.tag)"
+//        self.displayLB.text = currentValue
     }
     
     // MARK: - Life Cycle
