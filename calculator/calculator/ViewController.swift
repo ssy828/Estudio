@@ -11,12 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: Properties
-    private var runningValue: Double = 0
-    private var currentValue: Double = 0
-    private var previousValue:Double = 0
+    private var input: String?
+    private var display = String()
+    private var rightOperand: Double?
+    private var leftOperand: Double?
+    private var operatorValue: Operations?
     private var resultValue: String = ""
-    private var isClicked: Bool = false
-    var displayNumber: Double? {
+    private var isOperatorClicked: Bool = false // 연속으로 연산자 출력 못하기 위해서
+    var dislplayValue: Double? {
         willSet {
             if let newDisplayValue = newValue {
                 self.displayLB.text = String(newDisplayValue)
@@ -27,35 +29,19 @@ class ViewController: UIViewController {
     }
     
     // MARK: Methods
-//    private func division(a: Int, to b:Int) -> Double {
-//        guard b != 0 else { return 0 }
-//        return Double(a / b)
-//    }
+    //    private func division(a: Int, to b:Int) -> Double {
+    //        guard b != 0 else { return 0 }
+    //        return Double(a / b)
+    //    }
     
-//    private func didCalculate(using opertians: Operations) {
-//        switch opertians {
-//        case .addtion:
-//            self.convertToString(previousValue: previousValue, currentValue: currentValue, c: <#T##ViewController.Operations#>)
-//        default:
-//            break
-//        }
-//    }
-    
-//    func convertToString(previousValue: Double, currentValue:Double, c: Operations) -> String {
-//        switch c {
-//        case .addtion:
-//            runningValue = previousValue + currentValue
-//        case .subtraction:
-//            runningValue = previousValue - currentValue
-//        case .division:
-//            if currentValue != 0 { return "0" }
-//            runningValue = previousValue / currentValue
-//        case.multipication:
-//            runningValue = previousValue * currentValue
-//        }
-////        return resultValue
-//         return String(runningValue)
-//    }
+    //    private func didCalculate(using opertians: Operations) {
+    //        switch opertians {
+    //        case .addtion:
+    //            self.convertToString(previousValue: previousValue, currentValue: currentValue, c: <#T##ViewController.Operations#>)
+    //        default:
+    //            break
+    //        }
+    //    }
     
     
     // MARK: - IBOutlet
@@ -63,24 +49,32 @@ class ViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func operatorButton(_ sender: CustomRoundButton) {
-        switch sender.tag {
-        case 16:
-            self.displayLB.text = Operations.addtion.rawValue
-        case 15:
-            self.displayLB.text = Operations.subtraction.rawValue
-        case 14:
-            self.displayLB.text = Operations.division.rawValue
-        case 13:
-            self.displayLB.text = Operations.multipication.rawValue
-        default:
-            break
+        if operatorValue != nil && input != nil {
+            if let leftOperand = self.leftOperand, let rightOperand = self.rightOperand, let sign = self.operatorValue {
+                if let result = sign.operation(right: rightOperand, left: leftOperand, sign: sign) {
+                    switch sender.tag {
+                    case 16:
+                        self.displayLB.text = String(result)
+                    case 15:
+                        self.displayLB.text = String(result)
+                    case 14:
+                        self.displayLB.text = String(result)
+                    case 13:
+                        self.displayLB.text = String(result)
+                    default:
+                        break
+                    }
+                    isOperatorClicked = !isOperatorClicked
+                }
+            }
         }
-        isClicked = !isClicked
-        NSLog("!isClicked")
+        
     }
+    
+    
     @IBAction func doClickNumberButton(_ sender: CustomRoundButton){
-//        currentValue += "\(sender.tag)"
-//        self.displayLB.text = currentValue
+        display += "\(sender.tag)"
+        self.displayLB.text = display
     }
     
     // MARK: - Life Cycle
@@ -93,8 +87,21 @@ class ViewController: UIViewController {
     enum Operations: String {
         case addtion = "+"
         case subtraction = "-"
-        case multipication = "x"
+        case multiplication = "*"
         case division = "/"
+        
+        func operation(right: Double, left: Double, sign: Operations) -> Double? {
+            switch sign {
+            case .addtion:
+                return right + left
+            case .subtraction:
+                return right - left
+            case .multiplication:
+                return right * left
+            case .division:
+                return right / left
+            }
+        }
     }
     
     
