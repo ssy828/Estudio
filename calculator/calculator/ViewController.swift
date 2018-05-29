@@ -11,37 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: Properties
-    private var input: String?
     private var display = String()
-    private var rightOperand: Double?
     private var leftOperand: Double?
-    private var operatorValue: Operations?
-    private var resultValue: String = ""
+    private var operatorValue: String? = nil
     private var isOperatorClicked: Bool = false // 연속으로 연산자 출력 못하기 위해서
-    var dislplayValue: Double? {
-        willSet {
-            if let newDisplayValue = newValue {
-                self.displayLB.text = String(newDisplayValue)
-            }else{
-                return self.displayLB.text = "0"
-            }
-        }
-    }
     
     // MARK: Methods
-    //    private func division(a: Int, to b:Int) -> Double {
-    //        guard b != 0 else { return 0 }
-    //        return Double(a / b)
-    //    }
-    
-    //    private func didCalculate(using opertians: Operations) {
-    //        switch opertians {
-    //        case .addtion:
-    //            self.convertToString(previousValue: previousValue, currentValue: currentValue, c: <#T##ViewController.Operations#>)
-    //        default:
-    //            break
-    //        }
-    //    }
+    private func operation(left: Double, right: Double, sign: String
+        ) -> Double? {
+        switch sign {
+        case "+": return left + right
+        case "-": return left - right
+        case "*": return left * right
+        case "/": return left / right
+        default:  break
+        }
+        return nil
+    }
     
     
     // MARK: - IBOutlet
@@ -49,31 +35,38 @@ class ViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func operatorButton(_ sender: CustomRoundButton) {
-        if operatorValue != nil && input != nil {
-            if let leftOperand = self.leftOperand, let rightOperand = self.rightOperand, let sign = self.operatorValue {
-                if let result = sign.operation(right: rightOperand, left: leftOperand, sign: sign) {
-                    switch sender.tag {
-                    case 16:
-                        self.displayLB.text = String(result)
-                    case 15:
-                        self.displayLB.text = String(result)
-                    case 14:
-                        self.displayLB.text = String(result)
-                    case 13:
-                        self.displayLB.text = String(result)
+        guard let sign = sender.titleLabel?.text,
+              let leftOperand = self.leftOperand else { return }
+        isOperatorClicked = !isOperatorClicked
+        if isOperatorClicked {
+            if let rightOperand = Double(display) {
+                if let result = self.operation(left: leftOperand,
+                                               right: rightOperand,
+                                               sign: sign) {
+                    switch sign {
+                    case "+": self.displayLB.text = String(result)
+                    case "*": self.displayLB.text = String(result)
+                    case "-": self.displayLB.text = String(result)
+                    case "/": self.displayLB.text = String(result)
+                    case "=": self.displayLB.text = String(result)
                     default:
                         break
                     }
-                    isOperatorClicked = !isOperatorClicked
                 }
             }
         }
         
     }
     
-    
     @IBAction func doClickNumberButton(_ sender: CustomRoundButton){
-        display += "\(sender.tag)"
+        if let input = sender.titleLabel?.text {
+            if isOperatorClicked {
+                display = input
+                isOperatorClicked = false // 1자리수만 더할 경우
+            }else {
+                display += input
+            }
+        }
         self.displayLB.text = display
     }
     
@@ -81,27 +74,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    // MARK: - enum
-    enum Operations: String {
-        case addtion = "+"
-        case subtraction = "-"
-        case multiplication = "*"
-        case division = "/"
-        
-        func operation(right: Double, left: Double, sign: Operations) -> Double? {
-            switch sign {
-            case .addtion:
-                return right + left
-            case .subtraction:
-                return right - left
-            case .multiplication:
-                return right * left
-            case .division:
-                return right / left
-            }
-        }
     }
     
     
