@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     // MARK: Properties
     private var display = String()
     private var leftOperand: Double?
-    private var operatorValue: String? = nil
+    private var operatorValue: String?
     private var isOperatorClicked: Bool = false // 연속으로 연산자 출력 못하기 위해서
     
     // MARK: Methods
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         case "-": return left - right
         case "*": return left * right
         case "/": return left / right
-        default:  break
+        default: break
         }
         return nil
     }
@@ -35,35 +35,37 @@ class ViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func operatorButton(_ sender: CustomRoundButton) {
-        guard let sign = sender.titleLabel?.text,
-              let leftOperand = self.leftOperand else { return }
         isOperatorClicked = !isOperatorClicked
-        if isOperatorClicked {
-            if let rightOperand = Double(display) {
-                if let result = self.operation(left: leftOperand,
-                                               right: rightOperand,
-                                               sign: sign) {
-                    switch sign {
-                    case "+": self.displayLB.text = String(result)
-                    case "*": self.displayLB.text = String(result)
-                    case "-": self.displayLB.text = String(result)
-                    case "/": self.displayLB.text = String(result)
-                    case "=": self.displayLB.text = String(result)
-                    default:
-                        break
-                    }
+        self.operatorValue = sender.titleLabel?.text
+        if operatorValue == nil {
+            self.leftOperand = Double(display)
+        } else {
+            if let leftOperand = self.leftOperand,
+                let rightOperand = Double(display),
+                let sign = self.operatorValue {
+                if let result = operation(left: leftOperand,
+                                          right: rightOperand,
+                                          sign: sign) {
+                    NSLog("\(result)")
+                    
                 }
             }
         }
         
     }
     
+    @IBAction func equalButton(_ sender: CustomRoundButton) {
+        
+    }
+    
     @IBAction func doClickNumberButton(_ sender: CustomRoundButton){
         if let input = sender.titleLabel?.text {
             if isOperatorClicked {
+                // single digit
                 display = input
-                isOperatorClicked = false // 1자리수만 더할 경우
+                isOperatorClicked = false
             }else {
+                // multiple digits
                 display += input
             }
         }
