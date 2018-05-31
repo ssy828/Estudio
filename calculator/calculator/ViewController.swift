@@ -17,16 +17,15 @@ class ViewController: UIViewController {
         case multiplication = "*"
         case division = "/"
         
-        
-        func operation(left: Double, right: Double, sign: String) -> Double? {
-            switch (self,sign) {
-            case (.addtion,"+"): return left + right
-            case (.subtraction,"-") : return left - right
-            case (.multiplication,"*"): return left * right
-            case (.division, "/"): return left / right
-            case (_, _): return 0
+        func operation(left: Double, right: Double) -> Double? {
+            switch self {
+            case .addtion: return left + right
+            case .subtraction : return left - right
+            case .multiplication: return left * right
+            case .division: return left / right
             }
         }
+        
     }
     
     // MARK: Properties
@@ -35,21 +34,7 @@ class ViewController: UIViewController {
     private var operatorValue: String?
     private var operatorInstance: Operator?
     private var isOperatorClicked: Bool = false // 연속으로 연산자 출력 못하기 위해서
-    
-//     MARK: Methods
-        private func operation(left: Double, right: Double, sign: String
-            ) -> Double? {
-            switch sign {
-            case "+": return left + right
-            case "-": return left - right
-            case "*": return left * right
-            case "/": return left / right
-            default: break
-            }
-            return nil
-        }
-    
-    
+
     // MARK: - IBOutlet
     @IBOutlet weak var displayLB: UILabel!
     
@@ -57,18 +42,14 @@ class ViewController: UIViewController {
     @IBAction func operatorButton(_ sender: CustomRoundButton) {
         self.operatorValue = sender.titleLabel?.text
         isOperatorClicked = !isOperatorClicked
-        if operatorValue == nil {
-            self.leftOperand = Double(display)
-        } else {
-            if let sign = operatorValue, let rightOperand = Double(display), let leftOperand = self.leftOperand, let instance = operatorInstance {
-                if let result = instance.operation(left: leftOperand, right: rightOperand, sign: sign) {
-                    
-                    display = "\(result)"
-                    self.displayLB.text = display
-                }
+        if let sign = operatorValue, let leftOperand = Double(display), let rightOperand = Double(display) {
+            let test = Operator.init(rawValue: sign)
+            if let result = test?.operation(left: leftOperand, right: rightOperand){
+                NSLog("\(result)")
             }
+            
         }
-        isOperatorClicked = true
+//        isOperatorClicked = true
     }
     @IBAction func equalButton(_ sender: CustomRoundButton) {
         
