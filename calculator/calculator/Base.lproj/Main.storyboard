@@ -386,7 +386,7 @@
                                                     <color key="titleColor" red="1" green="0.99676531550000003" blue="0.95913058520000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="equalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KNx-b2-e19"/>
+                                                    <action selector="equalButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AvO-Qi-tcM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
