@@ -13,11 +13,12 @@ class ViewController: UIViewController {
     // MARK: Properties
     private var display = String()
     private var leftOperand: Double?
+    private var resultValue: String?
     private var isOperatorClicked: Bool = false // 연속으로 연산자 출력 못하기 위해서
     private var runningValue : String {
-            return !(display.isEmpty) ? display : "0"
-        }
-//    private var runningValue = String()
+        return !(display.isEmpty) ? display : "0"
+    }
+    //    private var runningValue = String()
     
     // MARK: - IBOutlet
     @IBOutlet weak var displayLB: UILabel!
@@ -25,31 +26,37 @@ class ViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func operatorButton(_ sender: CustomRoundButton) {
         guard let operatorValue = sender.titleLabel?.text else { return }
-        isOperatorClicked = !isOperatorClicked
-        NSLog("\(self.isOperatorClicked)")
-        if !(sender.tag == 17) {
+        isOperatorClicked = !isOperatorClicked // 현재 연산 버튼 상태 넣어줌
+        NSLog("\(!isOperatorClicked)")
+        if leftOperand == nil {
             self.leftOperand = Double(display)
         } else {
-            if isOperatorClicked && sender.tag == 17{
-                if let operand = self.leftOperand, let rightOperand = Double(runningValue) {
-                    let `operator` = Operator.init(rawValue: operatorValue)
-                    if let result = `operator`?.operation(left: operand, right: rightOperand) {
-                        NSLog("\(result)")
-                    }
-                }
-                
+            if isOperatorClicked {
+                guard let operand = self.leftOperand, let rightOperand = Double(runningValue) else { return }
+                let `operator` = Operator.init(rawValue: operatorValue)
+                guard let result = `operator`?.operation(left: operand, right: rightOperand) else { return }
+                NSLog("\(result)")
+                resultValue = "\(result)"
+                isOperatorClicked = true
             }
         }
-        isOperatorClicked = true
+        
     }
     @IBAction func equalButton(_ sender: CustomRoundButton) {
-        
+        if isOperatorClicked {
+            self.displayLB.text = display
+        } else {
+            if let result = self.resultValue {
+                self.displayLB.text = result
+            }
+        }
+
     }
     
     @IBAction func doClickNumberButton(_ sender: CustomRoundButton){
         guard let input = sender.titleLabel?.text else { return }
         if isOperatorClicked { // Save value when Operator button pressed
-           // single digit
+            // single digit
             display = input
             NSLog(runningValue)
             isOperatorClicked = false
