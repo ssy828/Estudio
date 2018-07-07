@@ -33,24 +33,18 @@ class DetailTableViewController: UITableViewController {
     }
     
     // MARK: Methods
+    // toggleDatePicker
     private func toggleDatePicker() {
         self.datePickerIsHidden = !datePickerIsHidden // 현재 데이트 피커의 상태를 데이트피커(불타입) 프로퍼티에 넣어줌
         self.tableView.beginUpdates() // Begins a series of method calls that insert, delete, or select rows and sections of the table view.
         self.tableView.endUpdates() // Concludes a series of method calls that insert, delete, select, or reload rows and sections of the table view.
     }
-    // MARK: addCommaInThreeDigits => 삭제 예정
-    private func addCommaInThreeDigits() {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        guard let allowance = allowanceTF.text else { return }
-        let allowanceDouble = Double(allowance)
-        guard let result = allowanceDouble else { return  }
-        numberFormatter.string(from: NSNumber(value:result))
-    }
-    
+ 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.contentTF.becomeFirstResponder()
+        self.contentTF.delegate = self
         self.allowanceTF.delegate = self
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
@@ -127,30 +121,44 @@ class DetailTableViewController: UITableViewController {
 extension DetailTableViewController: UITextFieldDelegate {
     // MARK: shouldChangeCharactersIn
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        // Uses the number format corresponding to your Locale
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.locale = Locale.current // 사용자의 지역 설정
-        numberFormatter.maximumFractionDigits = 0 // 소수점 이하 최대 자릿수
-        
-        if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator, with: ""){ // ,(쉼표)를 제거
-            var combinedString = inputString + string // 원래 있던 문자열과 새로 들어온 문자열 합침
-            if numberFormatter.number(from: string) != nil {
-                if let completedNumberString = numberFormatter.number(from: combinedString), let completedString = numberFormatter.string(from: completedNumberString) {
-                    allowanceTF.text = completedString
-                    return false
-                }
-            }else {
-                if string == "" { // 백스페이스로 문자열이 없거나 숫자가 아닌 문자열이 들어왔을 경우
-                    let lastInedex = combinedString.index(combinedString.endIndex, offsetBy: -1)
-                    combinedString = String(combinedString[..<lastInedex])
+        switch textField {
+        case contentTF:
+            return true
+        default:
+            // Uses the number format corresponding to your Locale
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.locale = Locale.current // 사용자의 지역 설정
+            numberFormatter.maximumFractionDigits = 0 // 소수점 이하 최대 자릿수 -> 소수점 없을 예정이므로 0으로 설정
+            
+            if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator, with: ""){ // ,(쉼표)를 제거
+                var combinedString = inputString + string // 원래 있던 문자열과 새로 들어온 문자열 합침
+                if numberFormatter.number(from: string) != nil { // 새로 입력된 값이 숫자만 이루어진 것이 아닌 경우
+                    // 입력된 값을 NSNumber형태로 바꾼 후 다시 String 형태로 변경!
                     if let completedNumberString = numberFormatter.number(from: combinedString), let completedString = numberFormatter.string(from: completedNumberString) {
                         allowanceTF.text = completedString
                         return false
                     }
+                }else {
+                    if string == "" { // 백스페이스로 문자열이 없거나 숫자가 아닌 문자열이 들어왔을 경우
+                        let lastInedex = combinedString.index(combinedString.endIndex, offsetBy: -1) // 문자를 하나씩 지우면 쉼표를 그만큼 앞으로 이동시켜야하므로
+                        combinedString = String(combinedString[..<lastInedex])
+                        if let completedNumberString = numberFormatter.number(from: combinedString), let completedString = numberFormatter.string(from: completedNumberString) {
+                            allowanceTF.text = completedString
+                            return false
+                        }
+                    }
                 }
             }
+            return true
+        }
+    }
+    // 텍스트 필드의 리턴 키가 눌러졌을 때 호출
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if contentTF.isFirstResponder{ // 컨첸츠 텍스트 필드이면 지출금액필드로 입력 넘어가게 함
+            allowanceTF.becomeFirstResponder() // 바로 값을 입력받게 해줌
+        }else if allowanceTF.isFirstResponder {
+            allowanceTF.resignFirstResponder() // 화면에서 키보드 사라지게 함
         }
         return true
     }
