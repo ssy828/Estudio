@@ -39,15 +39,31 @@ class DetailTableViewController: UITableViewController {
         self.tableView.beginUpdates() // Begins a series of method calls that insert, delete, or select rows and sections of the table view.
         self.tableView.endUpdates() // Concludes a series of method calls that insert, delete, select, or reload rows and sections of the table view.
     }
- 
+    // addDoneButtonOnNumberPad
+    func addDoneButtonOnNumberPad() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        // toolBar.items의 배열에 아이템이 들어가는 순서가 왼쪽부터이므로 오른쪽에 붙여주기 위한 코드
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didPressDoneButton))
+        toolBar.items = [flexibleSpace, doneButton]
+        allowanceTF.inputAccessoryView = toolBar
+    }
+    @objc func didPressDoneButton() {
+        self.allowanceTF.resignFirstResponder()
+    }
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contentTF.becomeFirstResponder()
+        self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
         self.contentTF.delegate = self
         self.allowanceTF.delegate = self
+        self.memoTextView.delegate = self
+        self.addDoneButtonOnNumberPad()
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -155,10 +171,21 @@ extension DetailTableViewController: UITextFieldDelegate {
     }
     // 텍스트 필드의 리턴 키가 눌러졌을 때 호출
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if contentTF.isFirstResponder{ // 컨첸츠 텍스트 필드이면 지출금액필드로 입력 넘어가게 함
+        // 컨첸츠 텍스트 필드가 최초 응답자이면 지출금액 필드로 입력으로 넘김
+        if contentTF.isFirstResponder{
             allowanceTF.becomeFirstResponder() // 바로 값을 입력받게 해줌
-        }else if allowanceTF.isFirstResponder {
-            allowanceTF.resignFirstResponder() // 화면에서 키보드 사라지게 함
+        }
+        return true
+    }
+}
+extension DetailTableViewController: UITextViewDelegate {
+    // textview에는 textFieldShouldReturn 메소드가 없으므로
+    // shouldChangeTextIn 메소드에서 실행
+    // 엔터를 누르면 줄바꿈이 되는데 엔터(done)을 누를 경우 키보드 사라지게 하기
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            memoTextView.resignFirstResponder() // 최초 응답자 해제
+            return false
         }
         return true
     }
