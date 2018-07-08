@@ -8,7 +8,7 @@
 
 import UIKit
 // MARK: - UITableViewController
-class DetailTableViewController: UITableViewController {
+class ModifiedPostTableViewController: UITableViewController {
     
     // MARK: properties
     static var identifier: String {
@@ -134,7 +134,7 @@ class DetailTableViewController: UITableViewController {
     }
 }
 // MARK: - UITextFieldDelegate
-extension DetailTableViewController: UITextFieldDelegate {
+extension ModifiedPostTableViewController: UITextFieldDelegate {
     // MARK: shouldChangeCharactersIn
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
@@ -178,7 +178,7 @@ extension DetailTableViewController: UITextFieldDelegate {
         return true
     }
 }
-extension DetailTableViewController: UITextViewDelegate {
+extension ModifiedPostTableViewController: UITextViewDelegate {
     // textview에는 textFieldShouldReturn 메소드가 없으므로
     // shouldChangeTextIn 메소드에서 실행
     // 엔터를 누르면 줄바꿈이 되는데 엔터(done)을 누를 경우 키보드 사라지게 하기

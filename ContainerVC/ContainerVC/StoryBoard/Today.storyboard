@@ -155,7 +155,7 @@
                                 <action selector="backToTodayVC:" destination="2BC-QR-TBh" id="d7Z-eZ-Ij6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="jjq-QL-1VC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="redo" id="jjq-QL-1VC">
                             <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class DetailSuperViewController: UIViewController {
+class ModifiedPostSuperViewController: UIViewController {
     // MARK: Properties
     static var identifier: String {
         return String(describing: self)
     }
     // 디테일 뷰컨트롤러 인스턴스
-    lazy var detailVC: DetailTableViewController = {
+    lazy var detailVC: ModifiedPostTableViewController = {
         let storyboard = UIStoryboard(name: "Today", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: DetailTableViewController.identifier) as! DetailTableViewController
+        let detailVC = storyboard.instantiateViewController(withIdentifier: ModifiedPostTableViewController.identifier) as! ModifiedPostTableViewController
         self.addChildViewController(detailVC)
         return detailVC
     }()

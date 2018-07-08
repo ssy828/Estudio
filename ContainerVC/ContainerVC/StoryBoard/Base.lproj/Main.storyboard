@@ -61,7 +61,7 @@
                 <viewControllerPlaceholder storyboardName="Today" referencedIdentifier="TodayViewController" id="Ogz-a8-QBo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCQ-W7-wbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600.8" y="-54.872563718140931"/>
+            <point key="canvasLocation" x="1601" y="54"/>
         </scene>
         <!--YesterdayViewController-->
         <scene sceneID="mbU-cL-Dzv">
@@ -69,7 +69,7 @@
                 <viewControllerPlaceholder storyboardName="Yesterday" referencedIdentifier="YesterdayViewController" id="Gw5-01-s5k" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxd-VG-IKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600.8" y="124.13793103448276"/>
+            <point key="canvasLocation" x="1620" y="210"/>
         </scene>
     </scenes>
 </document>

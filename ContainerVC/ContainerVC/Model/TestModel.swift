@@ -15,9 +15,17 @@ struct Section {
     var isCollapsed: Bool
 }
 
-struct ExpenseStatementItem {
+struct Category {
     var title: String
-    var price: String
-    var content: String?
+    var color: String
+    var isCollapsed: Bool
+    var items: [DetailData]
 }
 
+struct DetailData {
+    var content: String // 제목
+    var amount: String // 금액
+    var date: Date // 날짜
+    var memo: String? // 메모
+    
+}
