@@ -10,17 +10,23 @@ import UIKit
 class TodayViewController: UIViewController {
     
     // MARK: - properties
-    var sections: [Section] = [
-        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"], isCollapsed: true),
-        Section(title: "Transportaion Fee", items: ["bus","subway"], isCollapsed: true),
-        Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
-    ]
-    private var data = [Category]()
+//    var sections: [Section] = [
+//        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"], isCollapsed: true),
+//        Section(title: "Transportaion Fee", items: ["bus","subway"], isCollapsed: true),
+//        Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
+//    ]
+    private var category = [Category]()
+    private var data = [DetailData]() // - 임시로 만들어봄
     
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    
+    // 임시로 만든 버튼 새롭게 글쓰기 포스팅하려고
+    @IBAction func newButton(_ sender: UIButton){
+        self.performSegue(withIdentifier: "newPostWrite", sender: self)
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -44,24 +50,32 @@ class TodayViewController: UIViewController {
         // 높입값을 동적으로 설정 될 것을 테이블 뷰에 알려주는 역할
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
+    // MARK: prepare
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController,           let postVC = navigationController.viewControllers.first as? PostTableViewController {
+            postVC.didAddHandler = { data in
+                self.data.append(data)
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 // MARK: - UITableViewDataSource
 extension TodayViewController: UITableViewDataSource {
     // MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return category.count
     }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        let isCollapsed = sections[section].isCollapsed
-        let isCollapsed = data[section].isCollapsed
-        return isCollapsed ? data[section].items.count : 0
+        let isCollapsed = category[section].isCollapsed
+        return isCollapsed ? category[section].items.count : 0
     }
     // MARK: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
-        let items = data[indexPath.section].items[indexPath.row]
+        let items = category[indexPath.section].items[indexPath.row]
 //        let itemTitle = sections[indexPath.section].items[indexPath.row]
         cell.titleLb.text = items.content
         cell.moneyLb.text = items.amount
@@ -72,7 +86,7 @@ extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
 //        headerView.categoryTitleLabel.text = sections[section].title
-        headerView.categoryTitleLabel.text = data[section].title
+        headerView.categoryTitleLabel.text = category[section].title
         headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
         headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!
         return headerView
@@ -101,14 +115,14 @@ extension TodayViewController: CustomHeaderViewDelegate {
         let section = button.tag
         var indexPaths = [IndexPath]()
 //        let isCollapsed = sections[section].isCollapsed
-        let isCollapsed = data[section].isCollapsed
+        let isCollapsed = category[section].isCollapsed
 //        sections[section].isCollapsed = !isCollapsed
-        data[section].isCollapsed = !isCollapsed // isCollpase의 반대를 넣어줌
+        category[section].isCollapsed = !isCollapsed // isCollpase의 반대를 넣어줌
         button.setTitle(isCollapsed ? "Open" : "Close", for: .normal) // 버튼 타이틀 변경
         // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
         // 유효한 값의 범위를 가짐
 //        for item in sections[section].items.indices {
-        for item in data[section].items.indices {
+        for item in category[section].items.indices {
             let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)
         }

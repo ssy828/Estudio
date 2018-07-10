@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE025C7220B25848003D4819 /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE025C7120B25848003D4819 /* TestModel.swift */; };
+		CE025C7220B25848003D4819 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE025C7120B25848003D4819 /* Category.swift */; };
 		CE07D7B220B50C6500F93306 /* ModifiedPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07D7B120B50C6500F93306 /* ModifiedPostTableViewController.swift */; };
 		CE07D7B420B5120800F93306 /* ModifiedPostSuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07D7B320B5120800F93306 /* ModifiedPostSuperViewController.swift */; };
 		CE0DF6FA20F286CA00FBF1CA /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0DF6F920F286CA00FBF1CA /* Post.storyboard */; };
@@ -28,7 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE025C7120B25848003D4819 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
+		CE025C7120B25848003D4819 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE07D7B120B50C6500F93306 /* ModifiedPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPostTableViewController.swift; sourceTree = "<group>"; };
 		CE07D7B320B5120800F93306 /* ModifiedPostSuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPostSuperViewController.swift; sourceTree = "<group>"; };
 		CE0DF6F920F286CA00FBF1CA /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		CE025C7020B25815003D4819 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE025C7120B25848003D4819 /* TestModel.swift */,
+				CE025C7120B25848003D4819 /* Category.swift */,
 				CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */,
 			);
 			path = Model;
@@ -278,7 +278,7 @@
 				CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */,
 				CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */,
 				CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */,
-				CE025C7220B25848003D4819 /* TestModel.swift in Sources */,
+				CE025C7220B25848003D4819 /* Category.swift in Sources */,
 				CE07D7B220B50C6500F93306 /* ModifiedPostTableViewController.swift in Sources */,
 				CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */,
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
