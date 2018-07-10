@@ -16,7 +16,6 @@ class TodayViewController: UIViewController {
 //        Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
 //    ]
     private var category = [Category]()
-    private var data = [DetailData]() // - 임시로 만들어봄
     
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
@@ -54,7 +53,8 @@ class TodayViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigationController = segue.destination as? UINavigationController,           let postVC = navigationController.viewControllers.first as? PostTableViewController {
             postVC.didAddHandler = { data in
-                self.data.append(data)
+                self.category.append(data)
+                print("PostVC:\(data)")
                 self.tableView.reloadData()
             }
         }

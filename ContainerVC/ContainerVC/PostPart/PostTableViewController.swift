@@ -14,7 +14,7 @@ class PostTableViewController: UITableViewController {
         return String(describing: self)
     }
     var datePickerIsHidden: Bool = false
-    var didAddHandler: ((DetailData) -> Void)? // 클로저를 통해서 데이터 교환
+    var didAddHandler: ((Category) -> Void)? // 클로저를 통해서 데이터 교환
     // MARK: IBOutlet
     @IBOutlet weak var contentTF: UITextField!
     @IBOutlet weak var allowanceTF: UITextField!
@@ -31,12 +31,15 @@ class PostTableViewController: UITableViewController {
         dateLB.text = dateFomatter.string(from: datePicker.date)
     }
     @IBAction func doneButtonDidTap() {
+        guard let category = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
         guard let date = self.dateLB.text else { return }
         
-        let newData = DetailData(content: content, amount: amount)
-        self.didAddHandler?(newData)
+        let data = DetailData(content: content, amount: amount, date: nil, memo: nil)
+        let categoryData = Category(title: category, items: [data])
+        self.didAddHandler?(categoryData)
+        print("*******\(categoryData)")
         self.dismiss(animated: false, completion: nil)
     }
     
