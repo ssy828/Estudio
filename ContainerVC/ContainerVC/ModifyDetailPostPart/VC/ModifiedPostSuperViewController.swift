@@ -45,7 +45,6 @@ class ModifiedPostSuperViewController: UIViewController {
     // MARK: setUpView
     private func setUpView() {
         addViewController(asChild: detailVC)
-//        removeViewController(asChild: detailVC)
     }
     
     // MARK: IBOutlet

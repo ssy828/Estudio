@@ -23,9 +23,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // 임시로 만든 버튼 새롭게 글쓰기 포스팅하려고
-    @IBAction func newButton(_ sender: UIButton){
-        self.performSegue(withIdentifier: "newPostWrite", sender: self)
-    }
+    @IBAction func newButton(_ sender: UIButton){ }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -85,7 +83,6 @@ extension TodayViewController: UITableViewDataSource {
     // MARK: viewForHeaderInSection
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
-//        headerView.categoryTitleLabel.text = sections[section].title
         headerView.categoryTitleLabel.text = category[section].title
         headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
         headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!

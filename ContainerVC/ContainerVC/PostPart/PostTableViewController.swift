@@ -30,7 +30,8 @@ class PostTableViewController: UITableViewController {
         dateFomatter.dateFormat = "yyyy년MM월dd일" // 원하는 날짜 형식
         dateLB.text = dateFomatter.string(from: datePicker.date)
     }
-    @IBAction func doneButtonDidTap() {
+    
+    @IBAction func didClickDoneButton(_ sender: UIBarButtonItem) {
         guard let category = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
@@ -40,6 +41,10 @@ class PostTableViewController: UITableViewController {
         let categoryData = Category(title: category, items: [data])
         self.didAddHandler?(categoryData)
         print("*******\(categoryData)")
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
     }
     
