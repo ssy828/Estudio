@@ -23,8 +23,9 @@
 		CEF41BB520ABD0800097EDBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BB320ABD0800097EDBB /* LaunchScreen.storyboard */; };
 		CEF41BBD20ABD2FB0097EDBB /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BBC20ABD2FB0097EDBB /* Today.storyboard */; };
 		CEF41BBF20ABD3090097EDBB /* Yesterday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */; };
-		CEF41BC120ABD4440097EDBB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC020ABD4440097EDBB /* TodayViewController.swift */; };
+		CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */; };
 		CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */; };
+		CEF4727520F8B89D004E10C0 /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4727420F8B89D004E10C0 /* StateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +47,9 @@
 		CEF41BB620ABD0800097EDBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF41BBC20ABD2FB0097EDBB /* Today.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
 		CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Yesterday.storyboard; sourceTree = "<group>"; };
-		CEF41BC020ABD4440097EDBB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListViewController.swift; sourceTree = "<group>"; };
 		CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayViewController.swift; sourceTree = "<group>"; };
+		CEF4727420F8B89D004E10C0 /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +120,7 @@
 		CE037C8D20B6523C00CF2C6B /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				CEF41BC020ABD4440097EDBB /* TodayViewController.swift */,
+				CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -158,6 +160,7 @@
 		CEF41BA920ABD07E0097EDBB /* ContainerVC */ = {
 			isa = PBXGroup;
 			children = (
+				CEF4727420F8B89D004E10C0 /* StateViewController.swift */,
 				CE037C8B20B6522400CF2C6B /* TodayPart */,
 				CE0DF6FB20F2891B00FBF1CA /* PostPart */,
 				CE037C8820B651D000CF2C6B /* ModifyDetailPostPart */,
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF4727520F8B89D004E10C0 /* StateViewController.swift in Sources */,
 				CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */,
 				CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */,
 				CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */,
@@ -282,7 +286,7 @@
 				CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */,
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
-				CEF41BC120ABD4440097EDBB /* TodayViewController.swift in Sources */,
+				CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */,
 				CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */,
 				CE07D7B420B5120800F93306 /* ModifiedPostSuperViewController.swift in Sources */,
 			);

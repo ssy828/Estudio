@@ -26,9 +26,9 @@ class MainViewController: UIViewController {
         return yesterdayVC
     }()
     
-    lazy var todayVC: TodayViewController = {
+    lazy var todayVC: TodayListViewController = {
         let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
-        let todayVC = storyboard.instantiateViewController(withIdentifier: "TodayViewController") as! TodayViewController
+        let todayVC = storyboard.instantiateViewController(withIdentifier: "TodayViewController") as! TodayListViewController
         self.addViewController(asChild: todayVC)
         return todayVC
     }()

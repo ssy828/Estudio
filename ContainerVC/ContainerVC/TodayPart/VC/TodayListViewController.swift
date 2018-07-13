@@ -1,5 +1,5 @@
 //
-//  TodayViewController.swift
+//  TodayListViewController.swift
 //  ContainerVC
 //
 //  Created by SSY on 2018. 5. 16..
@@ -7,19 +7,25 @@
 //
 import UIKit
 
-class TodayViewController: UIViewController {
+class TodayListViewController: UIViewController {
+    
+    //
+    enum ViewControllerState: String {
+        case editing = "Editing"
+        case posting = "Posting"
+        
+        //        var controller: UIViewController{
+        //            switch self {
+        //            case .editing ,.posting:
+        //                return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PostTableViewController.identifier) as! PostTableViewController
+        //            }
+        //        }
+    }
     
     // MARK: - properties
-//    var sections: [Section] = [
-//        Section(title: "Food Expense", items: ["breakfast","lunch","dinner"], isCollapsed: true),
-//        Section(title: "Transportaion Fee", items: ["bus","subway"], isCollapsed: true),
-//        Section(title: "Communication Fee", items: ["cellPhone","Ipad"], isCollapsed: true)
-//    ]
     private var category = [Category]()
-    
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var currencyImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     // 임시로 만든 버튼 새롭게 글쓰기 포스팅하려고
@@ -50,23 +56,52 @@ class TodayViewController: UIViewController {
     // MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navigationController = segue.destination as? UINavigationController,           let postVC = navigationController.viewControllers.first as? PostTableViewController {
+            
             postVC.didAddHandler = { data in
                 self.category.append(data)
                 print("PostVC:\(data)")
                 self.tableView.reloadData()
             }
         }
+        
+//        if let navigationVC = segue.destination as? UINavigationController, let detailVC = navigationVC.viewControllers.first as? PostTableViewController {
+//            switch segue.identifier {
+//                case ViewControllerState.posting.rawValue :
+//                    detailVC.didAddHandler = { data in
+//                        self.category.append(data)
+//                        self.tableView.reloadData()
+//                }
+//                default:
+//                    return
+//
+//            }
+//        }
+        
+//                    switch segue.identifier {
+//                    case ViewControllerState.posting.rawValue:
+//                        let detailvc = segue.destination as? PostTableViewController
+//                        detailvc?.didAddHandler = { data in
+//                            self.category.append(data)
+//                            print("*******PostVC:\(data)")
+//                            self.tableView.reloadData()
+//                        }
+//                    default:
+//                        let detailvc = segue.destination as? PostTableViewController
+//                        detailvc?.didAddHandler = { data in
+//
+//                        }
+//                    }
     }
 }
 // MARK: - UITableViewDataSource
-extension TodayViewController: UITableViewDataSource {
+extension TodayListViewController: UITableViewDataSource {
     // MARK: numberOfSections
     func numberOfSections(in tableView: UITableView) -> Int {
         return category.count
     }
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let isCollapsed = sections[section].isCollapsed
+        //        let isCollapsed = sections[section].isCollapsed
         let isCollapsed = category[section].isCollapsed
         return isCollapsed ? category[section].items.count : 0
     }
@@ -74,7 +109,7 @@ extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let items = category[indexPath.section].items[indexPath.row]
-//        let itemTitle = sections[indexPath.section].items[indexPath.row]
+        //        let itemTitle = sections[indexPath.section].items[indexPath.row]
         cell.titleLb.text = items.content
         cell.moneyLb.text = items.amount
         return cell
@@ -97,7 +132,7 @@ extension TodayViewController: UITableViewDataSource {
     
 }
 // MARK: - UITableViewDelegate
-extension TodayViewController: UITableViewDelegate {
+extension TodayListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
         let detailVC = storyboard.instantiateViewController(withIdentifier: ModifiedPostSuperViewController.identifier)
@@ -106,19 +141,19 @@ extension TodayViewController: UITableViewDelegate {
     }
 }
 // MARK: - CustomHeaderViewDelegate
-extension TodayViewController: CustomHeaderViewDelegate {
+extension TodayListViewController: CustomHeaderViewDelegate {
     // Toggle collapse
     func toggleSection(_ button: UIButton) {
         let section = button.tag
         var indexPaths = [IndexPath]()
-//        let isCollapsed = sections[section].isCollapsed
+        //        let isCollapsed = sections[section].isCollapsed
         let isCollapsed = category[section].isCollapsed
-//        sections[section].isCollapsed = !isCollapsed
+        //        sections[section].isCollapsed = !isCollapsed
         category[section].isCollapsed = !isCollapsed // isCollpase의 반대를 넣어줌
         button.setTitle(isCollapsed ? "Open" : "Close", for: .normal) // 버튼 타이틀 변경
         // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
         // 유효한 값의 범위를 가짐
-//        for item in sections[section].items.indices {
+        //        for item in sections[section].items.indices {
         for item in category[section].items.indices {
             let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)

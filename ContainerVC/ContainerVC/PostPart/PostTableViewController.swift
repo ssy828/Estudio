@@ -13,16 +13,17 @@ class PostTableViewController: UITableViewController {
     static var identifier: String {
         return String(describing: self)
     }
-    var datePickerIsHidden: Bool = false
-    var didAddHandler: ((Category) -> Void)? // 클로저를 통해서 데이터 교환
+    private var datePickerIsHidden: Bool = false
+    public var didAddHandler: ((Category) -> Void)? // 클로저를 통해서 데이터 교환
+    var itemToEdit: Category? // 수정할때 사용할 아이템
     // MARK: IBOutlet
-    @IBOutlet weak var contentTF: UITextField!
-    @IBOutlet weak var allowanceTF: UITextField!
-    @IBOutlet weak var categoryLB: UILabel!
-    @IBOutlet weak var categoryColorView: UIView!
-    @IBOutlet weak var dateLB: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var contentTF: UITextField! // 내용
+    @IBOutlet weak var allowanceTF: UITextField! // 금액
+    @IBOutlet weak var categoryLB: UILabel! // 분류 타이틀
+    @IBOutlet weak var categoryColorView: UIView! // 분류 색상
+    @IBOutlet weak var dateLB: UILabel! // 날짜
+    @IBOutlet weak var datePicker: UIDatePicker! // 날짜 선택
+    @IBOutlet weak var memoTextView: UITextView! // 메모
     
     // MARK: IBAction
     @IBAction func didChangeDate() {
@@ -79,6 +80,18 @@ class PostTableViewController: UITableViewController {
         self.addDoneButtonOnNumberPad()
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
+        
+        // 수정할 경우
+        if let items = itemToEdit {
+            title = "수정" // 내비게이션 바 타이틀 수정
+            for data in items.items {
+                print("!!!!!!!\(data)")
+                contentTF.text = data.content
+                allowanceTF.text = data.amount
+            }
+            categoryLB.text = items.title
+        
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

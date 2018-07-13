@@ -14,9 +14,11 @@ class ModifiedPostSuperViewController: UIViewController {
         return String(describing: self)
     }
     // 디테일 뷰컨트롤러 인스턴스
-    lazy var detailVC: ModifiedPostTableViewController = {
+    lazy var detailVC: PostTableViewController = {
         let storyboard = UIStoryboard(name: "Today", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: ModifiedPostTableViewController.identifier) as! ModifiedPostTableViewController
+//        let detailVC = storyboard.instantiateViewController(withIdentifier: ModifiedPostTableViewController.identifier) as! ModifiedPostTableViewController
+        // 하나의 뷰컨트롤러로 사용하기 위해서
+        let detailVC = storyboard.instantiateViewController(withIdentifier: PostTableViewController.identifier) as! PostTableViewController
         self.addChildViewController(detailVC)
         return detailVC
     }()
@@ -51,7 +53,7 @@ class ModifiedPostSuperViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     // MARK: IBAction
-    @IBAction func backToTodayVC(_ sender: UIBarButtonItem) {
+    @IBAction func backButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
     }
     
