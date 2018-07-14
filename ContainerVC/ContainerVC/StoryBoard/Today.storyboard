@@ -82,7 +82,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="newButton:" destination="K0p-be-pCM" eventType="touchUpInside" id="Ff0-42-e7K"/>
-                                    <segue destination="2FM-1V-K2C" kind="show" id="W2k-K9-gWy"/>
+                                    <segue destination="2FM-1V-K2C" kind="show" identifier="Posting" id="W2k-K9-gWy"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -24,6 +24,8 @@ class TodayListViewController: UIViewController {
     
     // MARK: - properties
     private var category = [Category]()
+    public var didUseHandler: ((Category) -> Void)?// 임시로 만듦
+    var postTableView: PostTableViewController = PostTableViewController()
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -35,7 +37,8 @@ class TodayListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 헤더뷰 nib 사용하므로 forHeaderFooterViewReuseIdentifier로 등록해야함!!
-        self.tableView.register(CustomHeaderView.nib, forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
+        self.tableView.register(CustomHeaderView.nib,
+                                forHeaderFooterViewReuseIdentifier: CustomHeaderView.identifier)
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,42 +58,27 @@ class TodayListViewController: UIViewController {
     }
     // MARK: prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let navigationController = segue.destination as? UINavigationController,           let postVC = navigationController.viewControllers.first as? PostTableViewController {
-            
-            postVC.didAddHandler = { data in
-                self.category.append(data)
-                print("PostVC:\(data)")
-                self.tableView.reloadData()
+        // 중간에 내비게이션이 있는 상태이므로
+        if let navigationVC = segue.destination as? UINavigationController,
+            let detailVC = navigationVC.viewControllers.first as? PostTableViewController {
+            switch segue.identifier {
+            case ViewControllerState.posting.rawValue:
+                detailVC.didAddHandler = { data in
+                    self.category.append(data)
+                    self.tableView.reloadData()
+                }
+            case ViewControllerState.editing.rawValue:
+                print("Editing!!!")
+                if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
+                    let indexPath = indexPathForSelectedRow.row
+                    detailVC.itemToEdit = self.category[indexPath]
+                }
+                
+            default:
+                return
+                
             }
         }
-        
-//        if let navigationVC = segue.destination as? UINavigationController, let detailVC = navigationVC.viewControllers.first as? PostTableViewController {
-//            switch segue.identifier {
-//                case ViewControllerState.posting.rawValue :
-//                    detailVC.didAddHandler = { data in
-//                        self.category.append(data)
-//                        self.tableView.reloadData()
-//                }
-//                default:
-//                    return
-//
-//            }
-//        }
-        
-//                    switch segue.identifier {
-//                    case ViewControllerState.posting.rawValue:
-//                        let detailvc = segue.destination as? PostTableViewController
-//                        detailvc?.didAddHandler = { data in
-//                            self.category.append(data)
-//                            print("*******PostVC:\(data)")
-//                            self.tableView.reloadData()
-//                        }
-//                    default:
-//                        let detailvc = segue.destination as? PostTableViewController
-//                        detailvc?.didAddHandler = { data in
-//
-//                        }
-//                    }
     }
 }
 // MARK: - UITableViewDataSource
@@ -100,16 +88,18 @@ extension TodayListViewController: UITableViewDataSource {
         return category.count
     }
     // MARK: numberOfRowsInSection
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         //        let isCollapsed = sections[section].isCollapsed
         let isCollapsed = category[section].isCollapsed
         return isCollapsed ? category[section].items.count : 0
     }
     // MARK: cellForRowAt
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell",
+                                                 for: indexPath) as! CustomTableViewCell
         let items = category[indexPath.section].items[indexPath.row]
-        //        let itemTitle = sections[indexPath.section].items[indexPath.row]
         cell.titleLb.text = items.content
         cell.moneyLb.text = items.amount
         return cell
@@ -117,7 +107,8 @@ extension TodayListViewController: UITableViewDataSource {
     }
     // MARK: viewForHeaderInSection
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
+        let headerView =
+            tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
         headerView.categoryTitleLabel.text = category[section].title
         headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
         headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!
@@ -126,17 +117,19 @@ extension TodayListViewController: UITableViewDataSource {
     // MARK: heightForRowAt
     // 행의 높이
     // 헤더 높이 바꾸는 메소드 사용 - heightForHeaderInSection
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
 }
 // MARK: - UITableViewDelegate
 extension TodayListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Today", bundle: Bundle.main)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: ModifiedPostSuperViewController.identifier)
-        self.navigationController?.pushViewController(detailVC, animated: false)
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+                let index = indexPath.row
+                let item = category[index]
+                postTableView.didAddHandler?(item)
         tableView.deselectRow(at: indexPath, animated: false) // 선택한 줄에서 선택 표시 지움
     }
 }
@@ -146,19 +139,18 @@ extension TodayListViewController: CustomHeaderViewDelegate {
     func toggleSection(_ button: UIButton) {
         let section = button.tag
         var indexPaths = [IndexPath]()
-        //        let isCollapsed = sections[section].isCollapsed
         let isCollapsed = category[section].isCollapsed
-        //        sections[section].isCollapsed = !isCollapsed
         category[section].isCollapsed = !isCollapsed // isCollpase의 반대를 넣어줌
         button.setTitle(isCollapsed ? "Open" : "Close", for: .normal) // 버튼 타이틀 변경
         // indices - 집합의 하위 문자열에 유효한 인덱스를 오름차순으로 나타내는 유형
         // 유효한 값의 범위를 가짐
-        //        for item in sections[section].items.indices {
         for item in category[section].items.indices {
             let indexPath = IndexPath(row: item, section: section)
             indexPaths.append(indexPath)
         }
         // isCollpase가 true - deleteRows / false - insertRows
-        isCollapsed ? tableView.deleteRows(at: indexPaths, with: .fade) : tableView.insertRows(at: indexPaths, with: .fade)
+        isCollapsed ?
+            tableView.deleteRows(at: indexPaths, with: .fade) :
+            tableView.insertRows(at: indexPaths, with: .fade)
     }
 }

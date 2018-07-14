@@ -31,14 +31,15 @@ class PostTableViewController: UITableViewController {
         dateFomatter.dateFormat = "yyyy년MM월dd일" // 원하는 날짜 형식
         dateLB.text = dateFomatter.string(from: datePicker.date)
     }
-    
+    // done 버튼 눌렀을 경우
     @IBAction func didClickDoneButton(_ sender: UIBarButtonItem) {
         guard let category = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
         guard let date = self.dateLB.text else { return }
         
-        let data = DetailData(content: content, amount: amount, date: nil, memo: nil)
+        let data = DetailData(content: content, amount: amount,
+                              date: nil, memo: nil)
         let categoryData = Category(title: category, items: [data])
         self.didAddHandler?(categoryData)
         print("*******\(categoryData)")
@@ -61,8 +62,10 @@ class PostTableViewController: UITableViewController {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         // toolBar.items의 배열에 아이템이 들어가는 순서가 왼쪽부터이므로 오른쪽에 붙여주기 위한 코드
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didPressDoneButton))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: self, action: #selector(didPressDoneButton))
         toolBar.items = [flexibleSpace, doneButton]
         allowanceTF.inputAccessoryView = toolBar
     }
@@ -73,7 +76,6 @@ class PostTableViewController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
         self.contentTF.delegate = self
         self.allowanceTF.delegate = self
         self.memoTextView.delegate = self
@@ -82,15 +84,15 @@ class PostTableViewController: UITableViewController {
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
         
         // 수정할 경우
-        if let items = itemToEdit {
+        if let items = self.itemToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
+            print("\(items)")
             for data in items.items {
                 print("!!!!!!!\(data)")
                 contentTF.text = data.content
                 allowanceTF.text = data.amount
             }
             categoryLB.text = items.title
-        
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -99,7 +101,13 @@ class PostTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    // MARK: viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // ??필요할까?
+        self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
+    }
+    
     //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     //
     //    }
@@ -126,17 +134,18 @@ class PostTableViewController: UITableViewController {
      */
     
     
-
-//     // MARK: - Navigation
-//     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//     // Get the new view controller using segue.destinationViewController.
-//     // Pass the selected object to the new view controller.
-//     }
-
+    
+    //     // MARK: - Navigation
+    //     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //     // Get the new view controller using segue.destinationViewController.
+    //     // Pass the selected object to the new view controller.
+    //     }
+    
     // MARK: didSelectRowAt
     // 이 메소드만으로는 datePicker 사라지지 않음 -> heightForRowAt에서 각각의 테이블 행의 높이를 제공해야한다
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (1,1):
             self.toggleDatePicker()
@@ -147,7 +156,8 @@ class PostTableViewController: UITableViewController {
         }
     }
     // MARK: heightForRowAt
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView,
+                            heightForRowAt indexPath: IndexPath) -> CGFloat {
         if datePickerIsHidden && indexPath.section == 1 && indexPath.row == 2 {
             return 0 // 아예 이 행의 높이를 0으로 해야 눈에서 사라지는 효과
             // 왜 사라질때 표시가 될까??
@@ -159,7 +169,8 @@ class PostTableViewController: UITableViewController {
 // MARK: - UITextFieldDelegate
 extension PostTableViewController: UITextFieldDelegate {
     // MARK: shouldChangeCharactersIn
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
         switch textField {
         case contentTF:
             return true
@@ -170,11 +181,13 @@ extension PostTableViewController: UITextFieldDelegate {
             numberFormatter.locale = Locale.current // 사용자의 지역 설정
             numberFormatter.maximumFractionDigits = 0 // 소수점 이하 최대 자릿수 -> 소수점 없을 예정이므로 0으로 설정
             
-            if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator, with: ""){ // ,(쉼표)를 제거
+            if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator,
+                                                                        with: ""){ // ,(쉼표)를 제거
                 var combinedString = inputString + string // 원래 있던 문자열과 새로 들어온 문자열 합침
                 if numberFormatter.number(from: string) != nil { // 새로 입력된 값이 숫자만 이루어진 것이 아닌 경우
                     // 입력된 값을 NSNumber형태로 바꾼 후 다시 String 형태로 변경!
-                    if let completedNumberString = numberFormatter.number(from: combinedString), let completedString = numberFormatter.string(from: completedNumberString) {
+                    if let completedNumberString = numberFormatter.number(from: combinedString),
+                        let completedString = numberFormatter.string(from: completedNumberString) {
                         allowanceTF.text = completedString
                         return false
                     }
@@ -208,7 +221,8 @@ extension PostTableViewController: UITextViewDelegate {
     // shouldChangeTextIn 메소드에서 실행
     // 엔터를 누르면 줄바꿈이 되는데 엔터(done)을 누를 경우 키보드 사라지게 하기
     // MARK: shouldChangeTextIn
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
         if text == "\n"{
             memoTextView.resignFirstResponder() // 최초 응답자 해제
             return false
