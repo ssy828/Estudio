@@ -24,8 +24,6 @@ class TodayListViewController: UIViewController {
     
     // MARK: - properties
     private var category = [Category]()
-    public var didUseHandler: ((Category) -> Void)?// 임시로 만듦
-    var postTableView: PostTableViewController = PostTableViewController()
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -68,12 +66,12 @@ class TodayListViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             case ViewControllerState.editing.rawValue:
-                print("Editing!!!")
-                if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
-                    let indexPath = indexPathForSelectedRow.row
-                    detailVC.itemToEdit = self.category[indexPath]
+                if let indexPath =
+                    tableView.indexPath(for: sender as! CustomTableViewCell) {
+                    detailVC.itemToEdit = category[indexPath.section]
+                    // 섹션으로 나눠야지..
+                    // 자꾸 row로 하는 바람에 그 행만 계속해서 나온 거임
                 }
-                
             default:
                 return
                 
@@ -127,9 +125,9 @@ extension TodayListViewController: UITableViewDataSource {
 extension TodayListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-                let index = indexPath.row
-                let item = category[index]
-                postTableView.didAddHandler?(item)
+//                let index = indexPath.row
+//                let item = category[index]
+//                postTableView.didAddHandler?(item)
         tableView.deselectRow(at: indexPath, animated: false) // 선택한 줄에서 선택 표시 지움
     }
 }
