@@ -10,6 +10,16 @@ import UIKit
 
 class CategoryViewController: UIViewController {
 
+    // MARK: Properties
+    
+    // MARK: IBOutlet
+    
+    // MARK: IBAction
+    @IBAction func didTapColorButton(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "icons8-checkmark-24"), for: UIControlState.normal)
+    }
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

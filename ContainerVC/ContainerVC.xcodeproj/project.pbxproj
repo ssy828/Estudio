@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE025C7220B25848003D4819 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE025C7120B25848003D4819 /* Category.swift */; };
-		CE07D7B220B50C6500F93306 /* ModifiedPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07D7B120B50C6500F93306 /* ModifiedPostTableViewController.swift */; };
-		CE07D7B420B5120800F93306 /* ModifiedPostSuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE07D7B320B5120800F93306 /* ModifiedPostSuperViewController.swift */; };
 		CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */; };
 		CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */; };
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
@@ -25,13 +23,10 @@
 		CEF41BBF20ABD3090097EDBB /* Yesterday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */; };
 		CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */; };
 		CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */; };
-		CEF4727520F8B89D004E10C0 /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4727420F8B89D004E10C0 /* StateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE025C7120B25848003D4819 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		CE07D7B120B50C6500F93306 /* ModifiedPostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPostTableViewController.swift; sourceTree = "<group>"; };
-		CE07D7B320B5120800F93306 /* ModifiedPostSuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPostSuperViewController.swift; sourceTree = "<group>"; };
 		CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
@@ -49,7 +44,6 @@
 		CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Yesterday.storyboard; sourceTree = "<group>"; };
 		CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListViewController.swift; sourceTree = "<group>"; };
 		CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayViewController.swift; sourceTree = "<group>"; };
-		CEF4727420F8B89D004E10C0 /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,23 +73,6 @@
 				CEF41BC420ABD4680097EDBB /* VC */,
 			);
 			path = MainPart;
-			sourceTree = "<group>";
-		};
-		CE037C8820B651D000CF2C6B /* ModifyDetailPostPart */ = {
-			isa = PBXGroup;
-			children = (
-				CE037C8A20B6520B00CF2C6B /* VC */,
-			);
-			path = ModifyDetailPostPart;
-			sourceTree = "<group>";
-		};
-		CE037C8A20B6520B00CF2C6B /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				CE07D7B120B50C6500F93306 /* ModifiedPostTableViewController.swift */,
-				CE07D7B320B5120800F93306 /* ModifiedPostSuperViewController.swift */,
-			);
-			path = VC;
 			sourceTree = "<group>";
 		};
 		CE037C8B20B6522400CF2C6B /* TodayPart */ = {
@@ -160,10 +137,8 @@
 		CEF41BA920ABD07E0097EDBB /* ContainerVC */ = {
 			isa = PBXGroup;
 			children = (
-				CEF4727420F8B89D004E10C0 /* StateViewController.swift */,
 				CE037C8B20B6522400CF2C6B /* TodayPart */,
 				CE0DF6FB20F2891B00FBF1CA /* PostPart */,
-				CE037C8820B651D000CF2C6B /* ModifyDetailPostPart */,
 				CE037C8720B651CD00CF2C6B /* MainPart */,
 				CE025C7020B25815003D4819 /* Model */,
 				CEF41BC520ABD47B0097EDBB /* SupportingFiles */,
@@ -277,18 +252,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEF4727520F8B89D004E10C0 /* StateViewController.swift in Sources */,
 				CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */,
 				CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */,
 				CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */,
 				CE025C7220B25848003D4819 /* Category.swift in Sources */,
-				CE07D7B220B50C6500F93306 /* ModifiedPostTableViewController.swift in Sources */,
 				CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */,
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
 				CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */,
 				CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */,
-				CE07D7B420B5120800F93306 /* ModifiedPostSuperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

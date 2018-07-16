@@ -180,9 +180,7 @@ extension PostTableViewController: UITextFieldDelegate {
             numberFormatter.numberStyle = .decimal
             numberFormatter.locale = Locale.current // 사용자의 지역 설정
             numberFormatter.maximumFractionDigits = 0 // 소수점 이하 최대 자릿수 -> 소수점 없을 예정이므로 0으로 설정
-            
-            if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator,
-                                                                        with: ""){ // ,(쉼표)를 제거
+            if let inputString = allowanceTF.text?.replacingOccurrences(of: numberFormatter.groupingSeparator,                                                                with: ""){ // ,(쉼표)를 제거
                 var combinedString = inputString + string // 원래 있던 문자열과 새로 들어온 문자열 합침
                 if numberFormatter.number(from: string) != nil { // 새로 입력된 값이 숫자만 이루어진 것이 아닌 경우
                     // 입력된 값을 NSNumber형태로 바꾼 후 다시 String 형태로 변경!
