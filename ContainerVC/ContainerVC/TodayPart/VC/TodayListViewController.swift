@@ -62,7 +62,7 @@ class TodayListViewController: UIViewController {
             switch segue.identifier {
             case ViewControllerState.posting.rawValue:
                 detailVC.didAddHandler = { data in
-                    self.category.append(data)
+                    self.category.append(data) // 데이터 추가
                     self.tableView.reloadData()
                 }
             case ViewControllerState.editing.rawValue:

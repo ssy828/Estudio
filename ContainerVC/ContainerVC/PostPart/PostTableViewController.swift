@@ -15,7 +15,8 @@ class PostTableViewController: UITableViewController {
     }
     private var datePickerIsHidden: Bool = false
     public var didAddHandler: ((Category) -> Void)? // 클로저를 통해서 데이터 교환
-    var itemToEdit: Category? // 수정할때 사용할 아이템
+    public var itemToEdit: Category? // 수정할때 사용할 아이템
+    //    private var category
     // MARK: IBOutlet
     @IBOutlet weak var contentTF: UITextField! // 내용
     @IBOutlet weak var allowanceTF: UITextField! // 금액
@@ -37,10 +38,12 @@ class PostTableViewController: UITableViewController {
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
         guard let date = self.dateLB.text else { return }
+        guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         
         let data = DetailData(content: content, amount: amount,
                               date: nil, memo: nil)
-        let categoryData = Category(title: category, items: [data])
+        //        let categoryData = Category(title: category, items: [data])
+        let categoryData = Category(title: category, color: categoryColor, isCollpased: true, items: [data])
         self.didAddHandler?(categoryData)
         print("*******\(categoryData)")
         self.dismiss(animated: false, completion: nil)
@@ -83,16 +86,18 @@ class PostTableViewController: UITableViewController {
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
         
+        
         // 수정할 경우
         if let items = self.itemToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
             print("\(items)")
             for data in items.items {
                 print("!!!!!!!\(data)")
-                contentTF.text = data.content
-                allowanceTF.text = data.amount
+                self.contentTF.text = data.content
+                self.allowanceTF.text = data.amount
             }
-            categoryLB.text = items.title
+            self.categoryLB.text = items.title
+            self.categoryColorView.backgroundColor = items.color
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -106,6 +111,7 @@ class PostTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // ??필요할까?
         self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
+        //        self.categoryColorView.backgroundColor = buttonColor
     }
     
     //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,12 +141,17 @@ class PostTableViewController: UITableViewController {
     
     
     
-    //     // MARK: - Navigation
-    //     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //     // Get the new view controller using segue.destinationViewController.
-    //     // Pass the selected object to the new view controller.
-    //     }
+    //         // MARK: - Navigation
+    //         // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //         // Get the new view controller using segue.destinationViewController.
+    //         // Pass the selected object to the new view controller.
+    //            if let destination = segue.destination as? CategoryViewController {
+    //                destination.didAddHandler = { buttonColor in
+    //                    self.itemToEdit?.color = buttonColor
+    //                }
+    //            }
+    //         }
     
     // MARK: didSelectRowAt
     // 이 메소드만으로는 datePicker 사라지지 않음 -> heightForRowAt에서 각각의 테이블 행의 높이를 제공해야한다
@@ -150,7 +161,13 @@ class PostTableViewController: UITableViewController {
         case (1,1):
             self.toggleDatePicker()
         case (1,0):
-            self.performSegue(withIdentifier: "GoToCategoryVC", sender: nil)
+            let categoryVC = storyboard?.instantiateViewController(withIdentifier: CategoryViewController.identifier) as! CategoryViewController
+            categoryVC.didAddHandler = { [weak self] data in
+                guard let `self` = self else { return }
+                self.categoryColorView.backgroundColor = data
+            }
+            self.navigationController?.pushViewController(categoryVC, animated: false)
+            self.tableView.reloadData() // 데이터 수정에 대한 반응
         default:
             break
         }

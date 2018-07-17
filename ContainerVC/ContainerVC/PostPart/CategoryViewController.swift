@@ -11,9 +11,14 @@ import UIKit
 class CategoryViewController: UIViewController {
     
     // MARK: Properties
-    var isClicked: Bool = true // 버튼 눌렀을 경우
-    // MARK: IBOutlet
-    
+    static var identifier: String {
+        return String(describing: self)
+    }
+    private var isClicked: Bool = true // 버튼 눌렀을 경우
+    public var didAddHandler: ((UIColor?) -> Void)? // 버튼 색과  넘겨줄 클로저
+    private var category: Category?
+    private var buttonColor: UIColor?
+
     // MARK: IBAction
     @IBAction func didTapColorButton(_ sender: UIButton) {
         if isClicked {
@@ -23,8 +28,18 @@ class CategoryViewController: UIViewController {
             sender.setImage(nil, for: .normal)
             isClicked = !isClicked
         }
-        
+       self.buttonColor = sender.backgroundColor
     }
+    
+    @IBAction func didTapSaveButton(_ sender: UIBarButtonItem) {
+        if let buttonColor = buttonColor{
+            self.category?.color = buttonColor
+            self.didAddHandler?(buttonColor)
+            print("color:\(buttonColor)")
+        }
+        self.navigationController?.popViewController(animated: false)
+    }
+    
     
     // MARK: Life Cycle
     override func viewDidLoad() {

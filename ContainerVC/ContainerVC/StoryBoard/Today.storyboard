@@ -588,7 +588,6 @@
                         <outlet property="dateLB" destination="dU7-Sk-lzJ" id="HIi-v2-zM9"/>
                         <outlet property="datePicker" destination="lyz-Ig-X96" id="BYx-hk-VZD"/>
                         <outlet property="memoTextView" destination="ItV-xO-2hG" id="scz-uK-QHd"/>
-                        <segue destination="CHf-aA-BUA" kind="show" identifier="GoToCategoryVC" id="al0-ej-LBz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqx-cp-uHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -604,7 +603,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L1g-kZ-grI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="190"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6kj-oT-WaF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -713,14 +712,17 @@
                         <viewLayoutGuide key="safeArea" id="YkY-ZU-Km6"/>
                     </view>
                     <navigationItem key="navigationItem" title="카테고리" id="NnQ-SE-uBd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LB7-n9-guX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AwB-Du-biq">
                             <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapSaveButton:" destination="CHf-aA-BUA" id="6cW-Ar-rN7"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcM-pJ-6dr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3729" y="-834"/>
+            <point key="canvasLocation" x="3479" y="-834"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pdg-1K-Fgt">

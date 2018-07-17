@@ -16,18 +16,31 @@ import UIKit
 //}
 
 struct Category {
-    var title: String // 분류 제목
-    var color: String? // 임시 옵셔널로 정함 다시 수정할 계획
+    var title: String? // 분류 제목
+//    var color: String? // 임시 옵셔널로 정함 다시 수정할 계획
+    var color: UIColor?
     var isCollapsed: Bool
     var items: [DetailData]
     
-    init(title: String, color: String? = nil, isCollpased: Bool = true, items:[DetailData]) {
-        self.title = title
+    init(title: String?, color: UIColor? = nil, isCollpased: Bool = true, items:[DetailData]) {
+        if let title = title {
+            self.title = title
+        }
         self.color = color
         self.isCollapsed = isCollpased
         self.items = items
     }
+//    init(title: String = "", color: UIColor? = nil, isCollpased: Bool = true, items: [DetailData]) {
+//        if let title = title {
+//            self.title = title
+//        }
+//        self.color = color
+//        self.isCollapsed = isCollpased
+//        self.items = items
+//    }
+    
 }
+
 
 struct DetailData {
     var content: String // 제목
