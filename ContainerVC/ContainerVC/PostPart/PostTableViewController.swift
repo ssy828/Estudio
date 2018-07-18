@@ -34,19 +34,30 @@ class PostTableViewController: UITableViewController {
     }
     // done 버튼 눌렀을 경우
     @IBAction func didClickDoneButton(_ sender: UIBarButtonItem) {
-        guard let category = self.categoryLB.text else { return }
+        guard let categoryTitle = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
         guard let date = self.dateLB.text else { return }
         guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         
-        let data = DetailData(content: content, amount: amount,
-                              date: nil, memo: nil)
-        //        let categoryData = Category(title: category, items: [data])
-        let categoryData = Category(title: category, color: categoryColor, isCollpased: true, items: [data])
-        self.didAddHandler?(categoryData)
-        print("*******\(categoryData)")
+        let detailData = DetailData(content: content, amount: amount,
+                                    date: nil, memo: nil)
+        self.test(title: categoryTitle, color: categoryColor, isCollpased: true, items: [detailData])
         self.dismiss(animated: false, completion: nil)
+    }
+    // 함수 기능 분산 시켜서 사용하려고 테스트 하는 중!!!
+    func test(title: String, color: UIColor, isCollpased: Bool, items: [DetailData]) {
+        guard let title = CategoryTitle(rawValue: title) else { return }
+        if title != itemToEdit?.title {
+            let data = Category(title: title, color: color, isCollpased: isCollpased, items: items)
+//             let data = Category(items: items)
+            self.didAddHandler?(data)
+        }else {
+//             let data = Category(title: title, color: color, isCollpased: isCollpased, items: items)
+              let data = Category(items: items)
+            self.didAddHandler?(data)
+        }
+        
     }
     
     @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
@@ -86,7 +97,6 @@ class PostTableViewController: UITableViewController {
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
         
-        
         // 수정할 경우
         if let items = self.itemToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
@@ -96,7 +106,7 @@ class PostTableViewController: UITableViewController {
                 self.contentTF.text = data.content
                 self.allowanceTF.text = data.amount
             }
-            self.categoryLB.text = items.title
+            self.categoryLB.text = items.title?.rawValue
             self.categoryColorView.backgroundColor = items.color
         }
         
@@ -162,9 +172,10 @@ class PostTableViewController: UITableViewController {
             self.toggleDatePicker()
         case (1,0):
             let categoryVC = storyboard?.instantiateViewController(withIdentifier: CategoryViewController.identifier) as! CategoryViewController
-            categoryVC.didAddHandler = { [weak self] data in
+            categoryVC.didAddHandler = { [weak self] (color,title) in
                 guard let `self` = self else { return }
-                self.categoryColorView.backgroundColor = data
+                self.categoryColorView.backgroundColor = color
+                self.categoryLB.text = title
             }
             self.navigationController?.pushViewController(categoryVC, animated: false)
             self.tableView.reloadData() // 데이터 수정에 대한 반응

@@ -88,7 +88,6 @@ extension TodayListViewController: UITableViewDataSource {
     // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        //        let isCollapsed = sections[section].isCollapsed
         let isCollapsed = category[section].isCollapsed
         return isCollapsed ? category[section].items.count : 0
     }
@@ -107,7 +106,7 @@ extension TodayListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView =
             tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
-        headerView.categoryTitleLabel.text = category[section].title
+        headerView.categoryTitleLabel.text = category[section].title?.rawValue
         headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
         headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!
         return headerView
