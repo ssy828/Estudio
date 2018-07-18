@@ -16,42 +16,29 @@ import UIKit
 //}
 
 struct Category {
-    var title: String? // 분류 제목
-//    var color: String? // 임시 옵셔널로 정함 다시 수정할 계획
+    
+    var title: CategoryTitle? // 분류 제목
     var color: UIColor?
     var isCollapsed: Bool
     var items: [DetailData]
     
-    init(title: String?, color: UIColor? = nil, isCollpased: Bool = true, items:[DetailData]) {
-        if let title = title {
-            self.title = title
-        }
+    init(title: CategoryTitle? = nil, color: UIColor? = nil, isCollpased: Bool = true, items:[DetailData]) {
+//        if let title = title {
+//            self.title = title
+//        }
+        self.title = title
         self.color = color
         self.isCollapsed = isCollpased
         self.items = items
     }
-//    init(title: String = "", color: UIColor? = nil, isCollpased: Bool = true, items: [DetailData]) {
-//        if let title = title {
-//            self.title = title
-//        }
-//        self.color = color
-//        self.isCollapsed = isCollpased
-//        self.items = items
-//    }
-    
+
 }
-
-
-struct DetailData {
-    var content: String // 제목
-    var amount: String // 금액
-    var date: Date? // 날짜 // 지금은 옵셔널로 함 다시 옵셔널 삭제 예정
-    var memo: String? // 메모
-    
-    init(content: String, amount: String, date: Date? = nil, memo: String? = nil) {
-        self.content = content
-        self.amount = amount
-        self.memo = memo
-        self.date = date
-    }
+// 카테고리 분류 이름명
+enum CategoryTitle: String {
+    case food = "식비"
+    case transportation = "교통비"
+    case communication = "통신비"
+    case saving = "저축"
+    case dailySupplies = "생활용품"
+    case medicalCare = "의료"
 }

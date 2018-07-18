@@ -602,102 +602,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L1g-kZ-grI">
-                                <rect key="frame" x="0.0" y="20" width="375" height="190"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="q0e-BH-6nG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="70"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6kj-oT-WaF">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="evR-Mg-T4B">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wat-ky-7T9">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWj-Xd-7in">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Zcu-LW-5Le"/>
+                                                </constraints>
+                                                <state key="normal" title="식비"/>
                                                 <connections>
-                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="ahc-ny-bp7"/>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="yq3-Qh-sdd"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카테고리 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pPt-qy-xfP">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uF6-UF-KCD">
+                                                <rect key="frame" x="126.5" y="0.0" width="122" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="es9-Un-8E8"/>
+                                                </constraints>
+                                                <state key="normal" title="교통비"/>
+                                                <connections>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="qsd-Z6-ueV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEw-CB-ABY">
+                                                <rect key="frame" x="253.5" y="0.0" width="121.5" height="30"/>
+                                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="edS-dP-v14"/>
+                                                </constraints>
+                                                <state key="normal" title="생활용품"/>
+                                                <connections>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="EvQ-IZ-f8l"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uzb-en-FhE">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-1U-dKh">
                                         <rect key="frame" x="0.0" y="40" width="375" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csa-83-rZE">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
-                                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="ubH-fg-pNX"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uj4-PO-vVQ">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-48-etV">
-                                        <rect key="frame" x="0.0" y="80" width="375" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="557-cs-8Z2">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
-                                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="YPC-2C-gGZ"/>
-                                                </connections>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DrT-M3-jNV">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EOa-g5-EiA">
-                                        <rect key="frame" x="0.0" y="120" width="375" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcx-Bq-pY4">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHO-Fw-b5L">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="30"/>
                                                 <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="RpF-VG-Idr"/>
+                                                </constraints>
+                                                <state key="normal" title="통신"/>
                                                 <connections>
-                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="huq-Yx-DSt"/>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="UrZ-sV-0mw"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XfO-La-QLw">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Oyf-GJ-tdA">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIK-qC-Fl8">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
-                                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rk-8E-iLk">
+                                                <rect key="frame" x="126.5" y="0.0" width="122" height="30"/>
+                                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="mk7-DA-qOf"/>
+                                                </constraints>
+                                                <state key="normal" title="의료"/>
                                                 <connections>
-                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="LE6-xa-QaK"/>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="s8f-vb-vp5"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3nC-iK-UeT">
-                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5t-3R-DZA">
+                                                <rect key="frame" x="253.5" y="0.0" width="121.5" height="30"/>
+                                                <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="xJ1-e9-a1r"/>
+                                                </constraints>
+                                                <state key="normal" title="저축"/>
+                                                <connections>
+                                                    <action selector="didTapColorButton:" destination="CHf-aA-BUA" eventType="touchUpInside" id="ziv-0s-QmG"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -705,9 +686,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YkY-ZU-Km6" firstAttribute="trailing" secondItem="L1g-kZ-grI" secondAttribute="trailing" id="5iO-jc-jeL"/>
-                            <constraint firstItem="L1g-kZ-grI" firstAttribute="leading" secondItem="YkY-ZU-Km6" secondAttribute="leading" id="Two-nB-rzJ"/>
-                            <constraint firstItem="L1g-kZ-grI" firstAttribute="top" secondItem="YkY-ZU-Km6" secondAttribute="top" id="pzx-bu-jXf"/>
+                            <constraint firstItem="q0e-BH-6nG" firstAttribute="top" secondItem="YkY-ZU-Km6" secondAttribute="top" id="6ZJ-X9-nmG"/>
+                            <constraint firstItem="q0e-BH-6nG" firstAttribute="leading" secondItem="YkY-ZU-Km6" secondAttribute="leading" id="PWF-Zy-1BX"/>
+                            <constraint firstItem="YkY-ZU-Km6" firstAttribute="trailing" secondItem="q0e-BH-6nG" secondAttribute="trailing" id="p07-YP-Or1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YkY-ZU-Km6"/>
                     </view>
