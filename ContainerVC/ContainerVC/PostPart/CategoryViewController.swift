@@ -15,10 +15,10 @@ class CategoryViewController: UIViewController {
         return String(describing: self)
     }
     private var isClicked: Bool = true // 버튼 눌렀을 경우
-    public var didAddHandler: ((UIColor?) -> Void)? // 버튼 색과  넘겨줄 클로저
+    public var didAddHandler: ((UIColor?,String?) -> Void)? // 버튼 색과 텍스트필드 입력한 값 넘겨줄 클로저
     private var category: Category?
     private var buttonColor: UIColor?
-
+    private var buttonTitle: String?
     // MARK: IBAction
     @IBAction func didTapColorButton(_ sender: UIButton) {
         if isClicked {
@@ -28,14 +28,18 @@ class CategoryViewController: UIViewController {
             sender.setImage(nil, for: .normal)
             isClicked = !isClicked
         }
-       self.buttonColor = sender.backgroundColor
+        self.buttonColor = sender.backgroundColor
+        self.buttonTitle = sender.titleLabel?.text
     }
     
     @IBAction func didTapSaveButton(_ sender: UIBarButtonItem) {
-        if let buttonColor = buttonColor{
-            self.category?.color = buttonColor
-            self.didAddHandler?(buttonColor)
-            print("color:\(buttonColor)")
+        if let buttonColor = buttonColor, let buttonTitle = buttonTitle {
+            if let title = CategoryTitle(rawValue: buttonTitle){
+                self.category?.color = buttonColor
+                self.category?.title = title
+                self.didAddHandler?(buttonColor,buttonTitle)
+                print("color:\(buttonColor)")
+            }
         }
         self.navigationController?.popViewController(animated: false)
     }
