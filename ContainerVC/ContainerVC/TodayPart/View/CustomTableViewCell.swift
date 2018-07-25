@@ -10,9 +10,8 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLb: UILabel!
-    @IBOutlet weak var moneyLb: UILabel!
-    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var titleLb: UILabel! // 내용
+    @IBOutlet weak var moneyLb: UILabel! // 금액 
     
     override func awakeFromNib() {
         super.awakeFromNib()

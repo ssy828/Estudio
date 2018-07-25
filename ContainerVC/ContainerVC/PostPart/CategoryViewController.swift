@@ -16,7 +16,8 @@ class CategoryViewController: UIViewController {
     }
     private var isClicked: Bool = true // 버튼 눌렀을 경우
     public var didAddHandler: ((UIColor?,String?) -> Void)? // 버튼 색과 텍스트필드 입력한 값 넘겨줄 클로저
-    private var category: Category?
+    private var category: DetailData?
+    private var section: Section?
     private var buttonColor: UIColor?
     private var buttonTitle: String?
     // MARK: IBAction

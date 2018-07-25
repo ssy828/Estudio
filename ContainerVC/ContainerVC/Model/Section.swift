@@ -9,30 +9,37 @@
 import Foundation
 import UIKit
 
-//struct Section {
-//    var title: String
-//    var items: [String]
-//    var isCollapsed: Bool
+//struct Category {
+//    var title: CategoryTitle?  // 분류 제목
+//    var color: UIColor? // 분류 색깔
+//    var isCollapsed: Bool = true
+//    var items: [DetailData] // 디테일 데이터
+//
+//
 //}
 
+struct Section {
+    var title: CategoryTitle // 섹션 제목
+    var items: [DetailData] // 데이터
+    var isCollapsed: Bool = true // 버튼 액션에 접는 여부
+}
 struct Category {
     
     var title: CategoryTitle? // 분류 제목
     var color: UIColor?
-    var isCollapsed: Bool
+    var isCollapsed: Bool = true
     var items: [DetailData]
     
-    init(title: CategoryTitle? = nil, color: UIColor? = nil, isCollpased: Bool = true, items:[DetailData]) {
-//        if let title = title {
-//            self.title = title
-//        }
+    
+    init(title: CategoryTitle? = nil, color: UIColor? = nil, isCollapsed: Bool = true, items: [DetailData]) {
         self.title = title
         self.color = color
-        self.isCollapsed = isCollpased
+        self.isCollapsed = isCollapsed
         self.items = items
     }
-
+    
 }
+
 // 카테고리 분류 이름명
 enum CategoryTitle: String {
     case food = "식비"
