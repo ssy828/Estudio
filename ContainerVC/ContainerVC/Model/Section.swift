@@ -17,28 +17,32 @@ import UIKit
 //
 //
 //}
-
 struct Section {
-    var title: CategoryTitle // 섹션 제목
-    var items: [DetailData] // 데이터
-    var isCollapsed: Bool = true // 버튼 액션에 접는 여부
-}
-struct Category {
-    
-    var title: CategoryTitle? // 분류 제목
-    var color: UIColor?
-    var isCollapsed: Bool = true
-    var items: [DetailData]
-    
-    
-    init(title: CategoryTitle? = nil, color: UIColor? = nil, isCollapsed: Bool = true, items: [DetailData]) {
-        self.title = title
-        self.color = color
-        self.isCollapsed = isCollapsed
-        self.items = items
+    var title: CategoryTitle// 섹션 제목
+    var items = [DetailData]() // 데이터
+    mutating func add(_ item: DetailData) {
+        self.items.append(item)
     }
-    
+    init(title: CategoryTitle) {
+        self.title = title
+    }
 }
+//struct Category {
+//
+//    var title: CategoryTitle? // 분류 제목
+//    var color: UIColor?
+//    var isCollapsed: Bool = true
+//    var items: [DetailData]
+//
+//
+//    init(title: CategoryTitle? = nil, color: UIColor? = nil, isCollapsed: Bool = true, items: [DetailData]) {
+//        self.title = title
+//        self.color = color
+//        self.isCollapsed = isCollapsed
+//        self.items = items
+//    }
+//
+//}
 
 // 카테고리 분류 이름명
 enum CategoryTitle: String {
