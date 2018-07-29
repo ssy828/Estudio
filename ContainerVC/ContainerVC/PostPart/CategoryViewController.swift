@@ -35,12 +35,9 @@ class CategoryViewController: UIViewController {
     
     @IBAction func didTapSaveButton(_ sender: UIBarButtonItem) {
         if let buttonColor = buttonColor, let buttonTitle = buttonTitle {
-            if let title = CategoryTitle(rawValue: buttonTitle){
                 self.category?.color = buttonColor
-                self.category?.title = title
                 self.didAddHandler?(buttonColor,buttonTitle)
                 print("color:\(buttonColor)")
-            }
         }
         self.navigationController?.popViewController(animated: false)
     }

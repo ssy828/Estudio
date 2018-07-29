@@ -13,7 +13,6 @@
 		CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE263E8A20FEF54600FAC811 /* DetailData.swift */; };
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
-		CE9A002A20B33FFA00446918 /* ExpenseStatementItemPropertyList.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */; };
 		CEC2BA2120FE015800D8F296 /* CatetoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */; };
 		CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */; };
 		CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */; };
@@ -34,7 +33,6 @@
 		CE263E8A20FEF54600FAC811 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
-		CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExpenseStatementItemPropertyList.plist; sourceTree = "<group>"; };
 		CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatetoryColor.swift; sourceTree = "<group>"; };
 		CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CEF41BA720ABD07E0097EDBB /* ContainerVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +65,6 @@
 				CE025C7120B25848003D4819 /* Section.swift */,
 				CE263E8A20FEF54600FAC811 /* DetailData.swift */,
 				CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */,
-				CE9A002920B33FFA00446918 /* ExpenseStatementItemPropertyList.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,7 +242,6 @@
 				CEF41BBD20ABD2FB0097EDBB /* Today.storyboard in Resources */,
 				CEF41BB520ABD0800097EDBB /* LaunchScreen.storyboard in Resources */,
 				CEF41BB220ABD0800097EDBB /* Assets.xcassets in Resources */,
-				CE9A002A20B33FFA00446918 /* ExpenseStatementItemPropertyList.plist in Resources */,
 				CEF41BB020ABD07E0097EDBB /* Main.storyboard in Resources */,
 				CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */,
 				CEF41BBF20ABD3090097EDBB /* Yesterday.storyboard in Resources */,

@@ -14,9 +14,10 @@ class PostTableViewController: UITableViewController {
         return String(describing: self)
     }
     private var datePickerIsHidden: Bool = false
-//    public var didAddHandler: ((Section,DetailData) -> Void)?// 클로저를 통해서 데이터 교환
-    public var didAddHandler: ((CategoryTitle, DetailData) -> Void)?
+    public var didAddHandler: ((Section) -> Void)? // 클로저를 통해서 데이터 교환
+    public var items = [DetailData]()
     public var itemToEdit: Section?
+    public var section = [Section]()
     // MARK: IBOutlet
     @IBOutlet weak var contentTF: UITextField! // 내용
     @IBOutlet weak var allowanceTF: UITextField! // 금액
@@ -40,27 +41,20 @@ class PostTableViewController: UITableViewController {
 //        guard let date = self.dateLB.text else { return }
         guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         if let sectionTitle = CategoryTitle(rawValue: categoryTitle){
-           let items = DetailData(content: content, amount: amount, color:categoryColor, title: sectionTitle)
-//            let data = Section(title: sectionTitle, items: [items], isCollapsed: true)
-            self.didAddHandler?(sectionTitle,items)
+        let items = DetailData(content: content, amount: amount, color:categoryColor)
+        var section = Section(title: sectionTitle)
+        section.add(items)
+            NSLog("\(section)")
+        self.section.append(section)
+        self.didAddHandler?(section)
         }
 //        self.test(title: categoryTitle, color: categoryColor, isCollapsed: true, items: [detailData])
         
        self.dismiss(animated: false, completion: nil)
     }
-    // 함수 기능 분산 시켜서 사용하려고 테스트 하는 중!!!
-//    func test(title: String, color: UIColor, isCollapsed: Bool = true, items: [DetailData]) {
-//
-//        guard let title = CategoryTitle(rawValue: title) else { return }
-//        if title != itemToEdit?.title {
-//            let data = Category(title: title, color: color, isCollapsed: isCollapsed, items: items)
-//            self.didAddHandler?(data,)
-//        }else {
-//            let data = Category(items: items)
-//            self.didAddHandler?(data)
-//        }
-//
-//
+    // MARK: Methods
+//    func addItem(in section: DetailData){
+//        self.section?.add(section)
 //    }
 
     @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
@@ -100,23 +94,19 @@ class PostTableViewController: UITableViewController {
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
         
-//        if let item = self.itemToEdit{
-//            guard let title = item.title else { return }
-//            guard let color = item.color else { return }
-//            self.test(title: title.rawValue, color: color, isCollpased: true, items: item.items)
-//        }
-        
+    
         // 수정할 경우
-        if let items = self.itemToEdit {
+        if let item = self.itemToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
             print("\(items)")
-            for data in items.items {
+            for data in item.items {
                 print("!!!!!!!\(data)")
                 self.contentTF.text = data.content
                 self.allowanceTF.text = data.amount
                 self.categoryColorView.backgroundColor = data.color
-                self.categoryLB.text = data.title.rawValue
+                
             }
+            self.categoryLB.text = item.title.rawValue
         }
         
         // Uncomment the following line to preserve selection between presentations
