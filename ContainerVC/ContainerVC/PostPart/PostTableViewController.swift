@@ -44,18 +44,10 @@ class PostTableViewController: UITableViewController {
         let items = DetailData(content: content, amount: amount, color:categoryColor)
         var section = Section(title: sectionTitle)
         section.add(items)
-            NSLog("\(section)")
-        self.section.append(section)
         self.didAddHandler?(section)
         }
-//        self.test(title: categoryTitle, color: categoryColor, isCollapsed: true, items: [detailData])
-        
        self.dismiss(animated: false, completion: nil)
     }
-    // MARK: Methods
-//    func addItem(in section: DetailData){
-//        self.section?.add(section)
-//    }
 
     @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
