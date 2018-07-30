@@ -66,46 +66,32 @@ class TodayListViewController: UIViewController {
             let detailVC = navigationVC.viewControllers.first as? PostTableViewController {
             switch segue.identifier {
             case ViewControllerState.posting.rawValue:
-                // 이부분 수정하기!
                 detailVC.didAddHandler = { [weak self] (data) in
                     guard let `self` = self else { return }
-                    var data = data
-//                    let sorted = self.datasource.filter({ (section) -> Bool in
-//                        NSLog("\(section)")
-//                        //                        var section = section
-//                        for item in section.items{
-//                            data.items.append(item)
-//                        }
-//                        NSLog("data: \(data)")
-//                        return section.title == data.title
-//                    })
-//                        NSLog("****Sorted: \(sorted)")
-//                        sorted.items.append(contentsOf: data.items)
-//                        self.datasource.append(sorted)
-//                        NSLog("****Sorted: \(sorted)")
-////
+                    // 카테고리 제목끼리 같은 경우
                     if self.datasource.contains(where: { (section) -> Bool in
-                        NSLog("\(section)")
                         return section.title == data.title
                     }){
-                       for (index, values) in self.datasource.enumerated() {
-                        print("Index: \(index + 1), values: \(values)")
-                        var values = values
-                        values.items.append(contentsOf: data.items)
-                        NSLog("\(values.items)")
-                        }
-                    }else{
+                        // 수정하기 -> 새로운 타이틀이 연속으로 들어오면 앞에 내용을 지움.
+                        self.datasource =  self.datasource.filter({
+                            // 카테고리 타이틀끼리 같으면 필터링해주고
+                            $0.title == data.title
+                        }).map({ (items) in // items가 상수이므로
+                            var items = items // 변수로 변경
+                            items.items.append(contentsOf: data.items)
+                            return items // 새롭게 들어온 데이터(아이템)을 만들어진 곳(섹션)에 넣어줌
+                        })
+                        NSLog("\(self.datasource)")
+                        
+                    }else{ // 카테고리 제목이 다른 경우
                         self.datasource.append(data)// 전체 데이터 추가
                     }
-                    
                     self.tableView.reloadData()
                 }
             case ViewControllerState.editing.rawValue:
                 if let indexPath =
                     tableView.indexPath(for: sender as! CustomTableViewCell) {
                     detailVC.itemToEdit = datasource[indexPath.section]
-                    // 섹션으로 나눠야지..
-                    // 자꾸 row로 하는 바람에 그 행만 계속해서 나온 거임
                 }
             default:
                 return
@@ -134,8 +120,6 @@ extension TodayListViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell",
                                                  for: indexPath) as! CustomTableViewCell
-        //        let items = category[indexPath.section].items[indexPath.row]
-        //        let section = items[indexPath.section]
         let section = self.datasource[indexPath.section]
         let item = section.items[indexPath.row]
         cell.titleLb.text = item.content
