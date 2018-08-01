@@ -15,9 +15,7 @@ class PostTableViewController: UITableViewController {
     }
     private var datePickerIsHidden: Bool = false
     public var didAddHandler: ((Section) -> Void)? // 클로저를 통해서 데이터 교환
-    public var items = [DetailData]()
-    public var itemToEdit: Section?
-    public var section = [Section]()
+    public var itemsToEdit: Section?
     // MARK: IBOutlet
     @IBOutlet weak var contentTF: UITextField! // 내용
     @IBOutlet weak var allowanceTF: UITextField! // 금액
@@ -41,9 +39,8 @@ class PostTableViewController: UITableViewController {
 //        guard let date = self.dateLB.text else { return }
         guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         if let sectionTitle = CategoryTitle(rawValue: categoryTitle){
-        let items = DetailData(content: content, amount: amount, color:categoryColor)
-        var section = Section(title: sectionTitle)
-        section.add(items)
+        let item = DetailData(content: content, amount: amount, color:categoryColor)
+        let section = Section(title: sectionTitle, items: [item])
         self.didAddHandler?(section)
         }
        self.dismiss(animated: false, completion: nil)
@@ -88,16 +85,16 @@ class PostTableViewController: UITableViewController {
         
     
         // 수정할 경우
-        if let item = self.itemToEdit {
+        if let section = self.itemsToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
-            print("111111items:\(items)")
-            for data in item.items {
-                print("!!!!!!!\(data)")
-                self.contentTF.text = data.content
-                self.allowanceTF.text = data.amount
-                self.categoryColorView.backgroundColor = data.color
+            print("111111items:\(section)")
+            for item in section.items {
+                print("!!!!!!!\(item)")
+                self.contentTF.text = item.content
+                self.allowanceTF.text = item.amount
+                self.categoryColorView.backgroundColor = item.color
             }
-            self.categoryLB.text = item.title.rawValue
+            self.categoryLB.text = section.title.rawValue
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -148,7 +145,7 @@ class PostTableViewController: UITableViewController {
     //         // Pass the selected object to the new view controller.
     //            if let destination = segue.destination as? CategoryViewController {
     //                destination.didAddHandler = { buttonColor in
-    //                    self.itemToEdit?.color = buttonColor
+    //                    self.itemsToEdit?.color = buttonColor
     //                }
     //            }
     //         }

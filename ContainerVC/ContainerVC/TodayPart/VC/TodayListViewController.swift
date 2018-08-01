@@ -17,8 +17,6 @@ class TodayListViewController: UIViewController {
     
     // MARK: - properties
     private var datasource = [Section]()
-    var filtered = [Section]()
-    //    private var sorted = [Section]()
     // MARK: - IBOutlet
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -27,7 +25,30 @@ class TodayListViewController: UIViewController {
     @IBAction func newButton(_ sender: UIButton){ }
     
     // MARK: - Methods
-    
+    // MARK: 데이터소스에 데이터 추가하기
+    private func didAddDataSource(_ data: Section) {
+        // 같은 카테고리일 경우
+        if self.datasource.contains(where: {
+            return $0.title == data.title
+        }){
+            self.datasource = self.datasource.map({ (section) in
+                if section.title == data.title { // 타이틀이 같은 경우 아이템에만 추가
+                    var section = section
+                    section.items.append(contentsOf:data.items)
+                    return section
+                }
+                return section
+            })
+        }else{// 같은 타이틀이 아닌 경우
+            self.datasource.append(data) // 전체 데이터 추가
+        }
+    }
+//    func t(editingVC: PostTableViewController,sender: Any?) {
+//        if let indexPath = tableView.indexPath(for: sender as! CustomTableViewCell) {
+//            editingVC.itemsToEdit = self.datasource[indexPath.section]
+//            editingVC.itemsToEdit?.items = self.datasource[indexPath.section].items
+//        }
+//    }
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,28 +82,14 @@ class TodayListViewController: UIViewController {
             case ViewControllerState.posting.rawValue:
                 detailVC.didAddHandler = { [weak self] (data) in
                     guard let `self` = self else { return }
-                    // 카테고리 제목끼리 같은 경우
-                    if self.datasource.contains(where: { (section) -> Bool in
-                        return section.title == data.title
-                    }){
-                        self.datasource = self.datasource.map({ (item) in
-                            if item.title == data.title{
-                                var item = item
-                                item.items.append(contentsOf: data.items)
-                                return item
-                            }
-                            return item
-                        })
-                    }else{ // 카테고리 제목이 다른 경우
-                        self.datasource.append(data)// 전체 데이터 추가
-                    }
+                    self.didAddDataSource(data)
                     self.tableView.reloadData()
                 }
             case ViewControllerState.editing.rawValue:
                 if let indexPath =
                     tableView.indexPath(for: sender as! CustomTableViewCell) {
-                    detailVC.itemToEdit = datasource[indexPath.section]
-                    detailVC.itemToEdit?.items = datasource[indexPath.section].items
+                    detailVC.itemsToEdit = datasource[indexPath.section]
+                    detailVC.itemsToEdit?.items = datasource[indexPath.section].items
                 }
             default:
                 return

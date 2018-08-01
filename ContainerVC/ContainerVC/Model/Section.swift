@@ -18,13 +18,14 @@ import UIKit
 //
 //}
 struct Section {
-    var title: CategoryTitle// 섹션 제목
-    var items = [DetailData]() // 데이터
-    mutating func add(_ item: DetailData) {
-        self.items.append(item)
-    }
-    init(title: CategoryTitle) {
+    var title: CategoryTitle // 섹션 제목
+    var items: [DetailData] // 데이터
+//    mutating func add(_ item: DetailData) {
+//        self.items.append(item)
+//    }
+    init(title: CategoryTitle, items: [DetailData]) {
         self.title = title
+        self.items = items
     }
 }
 //struct Category {
