@@ -37,7 +37,6 @@ class CategoryViewController: UIViewController {
         if let buttonColor = buttonColor, let buttonTitle = buttonTitle {
                 self.category?.color = buttonColor
                 self.didAddHandler?(buttonColor,buttonTitle)
-                print("color:\(buttonColor)")
         }
         self.navigationController?.popViewController(animated: false)
     }

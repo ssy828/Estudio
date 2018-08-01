@@ -48,7 +48,7 @@ struct Section {
 enum CategoryTitle: String {
     case food = "식비"
     case transportation = "교통비"
-    case communication = "통신비"
+    case communication = "통신"
     case saving = "저축"
     case dailySupplies = "생활용품"
     case medicalCare = "의료"

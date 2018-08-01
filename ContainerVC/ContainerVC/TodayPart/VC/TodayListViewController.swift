@@ -72,17 +72,14 @@ class TodayListViewController: UIViewController {
                     if self.datasource.contains(where: { (section) -> Bool in
                         return section.title == data.title
                     }){
-                        // 수정하기 -> 새로운 타이틀이 연속으로 들어오면 앞에 내용을 지움.
-                        self.datasource =  self.datasource.filter({
-                            // 카테고리 타이틀끼리 같으면 필터링해주고
-                            $0.title == data.title
-                        }).map({ (items) in // items가 상수이므로
-                            var items = items // 변수로 변경
-                            items.items.append(contentsOf: data.items)
-                            return items // 새롭게 들어온 데이터(아이템)을 만들어진 곳(섹션)에 넣어줌
+                        self.datasource = self.datasource.map({ (item) in
+                            if item.title == data.title{
+                                var item = item
+                                item.items.append(contentsOf: data.items)
+                                return item
+                            }
+                            return item
                         })
-                        NSLog("\(self.datasource)")
-                        
                     }else{ // 카테고리 제목이 다른 경우
                         self.datasource.append(data)// 전체 데이터 추가
                     }
