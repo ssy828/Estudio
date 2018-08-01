@@ -39,8 +39,8 @@ class PostTableViewController: UITableViewController {
 //        guard let date = self.dateLB.text else { return }
         guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         if let sectionTitle = CategoryTitle(rawValue: categoryTitle){
-        let item = DetailData(content: content, amount: amount, color:categoryColor)
-        let section = Section(title: sectionTitle, items: [item])
+        let item = DetailData(content: content, amount: amount)
+        let section = Section(title: sectionTitle, items: [item], color: categoryColor)
         self.didAddHandler?(section)
         }
        self.dismiss(animated: false, completion: nil)
@@ -83,7 +83,6 @@ class PostTableViewController: UITableViewController {
         self.didChangeDate() // 이 부분을 넣어야 바로바로 날짜 레이블이 갱신됨
         self.toggleDatePicker() // 데이트피커를 눌렀을때마다 실행되게끔
         
-    
         // 수정할 경우
         if let section = self.itemsToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
@@ -92,9 +91,9 @@ class PostTableViewController: UITableViewController {
                 print("!!!!!!!\(item)")
                 self.contentTF.text = item.content
                 self.allowanceTF.text = item.amount
-                self.categoryColorView.backgroundColor = item.color
             }
             self.categoryLB.text = section.title.rawValue
+            self.categoryColorView.backgroundColor = section.color
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -108,7 +107,6 @@ class PostTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // 필요함: 이유는...
         self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
-
     }
     
     //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

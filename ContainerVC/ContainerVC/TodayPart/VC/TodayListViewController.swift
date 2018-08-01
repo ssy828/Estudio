@@ -130,7 +130,7 @@ extension TodayListViewController: UITableViewDataSource {
         let headerView =
             tableView.dequeueReusableHeaderFooterView(withIdentifier: CustomHeaderView.identifier) as! CustomHeaderView
         headerView.categoryTitleLabel.text = datasource[section].title.rawValue
-        headerView.openCloseButton.tag = section // 섹션을 버튼 태그에 넣음
+        headerView.categoryTitleLabel.backgroundColor = datasource[section].color
         headerView.delegate = self // 델리게이튼 패턴 사용시 무조건 필요!!
         return headerView
     }

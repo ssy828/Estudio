@@ -15,8 +15,7 @@ class CategoryViewController: UIViewController {
         return String(describing: self)
     }
     private var isClicked: Bool = true // 버튼 눌렀을 경우
-    public var didAddHandler: ((UIColor?,String?) -> Void)? // 버튼 색과 텍스트필드 입력한 값 넘겨줄 클로저
-    private var category: DetailData?
+    public var didAddHandler: ((UIColor?,String?) -> Void)? // 버튼 색과 버튼 타이트 값 넘겨줄 클로저
     private var section: Section?
     private var buttonColor: UIColor?
     private var buttonTitle: String?
@@ -35,7 +34,7 @@ class CategoryViewController: UIViewController {
     
     @IBAction func didTapSaveButton(_ sender: UIBarButtonItem) {
         if let buttonColor = buttonColor, let buttonTitle = buttonTitle {
-                self.category?.color = buttonColor
+                self.section?.color = buttonColor
                 self.didAddHandler?(buttonColor,buttonTitle)
         }
         self.navigationController?.popViewController(animated: false)
