@@ -13,13 +13,6 @@ class TodayListViewController: UIViewController {
     enum ViewControllerState: String {
         case editing = "Editing"
         case posting = "Posting"
-        
-        //        var controller: UIViewController{
-        //            switch self {
-        //            case .editing ,.posting:
-        //                return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PostTableViewController.identifier) as! PostTableViewController
-        //            }
-        //        }
     }
     
     // MARK: - properties
@@ -89,6 +82,7 @@ class TodayListViewController: UIViewController {
                 if let indexPath =
                     tableView.indexPath(for: sender as! CustomTableViewCell) {
                     detailVC.itemToEdit = datasource[indexPath.section]
+                    detailVC.itemToEdit?.items = datasource[indexPath.section].items
                 }
             default:
                 return

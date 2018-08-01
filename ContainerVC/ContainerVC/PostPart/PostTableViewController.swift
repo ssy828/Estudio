@@ -90,13 +90,12 @@ class PostTableViewController: UITableViewController {
         // 수정할 경우
         if let item = self.itemToEdit {
             title = "수정" // 내비게이션 바 타이틀 수정
-            print("\(items)")
+            print("111111items:\(items)")
             for data in item.items {
                 print("!!!!!!!\(data)")
                 self.contentTF.text = data.content
                 self.allowanceTF.text = data.amount
                 self.categoryColorView.backgroundColor = data.color
-                
             }
             self.categoryLB.text = item.title.rawValue
         }
