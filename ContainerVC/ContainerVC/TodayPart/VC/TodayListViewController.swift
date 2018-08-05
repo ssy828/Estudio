@@ -43,12 +43,6 @@ class TodayListViewController: UIViewController {
             self.datasource.append(data) // 전체 데이터 추가
         }
     }
-//    func t(editingVC: PostTableViewController,sender: Any?) {
-//        if let indexPath = tableView.indexPath(for: sender as! CustomTableViewCell) {
-//            editingVC.itemsToEdit = self.datasource[indexPath.section]
-//            editingVC.itemsToEdit?.items = self.datasource[indexPath.section].items
-//        }
-//    }
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

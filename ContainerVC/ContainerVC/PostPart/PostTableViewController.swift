@@ -36,16 +36,16 @@ class PostTableViewController: UITableViewController {
         guard let categoryTitle = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
-//        guard let date = self.dateLB.text else { return }
+        //        guard let date = self.dateLB.text else { return }
         guard let categoryColor = self.categoryColorView.backgroundColor else { return }
         if let sectionTitle = CategoryTitle(rawValue: categoryTitle){
-        let item = DetailData(content: content, amount: amount)
-        let section = Section(title: sectionTitle, items: [item], color: categoryColor)
-        self.didAddHandler?(section)
+            let item = DetailData(content: content, amount: amount)
+            let section = Section(title: sectionTitle, items: [item], color: categoryColor)
+            self.didAddHandler?(section)
         }
-       self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
-
+    
     @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
     }
@@ -135,34 +135,23 @@ class PostTableViewController: UITableViewController {
      */
     
     
-    
-    //         // MARK: - Navigation
-    //         // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //         // Get the new view controller using segue.destinationViewController.
-    //         // Pass the selected object to the new view controller.
-    //            if let destination = segue.destination as? CategoryViewController {
-    //                destination.didAddHandler = { buttonColor in
-    //                    self.itemsToEdit?.color = buttonColor
-    //                }
-    //            }
-    //         }
-    
+  /*
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+ */
     // MARK: didSelectRowAt
     // 이 메소드만으로는 datePicker 사라지지 않음 -> heightForRowAt에서 각각의 테이블 행의 높이를 제공해야한다
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
-        case (1,1):
+        case (1,2):
             self.toggleDatePicker()
         case (1,0):
-            let categoryVC = storyboard?.instantiateViewController(withIdentifier: CategoryViewController.identifier) as! CategoryViewController
-            categoryVC.didAddHandler = { [weak self] (color,title) in
-                guard let `self` = self else { return }
-                self.categoryColorView.backgroundColor = color
-                self.categoryLB.text = title
-            }
-            self.navigationController?.pushViewController(categoryVC, animated: false)
             self.tableView.reloadData() // 데이터 수정에 대한 반응
         default:
             break
@@ -171,7 +160,7 @@ class PostTableViewController: UITableViewController {
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView,
                             heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerIsHidden && indexPath.section == 1 && indexPath.row == 2 {
+        if datePickerIsHidden && indexPath.section == 1 && indexPath.row == 3 {
             return 0 // 아예 이 행의 높이를 0으로 해야 눈에서 사라지는 효과
             // 왜 사라질때 표시가 될까??
         }else{
