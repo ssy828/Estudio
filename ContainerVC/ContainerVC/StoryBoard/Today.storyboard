@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -187,39 +186,8 @@
                             </tableViewSection>
                             <tableViewSection id="tBy-Ke-vOg">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9AN-c2-UeL">
-                                        <rect key="frame" x="0.0" y="161" width="375" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9AN-c2-UeL" id="hN8-cq-AaG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="분류" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dX6-mg-BWi">
-                                                    <rect key="frame" x="15" y="0.0" width="29.5" height="44.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="KAa-c6-lhV">
-                                                    <rect key="frame" x="322.5" y="0.0" width="44.5" height="44.5"/>
-                                                    <color key="backgroundColor" red="0.99865251779999997" green="0.7113095773" blue="0.67999213049999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="KAa-c6-lhV" secondAttribute="height" multiplier="1:1" id="5pH-0c-tOx"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="KAa-c6-lhV" secondAttribute="trailing" constant="8" id="3ur-WG-C4r"/>
-                                                <constraint firstItem="dX6-mg-BWi" firstAttribute="top" secondItem="hN8-cq-AaG" secondAttribute="top" id="EPQ-0h-inm"/>
-                                                <constraint firstItem="dX6-mg-BWi" firstAttribute="leading" secondItem="hN8-cq-AaG" secondAttribute="leading" constant="15" id="HaH-OC-K2g"/>
-                                                <constraint firstItem="KAa-c6-lhV" firstAttribute="top" secondItem="hN8-cq-AaG" secondAttribute="top" id="Ryw-dd-5ol"/>
-                                                <constraint firstItem="KAa-c6-lhV" firstAttribute="height" secondItem="hN8-cq-AaG" secondAttribute="height" id="ThC-o9-IRY"/>
-                                                <constraint firstAttribute="bottom" secondItem="dX6-mg-BWi" secondAttribute="bottom" id="U8X-E4-fLQ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WKk-Qv-dj4" customClass="ColorPickerTableViewCell" customModule="ContainerVC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="206" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="161" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WKk-Qv-dj4" id="3uz-dR-SIi">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
@@ -249,7 +217,10 @@
                                                                             <constraint firstAttribute="width" constant="40" id="bNo-Wr-doy"/>
                                                                             <constraint firstAttribute="height" constant="40" id="gcG-xc-DH2"/>
                                                                         </constraints>
-                                                                        <state key="normal" title="식비"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                        <state key="normal">
+                                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
                                                                         <connections>
                                                                             <action selector="didClickColor:" destination="ph6-tu-RJv" eventType="touchUpInside" id="zCG-ue-Gbq"/>
                                                                         </connections>
@@ -280,7 +251,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="vbx-uS-V5L" detailTextLabel="dU7-Sk-lzJ" style="IBUITableViewCellStyleValue1" id="g9a-5T-0uO">
-                                        <rect key="frame" x="0.0" y="251" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="206" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9a-5T-0uO" id="Hcl-xE-Nbx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
@@ -306,7 +277,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="DatePickerTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="sCl-Z7-0Jh">
-                                        <rect key="frame" x="0.0" y="296" width="375" height="110"/>
+                                        <rect key="frame" x="0.0" y="251" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sCl-Z7-0Jh" id="Uh8-lc-wg1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
@@ -336,7 +307,7 @@
                             <tableViewSection id="Ven-zG-AeD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Kfl-xc-qPV">
-                                        <rect key="frame" x="0.0" y="442" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="397" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kfl-xc-qPV" id="xgO-Ua-Oh3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
@@ -387,8 +358,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="allowanceTF" destination="FDC-Cc-JgM" id="LUz-ej-5o0"/>
-                        <outlet property="categoryColorView" destination="KAa-c6-lhV" id="70f-MC-e4s"/>
-                        <outlet property="categoryLB" destination="dX6-mg-BWi" id="CZn-Sa-v9l"/>
                         <outlet property="contentTF" destination="QjN-z4-mTL" id="ZaO-gn-MVd"/>
                         <outlet property="dateLB" destination="dU7-Sk-lzJ" id="HIi-v2-zM9"/>
                         <outlet property="datePicker" destination="lyz-Ig-X96" id="BYx-hk-VZD"/>

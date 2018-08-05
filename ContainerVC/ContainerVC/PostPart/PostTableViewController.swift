@@ -149,7 +149,7 @@ class PostTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
-        case (1,2):
+        case (1,1):
             self.toggleDatePicker()
         case (1,0):
             self.tableView.reloadData() // 데이터 수정에 대한 반응
@@ -160,7 +160,7 @@ class PostTableViewController: UITableViewController {
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView,
                             heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerIsHidden && indexPath.section == 1 && indexPath.row == 3 {
+        if datePickerIsHidden && indexPath.section == 1 && indexPath.row == 2 {
             return 0 // 아예 이 행의 높이를 0으로 해야 눈에서 사라지는 효과
             // 왜 사라질때 표시가 될까??
         }else{

@@ -9,10 +9,19 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
+    // MARK: Properties
+    private var buttonTitle: String?
+    private var buttonColor: UIColor?
     // MARK: IBOutlet
     @IBOutlet weak var colorButton: UIButton!
     // MARK: IBAction
     @IBAction func didClickColor(_ sender: UIButton) {
-        print("Clicked!!!")
+       self.buttonColor = sender.backgroundColor
+       self.buttonTitle = sender.titleLabel?.text
+        print("\(String(describing: self.buttonTitle)),\(String(describing: self.buttonColor))")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 }

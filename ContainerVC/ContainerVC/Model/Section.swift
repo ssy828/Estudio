@@ -29,4 +29,6 @@ enum CategoryTitle: String {
     case saving = "저축"
     case dailySupplies = "생활용품"
     case medicalCare = "의료"
+    case education = "교육"
+    case shopping = "쇼핑"
 }
