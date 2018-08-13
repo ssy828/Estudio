@@ -112,9 +112,8 @@
 		CE0DF6FB20F2891B00FBF1CA /* PostPart */ = {
 			isa = PBXGroup;
 			children = (
+				CEFF9B7D2119381E00ABC9F7 /* VC */,
 				CEC1173B2116F13900B4FB2D /* View */,
-				CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */,
-				CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */,
 			);
 			path = PostPart;
 			sourceTree = "<group>";
@@ -193,6 +192,15 @@
 				CEF41BB320ABD0800097EDBB /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		CEFF9B7D2119381E00ABC9F7 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */,
+				CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

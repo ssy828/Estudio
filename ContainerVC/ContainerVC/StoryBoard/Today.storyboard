@@ -196,43 +196,39 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-Q5-QEi">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WQq-Q9-UOb">
-                                                        <size key="itemSize" width="50" height="45"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="WQq-Q9-UOb">
+                                                        <size key="itemSize" width="50" height="44"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CollectionCell" reuseIdentifier="CollectionCell" id="ph6-tu-RJv" customClass="CustomCollectionViewCell" customModule="ContainerVC" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="-0.5" width="50" height="45"/>
+                                                            <rect key="frame" x="0.0" y="0.5" width="50" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="45"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="AAY-f7-dU8">
-                                                                        <rect key="frame" x="5" y="3" width="40" height="40"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생활용품" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1n-cC-c0x">
+                                                                        <rect key="frame" x="0.0" y="-3.5" width="50" height="50"/>
                                                                         <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="40" id="bNo-Wr-doy"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="gcG-xc-DH2"/>
+                                                                            <constraint firstAttribute="width" constant="50" id="3cO-Jg-f2y"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="kVZ-V5-3Ar"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                                        <state key="normal">
-                                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
-                                                                        <connections>
-                                                                            <action selector="didClickColor:" destination="ph6-tu-RJv" eventType="touchUpInside" id="zCG-ue-Gbq"/>
-                                                                        </connections>
-                                                                    </button>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstItem="AAY-f7-dU8" firstAttribute="centerY" secondItem="ph6-tu-RJv" secondAttribute="centerY" id="bqt-je-Qj6"/>
-                                                                <constraint firstItem="AAY-f7-dU8" firstAttribute="centerX" secondItem="ph6-tu-RJv" secondAttribute="centerX" id="iCp-R3-fAh"/>
+                                                                <constraint firstItem="D1n-cC-c0x" firstAttribute="centerX" secondItem="ph6-tu-RJv" secondAttribute="centerX" id="Bej-6Y-hGu"/>
+                                                                <constraint firstItem="D1n-cC-c0x" firstAttribute="centerY" secondItem="ph6-tu-RJv" secondAttribute="centerY" id="Cdt-Ci-W5d"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="colorButton" destination="AAY-f7-dU8" id="b57-Sd-jtX"/>
+                                                                <outlet property="colorLabel" destination="D1n-cC-c0x" id="zsI-hc-sCV"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>

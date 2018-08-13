@@ -16,11 +16,11 @@ class PostTableViewController: UITableViewController {
     private var datePickerIsHidden: Bool = false
     public var didAddHandler: ((Section) -> Void)? // 클로저를 통해서 데이터 교환
     public var itemsToEdit: Section?
+    var categoryTitle: String?
+    var categoryColor: UIColor?
     // MARK: IBOutlet
     @IBOutlet weak var contentTF: UITextField! // 내용
     @IBOutlet weak var allowanceTF: UITextField! // 금액
-    @IBOutlet weak var categoryLB: UILabel! // 분류 타이틀
-    @IBOutlet weak var categoryColorView: UIView! // 분류 색상
     @IBOutlet weak var dateLB: UILabel! // 날짜
     @IBOutlet weak var datePicker: UIDatePicker! // 날짜 선택
     @IBOutlet weak var memoTextView: UITextView! // 메모
@@ -33,16 +33,13 @@ class PostTableViewController: UITableViewController {
     }
     // done 버튼 눌렀을 경우
     @IBAction func didClickDoneButton(_ sender: UIBarButtonItem) {
-        guard let categoryTitle = self.categoryLB.text else { return }
         guard let content = self.contentTF.text else { return }
         guard let amount = self.allowanceTF.text else { return }
-        //        guard let date = self.dateLB.text else { return }
-        guard let categoryColor = self.categoryColorView.backgroundColor else { return }
-        if let sectionTitle = CategoryTitle(rawValue: categoryTitle){
-            let item = DetailData(content: content, amount: amount)
-            let section = Section(title: sectionTitle, items: [item], color: categoryColor)
-            self.didAddHandler?(section)
-        }
+        //        if let sectionTitle = CategoryTitle(rawValue: self.categoryTitle){
+        //            let item = DetailData(content: content, amount: amount)
+        //            let section = Section(title: sectionTitle, items: [item], color: self.category)
+        //            self.didAddHandler?(section)
+        //        }
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -92,8 +89,7 @@ class PostTableViewController: UITableViewController {
                 self.contentTF.text = item.content
                 self.allowanceTF.text = item.amount
             }
-            self.categoryLB.text = section.title.rawValue
-            self.categoryColorView.backgroundColor = section.color
+            self.categoryTitle = section.title.rawValue
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -135,15 +131,15 @@ class PostTableViewController: UITableViewController {
      */
     
     
-  /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
- */
+    /*
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     // MARK: didSelectRowAt
     // 이 메소드만으로는 datePicker 사라지지 않음 -> heightForRowAt에서 각각의 테이블 행의 높이를 제공해야한다
     override func tableView(_ tableView: UITableView,
@@ -168,6 +164,7 @@ class PostTableViewController: UITableViewController {
         }
     }
 }
+
 // MARK: - UITextFieldDelegate
 extension PostTableViewController: UITextFieldDelegate {
     // MARK: shouldChangeCharactersIn

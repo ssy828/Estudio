@@ -38,12 +38,16 @@ extension ColorPickerTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let collectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! CustomCollectionViewCell
-        collectionCell.colorButton.backgroundColor = self.colorPickerArray[indexPath.item]
-        collectionCell.colorButton.setTitle(self.tileArray[indexPath.item], for: .normal)
-        // 왜 버튼 타이틀레이블로 하면 안나오고
-        // setTitle로 하면 나올까??
+        collectionCell.colorLabel.backgroundColor = self.colorPickerArray[indexPath.item]
+        collectionCell.colorLabel.text = self.tileArray[indexPath.item]
         return collectionCell
     }
 }
-// MARK: - UICollectionViewDelegate
-extension ColorPickerTableViewCell: UICollectionViewDelegate { }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension ColorPickerTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("\(indexPath.item)")
+    }
+    
+}

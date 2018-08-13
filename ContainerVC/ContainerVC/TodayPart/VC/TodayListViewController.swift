@@ -141,9 +141,6 @@ extension TodayListViewController: UITableViewDataSource {
 extension TodayListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        //                let index = indexPath.row
-        //                let item = category[index]
-        //                postTableView.didAddHandler?(item)
         tableView.deselectRow(at: indexPath, animated: false) // 선택한 줄에서 선택 표시 지움
     }
 }

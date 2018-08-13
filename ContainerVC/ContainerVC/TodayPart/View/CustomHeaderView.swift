@@ -8,7 +8,7 @@
 
 import UIKit
 // 클래스 전용 프로토콜
-protocol CustomHeaderViewDelegate:class {
+protocol CustomHeaderViewDelegate: class {
     func toggleSection(_ button: UIButton)
 }
 

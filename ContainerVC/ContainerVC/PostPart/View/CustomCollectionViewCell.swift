@@ -8,19 +8,15 @@
 
 import UIKit
 
+
 class CustomCollectionViewCell: UICollectionViewCell {
     // MARK: Properties
     private var buttonTitle: String?
     private var buttonColor: UIColor?
+    public var didAddHandler: ((UIColor?,String?) -> Void)? // 버튼 색깔,타이틀 넘기기
     // MARK: IBOutlet
-    @IBOutlet weak var colorButton: UIButton!
-    // MARK: IBAction
-    @IBAction func didClickColor(_ sender: UIButton) {
-       self.buttonColor = sender.backgroundColor
-       self.buttonTitle = sender.titleLabel?.text
-        print("\(String(describing: self.buttonTitle)),\(String(describing: self.buttonColor))")
-    }
-    
+    @IBOutlet weak var colorLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
