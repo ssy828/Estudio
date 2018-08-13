@@ -69,7 +69,7 @@ class PostTableViewController: UITableViewController {
     @objc private func didPressDoneButton() {
         self.allowanceTF.resignFirstResponder()
     }
-    
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,8 +147,6 @@ class PostTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (1,1):
             self.toggleDatePicker()
-        case (1,0):
-            self.tableView.reloadData() // 데이터 수정에 대한 반응
         default:
             break
         }

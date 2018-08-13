@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-// 섹션 모델
+// 섹션 모델 // 데이터가 하나에 모두 갖고 있어야하므로 수정 예정!!!
 struct Section {
     var title: CategoryTitle // 섹션 제목
     var items: [DetailData] // 데이터
