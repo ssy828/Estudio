@@ -10,6 +10,10 @@
 		CE025C7220B25848003D4819 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE025C7120B25848003D4819 /* Section.swift */; };
 		CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */; };
 		CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */; };
+		CE1F4B03212D309500777476 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B02212D309500777476 /* ContentTableViewCell.swift */; };
+		CE1F4B05212D30A900777476 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B04212D30A900777476 /* DateTableViewCell.swift */; };
+		CE1F4B07212D30B300777476 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */; };
+		CE1F4B09212D30C800777476 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */; };
 		CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE263E8A20FEF54600FAC811 /* DetailData.swift */; };
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
@@ -17,6 +21,7 @@
 		CEC1173F2116F16E00B4FB2D /* ColorPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */; };
 		CEC2BA2120FE015800D8F296 /* CatetoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */; };
 		CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */; };
+		CEF00FEA212A9AB100C75A8B /* PostingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF00FE9212A9AB100C75A8B /* PostingTableViewController.swift */; };
 		CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */; };
 		CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */; };
 		CEF41BB020ABD07E0097EDBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BAE20ABD07E0097EDBB /* Main.storyboard */; };
@@ -32,6 +37,10 @@
 		CE025C7120B25848003D4819 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		CE1F4B02212D309500777476 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentTableViewCell.swift; path = ContainerVC/PostPart/View/ContentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		CE1F4B04212D30A900777476 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
+		CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		CE263E8A20FEF54600FAC811 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
@@ -39,6 +48,7 @@
 		CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatetoryColor.swift; sourceTree = "<group>"; };
 		CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CEF00FE9212A9AB100C75A8B /* PostingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingTableViewController.swift; sourceTree = "<group>"; };
 		CEF41BA720ABD07E0097EDBB /* ContainerVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContainerVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF41BAA20ABD07E0097EDBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF41BAC20ABD07E0097EDBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +139,11 @@
 			isa = PBXGroup;
 			children = (
 				CEC1173C2116F15600B4FB2D /* CustomCollectionViewCell.swift */,
+				CE1F4B02212D309500777476 /* ContentTableViewCell.swift */,
 				CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */,
+				CE1F4B04212D30A900777476 /* DateTableViewCell.swift */,
+				CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */,
+				CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +213,7 @@
 			children = (
 				CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */,
 				CEE5EFAD20F704EE009D78E9 /* CategoryViewController.swift */,
+				CEF00FE9212A9AB100C75A8B /* PostingTableViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -277,9 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF00FEA212A9AB100C75A8B /* PostingTableViewController.swift in Sources */,
 				CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */,
 				CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */,
+				CE1F4B05212D30A900777476 /* DateTableViewCell.swift in Sources */,
 				CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */,
+				CE1F4B07212D30B300777476 /* PriceTableViewCell.swift in Sources */,
 				CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */,
 				CEC1173F2116F16E00B4FB2D /* ColorPickerTableViewCell.swift in Sources */,
 				CE025C7220B25848003D4819 /* Section.swift in Sources */,
@@ -290,6 +308,8 @@
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
 				CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */,
 				CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */,
+				CE1F4B03212D309500777476 /* ContentTableViewCell.swift in Sources */,
+				CE1F4B09212D30C800777476 /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -105,9 +105,20 @@ class PostTableViewController: UITableViewController {
         self.contentTF.becomeFirstResponder() // 내용 텍스트 필드 최초응답자로 설정
     }
     
-    //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //
-    //    }
+    
+//        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//            switch indexPath.section {
+//            case 1:
+//                let colorCell = self.tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath) as! ColorPickerTableViewCell
+//                colorCell.didAddHandler = { (color, text) in
+//                    print("\(color)")
+//                }
+//                return colorCell
+//            default:
+//                return super.tableView(tableView, cellForRowAt: indexPath)
+//            }
+//
+//        }
     
     
     /*
@@ -203,7 +214,7 @@ extension PostTableViewController: UITextFieldDelegate {
     // 텍스트 필드의 리턴 키가 눌러졌을 때 호출
     // MARK: textFieldShouldReturn
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 컨첸츠 텍스트 필드가 최초 응답자이면 지출금액 필드로 입력으로 넘김
+        // 컨텐츠 텍스트 필드가 최초 응답자이면 지출금액 필드로 입력으로 넘김
         if contentTF.isFirstResponder{
             allowanceTF.becomeFirstResponder() // 바로 값을 입력받게 해줌
         }
