@@ -7,12 +7,20 @@
 //
 
 import UIKit
-
+//MARK: UITableViewController
 class PostingTableViewController: UITableViewController {
-
-    // MARK: IBOutlet
+    // MARK: properties
+    // 타입추론 하는데도 시간이 오래걸리니 타입을 써줄 것!
+    private var datePickerIsHidden: Bool = false
+    public var didAddHandler:((Section) -> Void)? // 클로저를 통해 데이터 넘기기
+    public var itemsToEdit: Section?
     // MARK: IBAction
-    @IBAction func didClickUndoButton(_ sender: UIBarButtonItem) {
+    @IBAction func didClickUndo(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    // 확인 눌렀을 경우
+    @IBAction func didClickDone(_ sender: UIBarButtonItem) {
+    
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -60,14 +68,33 @@ class PostingTableViewController: UITableViewController {
         case (0,1):
             let priceCell = tableView.dequeueReusableCell(withIdentifier: "PriceCell", for: indexPath) as! PriceTableViewCell
             return priceCell
+        case (1,0):
+            let colorPickerCell = tableView.dequeueReusableCell(withIdentifier: "ColorPickerCell", for: indexPath) as! ColorPickerTableViewCell
+            return colorPickerCell
         case (1,1):
+            let dateDetailCell = tableView.dequeueReusableCell(withIdentifier: "DateCell")
+            return dateDetailCell!
+        case (1,2):
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "DatePickerCell", for: indexPath) as! DatePickerTableViewCell
             return datePickerCell
+        case (2,0):
+            let textviewCell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as! TextViewTableViewCell
+            return textviewCell
         default:
             return UITableViewCell()
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section,indexPath.row) {
+        case (1,2),(2,0):
+            return 100
+//        case (2,0):
+//            return 100
+        default:
+            return 45
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

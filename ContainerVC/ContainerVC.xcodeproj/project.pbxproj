@@ -17,6 +17,7 @@
 		CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE263E8A20FEF54600FAC811 /* DetailData.swift */; };
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
+		CE771BBB2133D5D300DE0C0D /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE771BBA2133D5D300DE0C0D /* TextViewTableViewCell.swift */; };
 		CEC1173D2116F15600B4FB2D /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1173C2116F15600B4FB2D /* CustomCollectionViewCell.swift */; };
 		CEC1173F2116F16E00B4FB2D /* ColorPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */; };
 		CEC2BA2120FE015800D8F296 /* CatetoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */; };
@@ -44,6 +45,7 @@
 		CE263E8A20FEF54600FAC811 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
+		CE771BBA2133D5D300DE0C0D /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		CEC1173C2116F15600B4FB2D /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerTableViewCell.swift; sourceTree = "<group>"; };
 		CEC2BA2020FE015800D8F296 /* CatetoryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatetoryColor.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				CE1F4B04212D30A900777476 /* DateTableViewCell.swift */,
 				CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */,
 				CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */,
+				CE771BBA2133D5D300DE0C0D /* TextViewTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				CEC1173D2116F15600B4FB2D /* CustomCollectionViewCell.swift in Sources */,
 				CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */,
 				CEF41BAB20ABD07E0097EDBB /* AppDelegate.swift in Sources */,
+				CE771BBB2133D5D300DE0C0D /* TextViewTableViewCell.swift in Sources */,
 				CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */,
 				CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */,
 				CE1F4B03212D309500777476 /* ContentTableViewCell.swift in Sources */,
