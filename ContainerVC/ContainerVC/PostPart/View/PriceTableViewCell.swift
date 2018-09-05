@@ -29,7 +29,7 @@ class PriceTableViewCell: UITableViewCell {
         self.priceTextField.resignFirstResponder()
     }
 
-    // MARK: awakeFromNib
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

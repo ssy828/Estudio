@@ -14,13 +14,15 @@ class PostingTableViewController: UITableViewController {
     private var datePickerIsHidden: Bool = false
     public var didAddHandler:((Section) -> Void)? // 클로저를 통해 데이터 넘기기
     public var itemsToEdit: Section?
+    public var colorText: String?
+    public var color: UIColor?
     // MARK: IBAction
     @IBAction func didClickUndo(_ sender: UIBarButtonItem) {
         self.dismiss(animated: false, completion: nil)
     }
     // 확인 눌렀을 경우
     @IBAction func didClickDone(_ sender: UIBarButtonItem) {
-    
+        
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -70,6 +72,10 @@ class PostingTableViewController: UITableViewController {
             return priceCell
         case (1,0):
             let colorPickerCell = tableView.dequeueReusableCell(withIdentifier: "ColorPickerCell", for: indexPath) as! ColorPickerTableViewCell
+            colorPickerCell.didAddHandler = { (color,text) in
+                self.color = color
+                self.colorText = text
+            }
             return colorPickerCell
         case (1,1):
             let dateDetailCell = tableView.dequeueReusableCell(withIdentifier: "DateCell")
