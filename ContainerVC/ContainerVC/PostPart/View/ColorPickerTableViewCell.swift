@@ -12,6 +12,7 @@ class ColorPickerTableViewCell: UITableViewCell {
     private var colorPickerArray = [UIColor?]()
     private var titleArray = [String?]()
     public var didAddHandler: ((UIColor?,String?) -> Void)?
+    
     // MARK: IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -24,7 +25,6 @@ class ColorPickerTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     
@@ -51,7 +51,6 @@ extension ColorPickerTableViewCell: UICollectionViewDelegateFlowLayout {
         let color = self.colorPickerArray[indexPathItem]
         let text = self.titleArray[indexPathItem]
         self.didAddHandler?(color,text)
-        print("\(color),\(text)")
     }
     
 }

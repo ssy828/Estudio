@@ -169,7 +169,7 @@
                                     <outlet property="priceTextField" destination="FDC-Cc-JgM" id="Yv8-HW-3Wm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT" customClass="DateTableViewCell" customModule="ContainerVC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="145.5" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4xV-3K-PLT" id="CZ7-gu-M3I">
@@ -193,18 +193,22 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" rowHeight="110" id="ig0-3e-KAT" customClass="DatePickerTableViewCell" customModule="ContainerVC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" rowHeight="110" id="ig0-3e-KAT" customClass="DateTableViewCell" customModule="ContainerVC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="190.5" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ig0-3e-KAT" id="Zzc-kL-v7r">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-yI-F4W">
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-yI-F4W">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <date key="date" timeIntervalSinceReferenceDate="556608746.29272497">
                                                 <!--2018-08-22 05:32:26 +0000-->
                                             </date>
+                                            <locale key="locale" localeIdentifier="ko_KR"/>
+                                            <connections>
+                                                <action selector="didPickDate:" destination="ig0-3e-KAT" eventType="valueChanged" id="wBE-i2-ayr"/>
+                                            </connections>
                                         </datePicker>
                                     </subviews>
                                     <constraints>
@@ -215,7 +219,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="datePicker" destination="aHq-yI-F4W" id="Zn8-aE-TMM"/>
+                                    <outlet property="datePicker" destination="aHq-yI-F4W" id="c5g-i3-5n5"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorPickerCell" rowHeight="55" id="aw7-YV-pba" customClass="ColorPickerTableViewCell" customModule="ContainerVC" customModuleProvider="target">
