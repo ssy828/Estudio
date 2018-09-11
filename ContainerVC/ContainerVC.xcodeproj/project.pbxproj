@@ -11,9 +11,7 @@
 		CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */; };
 		CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */; };
 		CE1F4B03212D309500777476 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B02212D309500777476 /* ContentTableViewCell.swift */; };
-		CE1F4B05212D30A900777476 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B04212D30A900777476 /* DateTableViewCell.swift */; };
 		CE1F4B07212D30B300777476 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */; };
-		CE1F4B09212D30C800777476 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */; };
 		CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE263E8A20FEF54600FAC811 /* DetailData.swift */; };
 		CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */; };
 		CE3D947520B18BDD00AC4B0A /* CustomHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */; };
@@ -32,6 +30,7 @@
 		CEF41BBF20ABD3090097EDBB /* Yesterday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */; };
 		CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */; };
 		CEF41BC320ABD45F0097EDBB /* YesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */; };
+		CEF59D10214645370085A525 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF59D0F214645370085A525 /* DateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +38,7 @@
 		CE0DF6FC20F2895A00FBF1CA /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		CE192ADC20AEE512002A98B9 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CE1F4B02212D309500777476 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentTableViewCell.swift; path = ContainerVC/PostPart/View/ContentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		CE1F4B04212D30A900777476 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
-		CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		CE263E8A20FEF54600FAC811 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
 		CE3D947220B18BCC00AC4B0A /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		CE3D947420B18BDD00AC4B0A /* CustomHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderView.xib; sourceTree = "<group>"; };
@@ -62,6 +59,7 @@
 		CEF41BBE20ABD3090097EDBB /* Yesterday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Yesterday.storyboard; sourceTree = "<group>"; };
 		CEF41BC020ABD4440097EDBB /* TodayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayListViewController.swift; sourceTree = "<group>"; };
 		CEF41BC220ABD45F0097EDBB /* YesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesterdayViewController.swift; sourceTree = "<group>"; };
+		CEF59D0F214645370085A525 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +141,8 @@
 				CEC1173C2116F15600B4FB2D /* CustomCollectionViewCell.swift */,
 				CE1F4B02212D309500777476 /* ContentTableViewCell.swift */,
 				CEC1173E2116F16E00B4FB2D /* ColorPickerTableViewCell.swift */,
-				CE1F4B04212D30A900777476 /* DateTableViewCell.swift */,
+				CEF59D0F214645370085A525 /* DateTableViewCell.swift */,
 				CE1F4B06212D30B300777476 /* PriceTableViewCell.swift */,
-				CE1F4B08212D30C800777476 /* DatePickerTableViewCell.swift */,
 				CE771BBA2133D5D300DE0C0D /* TextViewTableViewCell.swift */,
 			);
 			path = View;
@@ -298,12 +295,12 @@
 				CEF00FEA212A9AB100C75A8B /* PostingTableViewController.swift in Sources */,
 				CEF41BAD20ABD07E0097EDBB /* MainViewController.swift in Sources */,
 				CE263E8B20FEF54600FAC811 /* DetailData.swift in Sources */,
-				CE1F4B05212D30A900777476 /* DateTableViewCell.swift in Sources */,
 				CE3D947320B18BCC00AC4B0A /* CustomHeaderView.swift in Sources */,
 				CE1F4B07212D30B300777476 /* PriceTableViewCell.swift in Sources */,
 				CE192ADD20AEE512002A98B9 /* CustomTableViewCell.swift in Sources */,
 				CEC1173F2116F16E00B4FB2D /* ColorPickerTableViewCell.swift in Sources */,
 				CE025C7220B25848003D4819 /* Section.swift in Sources */,
+				CEF59D10214645370085A525 /* DateTableViewCell.swift in Sources */,
 				CE0DF6FD20F2895A00FBF1CA /* PostTableViewController.swift in Sources */,
 				CEC2BA2120FE015800D8F296 /* CatetoryColor.swift in Sources */,
 				CEC1173D2116F15600B4FB2D /* CustomCollectionViewCell.swift in Sources */,
@@ -313,7 +310,6 @@
 				CEF41BC120ABD4440097EDBB /* TodayListViewController.swift in Sources */,
 				CEE5EFAE20F704EE009D78E9 /* CategoryViewController.swift in Sources */,
 				CE1F4B03212D309500777476 /* ContentTableViewCell.swift in Sources */,
-				CE1F4B09212D30C800777476 /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
