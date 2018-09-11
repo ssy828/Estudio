@@ -22,7 +22,6 @@ class PostingTableViewController: UITableViewController {
     }
     // 확인 눌렀을 경우
     @IBAction func didClickDone(_ sender: UIBarButtonItem) {
-        
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -53,12 +52,10 @@ class PostingTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 3
     }
     // MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
             return 2
@@ -104,23 +101,30 @@ class PostingTableViewController: UITableViewController {
     }
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch (indexPath.section,indexPath.row) {
-        case (1,2),(2,0):
-            return 100
-        default:
-            return super.tableView(tableView, heightForRowAt: indexPath)
+        let section = indexPath.section
+        let row = indexPath.row
+        if isHiddenDatePicker && section == 1 && row == 2 {
+            return 0
+        }else {
+            switch (section, row) {
+            case (1,2),(2,0):
+                return 100
+            default:
+                return super.tableView(tableView, heightForRowAt: indexPath)
+            }
         }
     }
-
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch (indexPath.section, indexPath.row) {
-//        case (1,1):
-//            self.toggleDatepicker()
-//        default:
-//            break
-//        }
-//    }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        case (1,1):
+            print("1,1")
+            self.toggleDatepicker()
+        default:
+            break
+        }
+    }
+    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
