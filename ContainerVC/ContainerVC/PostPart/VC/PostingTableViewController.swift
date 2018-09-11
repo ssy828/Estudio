@@ -11,7 +11,7 @@ import UIKit
 class PostingTableViewController: UITableViewController {
     // MARK: properties
     // 타입추론 하는데도 시간이 오래걸리니 타입을 써줄 것!
-    private var datePickerIsHidden: Bool = false
+    private var isHiddenDatePicker: Bool = false
     public var didAddHandler:((Section) -> Void)? // 클로저를 통해 데이터 넘기기
     public var itemsToEdit: Section?
     public var colorText: String?
@@ -26,10 +26,18 @@ class PostingTableViewController: UITableViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
+    // MARK: - Methods
+    func toggleDatepicker() {
+        self.isHiddenDatePicker = !isHiddenDatePicker
+        // 현재 데이트 피커의 상태를 넣어줌
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.toggleDatepicker()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -95,13 +103,19 @@ class PostingTableViewController: UITableViewController {
         switch (indexPath.section,indexPath.row) {
         case (1,2),(2,0):
             return 100
-//        case (2,0):
-//            return 100
         default:
-            return 45
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
 
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        switch (indexPath.section, indexPath.row) {
+//        case (1,1):
+//            self.toggleDatepicker()
+//        default:
+//            break
+//        }
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
