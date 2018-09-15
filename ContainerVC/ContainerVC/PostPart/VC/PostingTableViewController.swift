@@ -14,7 +14,10 @@ class PostingTableViewController: UITableViewController {
     private var isHiddenDatePicker: Bool = false
     public var didAddHandler:((Section) -> Void)? // 클로저를 통해 데이터 넘기기
     public var itemsToEdit: Section?
+    public var items: DetailData?
     public var colorText: String?
+    public var amount: String?
+    public var contents: String?
     public var color: UIColor?
     // MARK: IBAction
     @IBAction func didClickUndo(_ sender: UIBarButtonItem) {
@@ -22,6 +25,12 @@ class PostingTableViewController: UITableViewController {
     }
     // 확인 눌렀을 경우
     @IBAction func didClickDone(_ sender: UIBarButtonItem) {
+//        guard let contents = self.contents, let amount = self.amount else { return }
+//        if let categoryTitle = colorText, let title = CategoryTitle(rawValue: categoryTitle) {
+//            let item = DetailData(content: contents, amount: amount)
+//            let section = Section(title: title, items: [item], color: color!)
+//            self.didAddHandler?(section)
+//        }
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -71,9 +80,19 @@ class PostingTableViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0,0):
             let contentsCell = tableView.dequeueReusableCell(withIdentifier: "ContentsCell", for: indexPath) as! ContentTableViewCell
+//            contentsCell.didAddHandler = { [weak self] (text) in
+//                guard let `self` = self else {return}
+//                self.contents = text
+//                print("\(self.contents)")
+//            }
             return contentsCell
         case (0,1):
             let priceCell = tableView.dequeueReusableCell(withIdentifier: "PriceCell", for: indexPath) as! PriceTableViewCell
+//            self.amount = priceCell.priceTextField.text
+//            priceCell.didAddHandler = { [weak self] (text) in
+//                guard let `self` = self else {return}
+//                self.amount = text
+//            }
             return priceCell
         case (1,0):
             let colorPickerCell = tableView.dequeueReusableCell(withIdentifier: "ColorPickerCell", for: indexPath) as! ColorPickerTableViewCell
@@ -118,7 +137,6 @@ class PostingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (1,1):
-            print("1,1")
             self.toggleDatepicker()
         default:
             break
@@ -174,6 +192,10 @@ class PostingTableViewController: UITableViewController {
 
 // MARK: - DateTableViewCellDelegate
 extension PostingTableViewController: DateTableViewCellDelegate {
+//    func pass(date: String, dateCell: UITableViewCell) {
+//        dateCell.detailTextLabel?.text = date
+//    }
+  
     func pass(date: String) {
         // To input date in detailTextLabel of cell
         let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 1))

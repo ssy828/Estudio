@@ -131,6 +131,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                            <connections>
+                                                <action selector="didChange:" destination="T64-ME-oco" eventType="valueChanged" id="Ymj-EC-pK3"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -156,6 +159,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                            <connections>
+                                                <action selector="didChange:" destination="Bve-mj-CrG" eventType="valueChanged" id="jyf-p4-Jsc"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -581,6 +587,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FqI-YT-epu"/>
+        <segue reference="W2k-K9-gWy"/>
     </inferredMetricsTieBreakers>
 </document>

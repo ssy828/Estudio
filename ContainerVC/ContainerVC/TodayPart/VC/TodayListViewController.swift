@@ -71,7 +71,7 @@ class TodayListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 중간에 내비게이션이 있는 상태이므로
         if let navigationVC = segue.destination as? UINavigationController,
-            let detailVC = navigationVC.viewControllers.first as? PostTableViewController {
+            let detailVC = navigationVC.viewControllers.first as? PostingTableViewController {
             switch segue.identifier {
             case ViewControllerState.posting.rawValue:
                 detailVC.didAddHandler = { [weak self] (data) in

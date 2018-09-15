@@ -9,9 +9,9 @@
 import UIKit
 // MARK: - DateTableViewCellDelegate
 protocol DateTableViewCellDelegate: class {
+//    func pass(date: String, dateCell: UITableViewCell)
     func pass(date: String)
 }
-
 class DateTableViewCell: UITableViewCell {
 
     // MARK: properties
@@ -23,11 +23,13 @@ class DateTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    // MARK: IBAction
     @IBAction func didPickDate(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "MM월dd일 EEEE"
         let currentDate = dateFormatter.string(from: sender.date)
+//        self.delegate?.pass(date: currentDate, dateCell: self)
         self.delegate?.pass(date: currentDate)
     }
 

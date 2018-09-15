@@ -9,8 +9,21 @@
 import UIKit
 
 class PriceTableViewCell: UITableViewCell {
+    // MARK: properties
+    internal var didAddHandler: ((String?) -> Void)?
+//    internal var data: DetailData? {
+//        didSet {
+//
+//        }
+//    }
     // MARK: IBOutlet
     @IBOutlet weak var priceTextField: UITextField!
+    
+    // MARK: IBAction
+    @IBAction func didChange(_ sender: UITextField) {
+        // 텍스트필드를 넘기는 법 -> 이렇게 해도 되나?
+        self.didAddHandler?(sender.text)
+    }
     
     // MARK: - Methods
     // MARK: addDoneButtonOnNumberPad
@@ -36,6 +49,7 @@ class PriceTableViewCell: UITableViewCell {
         self.priceTextField.delegate = self
         self.addDoneButtonOnNumberPad()
     }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
