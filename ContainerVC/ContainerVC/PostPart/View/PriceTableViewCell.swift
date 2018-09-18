@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+protocol PriceTableViewCellDelegate: class {
+    func pass(price: String?)
+}
 class PriceTableViewCell: UITableViewCell {
     // MARK: properties
     internal var didAddHandler: ((String?) -> Void)?
+    weak var delegate: PriceTableViewCellDelegate?
 //    internal var data: DetailData? {
 //        didSet {
 //
@@ -24,7 +27,6 @@ class PriceTableViewCell: UITableViewCell {
         // 텍스트필드를 넘기는 법 -> 이렇게 해도 되나?
         self.didAddHandler?(sender.text)
     }
-    
     // MARK: - Methods
     // MARK: addDoneButtonOnNumberPad
     private func addDoneButtonOnNumberPad() {
@@ -41,16 +43,12 @@ class PriceTableViewCell: UITableViewCell {
     @objc private func didPressDoneButton() {
         self.priceTextField.resignFirstResponder()
     }
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.priceTextField.delegate = self
         self.addDoneButtonOnNumberPad()
     }
-
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -59,6 +57,13 @@ class PriceTableViewCell: UITableViewCell {
 }
 // MARK: - UITextFieldDelegate
 extension PriceTableViewCell: UITextFieldDelegate {
+    // MARK: textFieldDidEndEditing
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        이 메소드는 텍스트 필드가 첫 번째 응답자 상태를 종료 한 후에 호출함
+//        이 메서드를 사용하여 대리자의 상태 정보를 업데이트 가능
+//        self.didAddHandler?(textField.text)
+        self.delegate?.pass(price: self.priceTextField.text)
+    }
     // MARK: shouldChangeCharactersIn
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
