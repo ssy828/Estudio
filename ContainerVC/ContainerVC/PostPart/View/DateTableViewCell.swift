@@ -31,6 +31,14 @@ class DateTableViewCell: UITableViewCell {
         let currentDate = dateFormatter.string(from: sender.date)
 //        self.delegate?.pass(date: currentDate, dateCell: self)
         self.delegate?.pass(date: currentDate)
+        
+        // self.getTableView().reloadData()
     }
 
 }
+
+//extension Date {
+//    func toString() -> String {
+//
+//    }
+//}
