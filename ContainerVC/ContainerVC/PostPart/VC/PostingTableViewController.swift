@@ -42,6 +42,7 @@ class PostingTableViewController: UITableViewController {
         var rowCount: Int {
             get {
                 switch self {
+                    // case에 따른 개수
                 default:
                     return 1
                 }
@@ -51,15 +52,11 @@ class PostingTableViewController: UITableViewController {
 //        func getCellData() -> Any? {
 //            switch self {
 //            case .title, .price:
-//
 //                break
-//
 //            default:
 //                break
 //            }
 //        }
-        
-        
         func getCellType() -> UITableViewCell.Type {
             switch self {
             case .title, .price:
