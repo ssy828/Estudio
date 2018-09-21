@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 extension UITableView {
+    // 클래스 이름으로 설정.
     public func register(_ Class: AnyClass) {
         register(Class, forCellReuseIdentifier: String(describing:Class))
     }
-    
+    // xib으로 설정
     public func registerNibCell(_ Class: AnyClass) {
         register(UINib(nibName: String(describing:Class), bundle: nil), forCellReuseIdentifier: String(describing:Class))
     }
