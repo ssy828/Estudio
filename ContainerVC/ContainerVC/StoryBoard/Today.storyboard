@@ -175,7 +175,7 @@
                                     <outlet property="priceTextField" destination="FDC-Cc-JgM" id="Yv8-HW-3Wm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT" customClass="DateTableViewCell" customModule="ContainerVC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT">
                                 <rect key="frame" x="0.0" y="145.5" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4xV-3K-PLT" id="CZ7-gu-M3I">
@@ -199,7 +199,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" rowHeight="110" id="ig0-3e-KAT" customClass="DateTableViewCell" customModule="ContainerVC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateTableViewCell" rowHeight="110" id="ig0-3e-KAT" customClass="DateTableViewCell" customModule="ContainerVC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="190.5" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ig0-3e-KAT" id="Zzc-kL-v7r">
@@ -228,7 +228,7 @@
                                     <outlet property="datePicker" destination="aHq-yI-F4W" id="c5g-i3-5n5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorPickerCell" rowHeight="55" id="aw7-YV-pba" customClass="ColorPickerTableViewCell" customModule="ContainerVC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorPickerTableViewCell" rowHeight="55" id="aw7-YV-pba" customClass="ColorPickerTableViewCell" customModule="ContainerVC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="300.5" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aw7-YV-pba" id="6pB-gz-AaL">
@@ -290,7 +290,7 @@
                                     <outlet property="collectionView" destination="8ux-TU-sf0" id="kRl-hg-k4h"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextViewCell" rowHeight="130" id="4Zk-sh-cVn" customClass="TextViewTableViewCell" customModule="ContainerVC" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextViewTableViewCell" rowHeight="130" id="4Zk-sh-cVn" customClass="TextViewTableViewCell" customModule="ContainerVC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="355.5" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Zk-sh-cVn" id="otG-jJ-72F">
