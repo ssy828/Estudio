@@ -39,13 +39,15 @@ class PostingTableViewController: UITableViewController {
         case datePicker
         case text
         case count// 개수를 알려줌 -> extension으로 빼서 찾아보기!
-//        static var numberOfSections: Int = 3
+        //        static var numberOfSections: Int = 3
         static var numberOfSections: Int { return 3 }
         
         var rowCount: Int {
             get {
-                switch PostSection.self {
+                switch self{
                     // case에 따른 값 추가
+                    //                case .section(.firstSection):
+                //                    return 2
                 default:
                     return 1
                 }
@@ -54,14 +56,14 @@ class PostingTableViewController: UITableViewController {
         
         
         // 셀데이터를 어떻게 받을지 정의
-//        func getCellData() -> Any? {
-//            switch self {
-//            case .title, .price:
-//                break
-//            default:
-//                break
-//            }
-//        }
+        //        func getCellData() -> Any? {
+        //            switch self {
+        //            case .title, .price:
+        //                break
+        //            default:
+        //                break
+        //            }
+        //        }
         enum PostSection: Int {
             case firstSection
             case secondSection
@@ -69,14 +71,14 @@ class PostingTableViewController: UITableViewController {
             case count
         }
         
-//        func getNumberOfRowsInSection() -> Int {
-//            switch PostSection.self {
-//            case .firstSection:
-//                return 2
-//            default:
-//                return 0
-//            }
-//        }
+        //        func getNumberOfRowsInSection() -> Int {
+        //            switch PostSection.self {
+        //            case .firstSection:
+        //                return 2
+        //            default:
+        //                return 0
+        //            }
+        //        }
         
         // 셀타입
         func getCellType() -> UITableViewCell.Type {
@@ -85,7 +87,7 @@ class PostingTableViewController: UITableViewController {
                 return ContentTableViewCell.self
                 // 이방식을 사용하려면 대신 스토리보드 아이디도 클래스 이름으로 설정하기
                 // 셀아이디도 클래스이름으로 적용
-                // PriceTableViewCell
+            // PriceTableViewCell
             case .colorPicker:
                 return ColorPickerTableViewCell.self
             case .datePicker:
@@ -153,64 +155,76 @@ class PostingTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        return PostSection.count.rawValue
-        return PostItem.count.rawValue
+        //        return PostSection.count.rawValue
+        //        return PostItem.count.rawValue
+        return PostItem.numberOfSections
     }
     // MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let section = PostItem(rawValue: section) else { return 0 }
-//        print("\(section)")
-//        switch section {
-//        case .firstSection:
-//            return 2
-//        case .secondSection:
-//            return 3
-//        case .thirdSection:
-//            return 1
-//        default:
-//            return 0
-//        }
+        //        guard let section = PostItem(rawValue: section) else { return 0 }
+        //        print("\(section)")
+        //        switch section {
+        //        case .firstSection:
+        //            return 2
+        //        case .secondSection:
+        //            return 3
+        //        case .thirdSection:
+        //            return 1
+        //        default:
+        //            return 0
+        //        }
+        guard let section = PostItem.PostSection(rawValue: section) else { return 0 }
+        switch section {
+        case .firstSection:
+            return 2
+        case .secondSection:
+            return 3
+        case .thirdSection:
+            return 1
+        default:
+            return 0
+        }
     }
-  
+    
     // MARK: cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = PostSection(rawValue: indexPath.section), let row = PostItem(rawValue: indexPath.row) else {
+        print("section: \(indexPath.section)")
+        guard let section = PostItem(rawValue: indexPath.section) else {
+            return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
+        } 
+        switch section {
+        case .title:
+            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
+            cell.delegate = self
+            return cell
+        case .price:
+            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
+            cell.delegate = self
+            return cell
+        case .colorPicker:
+            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
+            cell.didAddHandler = { [weak self] (color,text) in
+                guard let `self` = self else {return}
+                self.color = color
+                self.colorText = text
+            }
+            return cell
+        case .date:
+            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
+            // cell.detailTextLabel?.text = dataSource?.date.toString()
+            return cell
+        case .datePicker:
+            let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
+            // cell.data = section.getCellData() as? DateData
+            cell.delegate = self
+            return cell
+        case .text:
+            let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
+            return cell
+        default:
             return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
         }
-        print("\(section)")
-//        switch (section, row) {
-//        case (PostSection, .title):
-//            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-//            cell.delegate = self
-//            return cell
-//        case .price:
-//            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-//            cell.delegate = self
-//            return cell
-//        case .colorPicker:
-//            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
-//            cell.didAddHandler = { [weak self] (color,text) in
-//                guard let `self` = self else {return}
-//                self.color = color
-//                self.colorText = text
-//            }
-//            return cell
-//        case .date:
-//            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-//            // cell.detailTextLabel?.text = dataSource?.date.toString()
-//            return cell
-//        case .datePicker:
-//            let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
-//            // cell.data = section.getCellData() as? DateData
-//            cell.delegate = self
-//            return cell
-//        case .text:
-//            let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
-//            return cell
-//        default:
-//            return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-//        }
-        return UITableViewCell()
+//        return UITableViewCell()
     }
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -286,17 +300,17 @@ class PostingTableViewController: UITableViewController {
 
 // MARK: - DateTableViewCellDelegate
 extension PostingTableViewController: DateTableViewCellDelegate {
-//    func pass(date: String, dateCell: UITableViewCell) {
-//        dateCell.detailTextLabel?.text = date
-//    }
+    //    func pass(date: String, dateCell: UITableViewCell) {
+    //        dateCell.detailTextLabel?.text = date
+    //    }
     func pass(date: String) {
-//        self.dataSource?.date = date
+        //        self.dataSource?.date = date
         // To input date in detailTextLabel of cell
         let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 1))
         // 지정된 부분으로 셀 반환!
         cell?.detailTextLabel?.text = date
     }
-
+    
 }
 // MARK: - PriceTableViewCellDelegate
 extension PostingTableViewController: PriceTableViewCellDelegate {
