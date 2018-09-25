@@ -31,6 +31,24 @@ class PostingTableViewController: UITableViewController {
     }
     
     // MARK: enum PostSection
+    enum PostSection: Int {
+        case firstSection
+        case secondSection
+        case thirdSection
+        
+        static var numberOfSection: Int { return 3 }
+        
+        var numberOfRowsInSection: Int {
+            get {
+                switch self {
+                case .firstSection: return 2
+                case .secondSection: return 3
+                case .thirdSection: return 1
+                }
+            }
+        }
+    }
+    // MARK: - PostItem
     enum PostItem: Int {
         case title
         case price
@@ -59,30 +77,6 @@ class PostingTableViewController: UITableViewController {
         //                break
         //            }
         //        }
-        enum PostSection: Int {
-            case firstSection
-            case secondSection
-            case thirdSection
-            
-            var numberOfRowsInSection: Int {
-                get {
-                    switch self {
-                    case .firstSection: return 2
-                    case .secondSection: return 3
-                    case .thirdSection: return 1
-                    }
-                }
-            }
-        }
-        //        func getNumberOfRowsInSection() -> Int {
-        //            switch PostSection.self {
-        //            case .firstSection:
-        //                return 2
-        //            default:
-        //                return 0
-        //            }
-        //        }
-        
         // 셀타입
         func getCellType() -> UITableViewCell.Type {
             switch self {
@@ -157,57 +151,27 @@ class PostingTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         //        return PostSection.count.rawValue
-        return PostItem.numberOfSections
+        return PostSection.numberOfSection
     }
-    // MARK: numberOfRowsInSection
+//     MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = PostItem.PostSection(rawValue: section) else { return 0 }
+        guard let section = PostSection(rawValue: section) else { return 0 }
+        print("\(section.numberOfRowsInSection)")
         return section.numberOfRowsInSection
     }
     
     // MARK: cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = PostItem.PostSection(rawValue: indexPath.section), let row = PostItem(rawValue: indexPath.row) else {
+        guard let section = PostSection(rawValue: indexPath.section) else {
             return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
         }
-        print("\(section, row)")
-        switch (section, row) {
-        case (.thirdSection, .count):
-            return UITableViewCell()
-        case (.secondSection, .title):
-            return UITableViewCell()
-        case (.secondSection, .price):
-            return UITableViewCell()
-        case (.secondSection, .text):
-            return UITableViewCell()
-        case (.secondSection, .count):
-            return UITableViewCell()
-        case (.firstSection, .colorPicker):
-            return UITableViewCell()
-        case (.firstSection, .date):
-            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-            return cell
-        case (.firstSection, .title):
-            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-            return cell
-        case (.firstSection, .price):
-            let cell = tableView.dequeueReusableCell(PriceTableViewCell.self, for: indexPath)
-            return cell
-        case (.secondSection, .colorPicker):
-            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
-            return cell
-        case (.secondSection, .date):
-            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-            return cell
-        case (.secondSection, .datePicker):
-            let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
-            return cell
-        case (.thirdSection, .text):
-            let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
-            return cell
-        default:
-            return UITableViewCell()
-        }
+//        switch (section, indexPath.row) {
+//        case (.firstSection, 1):
+//            return tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
+//        default:
+//           return UITableViewCell()
+//        }
+        return UITableViewCell()
     }
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
