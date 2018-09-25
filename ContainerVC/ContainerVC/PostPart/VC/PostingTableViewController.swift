@@ -39,7 +39,6 @@ class PostingTableViewController: UITableViewController {
         case datePicker
         case text
         case count// 개수를 알려줌 -> extension으로 빼서 찾아보기!
-        //        static var numberOfSections: Int = 3
         static var numberOfSections: Int { return 3 }
         
         var rowCount: Int {
@@ -51,8 +50,6 @@ class PostingTableViewController: UITableViewController {
                 }
             }
         }
-        
-        
         // 셀데이터를 어떻게 받을지 정의
         //        func getCellData() -> Any? {
         //            switch self {
@@ -66,9 +63,17 @@ class PostingTableViewController: UITableViewController {
             case firstSection
             case secondSection
             case thirdSection
-            case count
+            
+            var numberOfRowsInSection: Int {
+                get {
+                    switch self {
+                    case .firstSection: return 2
+                    case .secondSection: return 3
+                    case .thirdSection: return 1
+                    }
+                }
+            }
         }
-        
         //        func getNumberOfRowsInSection() -> Int {
         //            switch PostSection.self {
         //            case .firstSection:
@@ -97,7 +102,6 @@ class PostingTableViewController: UITableViewController {
             }
         }
     }
-    
     // MARK: properties
     // 타입추론 하는데도 시간이 오래걸리니 타입을 써줄 것!
     private var isHiddenDatePicker: Bool = false
@@ -137,7 +141,6 @@ class PostingTableViewController: UITableViewController {
         self.toggleDatepicker()
         // 셀클래스를 추가해줌
         self.tableView.register(UITableViewCell.self)
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -154,109 +157,56 @@ class PostingTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         //        return PostSection.count.rawValue
-        //        return PostItem.count.rawValue
         return PostItem.numberOfSections
     }
     // MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let section = PostItem(rawValue: section) else { return 0 }
-//        print("\(section)")
-//        switch section {
-//        case .firstSection:
-//            return 2
-//        case .secondSection:
-//            return 3
-//        case .thirdSection:
-//            return 1
-//        default:
-//            return 0
-//        }
-        return 0
         guard let section = PostItem.PostSection(rawValue: section) else { return 0 }
-        switch section {
-        case .firstSection:
-            return 2
-        case .secondSection:
-            return 3
-        case .thirdSection:
-            return 1
-        default:
-            return 0
-        }
+        return section.numberOfRowsInSection
     }
     
     // MARK: cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let section = PostSection(rawValue: indexPath.section), let row = PostItem(rawValue: indexPath.row) else {
-//            return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-//        }
-//        switch (section, row) {
-//        case (PostSection, .title):
-//            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-//            cell.delegate = self
-//            return cell
-//        case .price:
-//            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-//            cell.delegate = self
-//            return cell
-//        case .colorPicker:
-//            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
-//            cell.didAddHandler = { [weak self] (color,text) in
-//                guard let `self` = self else {return}
-//                self.color = color
-//                self.colorText = text
-//            }
-//            return cell
-//        case .date:
-//            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-//            // cell.detailTextLabel?.text = dataSource?.date.toString()
-//            return cell
-//        case .datePicker:
-//            let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
-//            // cell.data = section.getCellData() as? DateData
-//            cell.delegate = self
-//            return cell
-//        case .text:
-//            let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
-//            return cell
-//        default:
-//            return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-//        }
-        print("section: \(indexPath.section)")
-        guard let section = PostItem(rawValue: indexPath.section) else {
+        guard let section = PostItem.PostSection(rawValue: indexPath.section), let row = PostItem(rawValue: indexPath.row) else {
             return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-        } 
-        switch section {
-        case .title:
-            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-            cell.delegate = self
-            return cell
-        case .price:
-            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
-            cell.delegate = self
-            return cell
-        case .colorPicker:
-            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
-            cell.didAddHandler = { [weak self] (color,text) in
-                guard let `self` = self else {return}
-                self.color = color
-                self.colorText = text
-            }
-            return cell
-        case .date:
+        }
+        print("\(section, row)")
+        switch (section, row) {
+        case (.thirdSection, .count):
+            return UITableViewCell()
+        case (.secondSection, .title):
+            return UITableViewCell()
+        case (.secondSection, .price):
+            return UITableViewCell()
+        case (.secondSection, .text):
+            return UITableViewCell()
+        case (.secondSection, .count):
+            return UITableViewCell()
+        case (.firstSection, .colorPicker):
+            return UITableViewCell()
+        case (.firstSection, .date):
             let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-            // cell.detailTextLabel?.text = dataSource?.date.toString()
             return cell
-        case .datePicker:
+        case (.firstSection, .title):
+            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
+            return cell
+        case (.firstSection, .price):
+            let cell = tableView.dequeueReusableCell(PriceTableViewCell.self, for: indexPath)
+            return cell
+        case (.secondSection, .colorPicker):
+            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
+            return cell
+        case (.secondSection, .date):
+            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
+            return cell
+        case (.secondSection, .datePicker):
             let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
-            // cell.data = section.getCellData() as? DateData
-            cell.delegate = self
             return cell
-        case .text:
+        case (.thirdSection, .text):
             let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
             return cell
         default:
-            return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
+            return UITableViewCell()
         }
     }
     // MARK: heightForRowAt
