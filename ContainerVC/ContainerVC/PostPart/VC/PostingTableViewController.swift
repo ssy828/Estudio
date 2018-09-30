@@ -48,54 +48,7 @@ class PostingTableViewController: UITableViewController {
             }
         }
     }
-    // MARK: - PostItem
-    enum PostItem: Int {
-        case title
-        case price
-        case colorPicker
-        case date
-        case datePicker
-        case text
-        case count// 개수를 알려줌 -> extension으로 빼서 찾아보기!
-        static var numberOfSections: Int { return 3 }
-        
-        var rowCount: Int {
-            get {
-                switch self {
-                    // case에 따른 개수
-                default:
-                    return 1
-                }
-            }
-        }
-        // 셀데이터를 어떻게 받을지 정의
-        //        func getCellData() -> Any? {
-        //            switch self {
-        //            case .title, .price:
-        //                break
-        //            default:
-        //                break
-        //            }
-        //        }
-        // 셀타입
-        func getCellType() -> UITableViewCell.Type {
-            switch self {
-            case .title, .price:
-                return ContentTableViewCell.self
-                // 이방식을 사용하려면 대신 스토리보드 아이디도 클래스 이름으로 설정하기
-                // 셀아이디도 클래스이름으로 적용
-            // PriceTableViewCell
-            case .colorPicker:
-                return ColorPickerTableViewCell.self
-            case .datePicker:
-                return DateTableViewCell.self
-            case .text:
-                return TextViewTableViewCell.self
-            default:
-                return UITableViewCell.self
-            }
-        }
-    }
+    
     // MARK: properties
     // 타입추론 하는데도 시간이 오래걸리니 타입을 써줄 것!
     private var isHiddenDatePicker: Bool = false
@@ -155,23 +108,39 @@ class PostingTableViewController: UITableViewController {
     }
 //     MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         guard let section = PostSection(rawValue: section) else { return 0 }
-        print("\(section.numberOfRowsInSection)")
         return section.numberOfRowsInSection
     }
     
     // MARK: cellForRowAt
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
         guard let section = PostSection(rawValue: indexPath.section) else {
             return tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
         }
-//        switch (section, indexPath.row) {
-//        case (.firstSection, 1):
-//            return tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
-//        default:
-//           return UITableViewCell()
-//        }
-        return UITableViewCell()
+        switch (section, row) {
+        case (.firstSection, 0):
+            let cell = tableView.dequeueReusableCell(ContentTableViewCell.self, for: indexPath)
+            return cell
+        case (.firstSection, 1):
+            let cell = tableView.dequeueReusableCell(PriceTableViewCell.self, for: indexPath)
+            return cell
+        case (.secondSection, 0):
+            let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
+            return cell
+        case (.secondSection, 1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DateDetailCell", for: indexPath)
+            return cell
+        case (.secondSection, 2):
+            let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
+            return cell
+        case (.thirdSection, 0):
+            let cell = tableView.dequeueReusableCell(TextViewTableViewCell.self, for: indexPath)
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

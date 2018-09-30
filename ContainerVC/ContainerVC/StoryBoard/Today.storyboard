@@ -175,7 +175,7 @@
                                     <outlet property="priceTextField" destination="FDC-Cc-JgM" id="Yv8-HW-3Wm"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UITableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UITableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateDetailCell" textLabel="CuK-qm-WJg" detailTextLabel="xfa-UM-blJ" style="IBUITableViewCellStyleValue1" id="4xV-3K-PLT">
                                 <rect key="frame" x="0.0" y="145.5" width="375" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4xV-3K-PLT" id="CZ7-gu-M3I">
