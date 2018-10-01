@@ -31,7 +31,7 @@ class PostingTableViewController: UITableViewController {
     }
     
     // MARK: enum PostSection
-    enum PostSection: Int {
+     enum PostSection: Int {
         case firstSection
         case secondSection
         case thirdSection
@@ -47,6 +47,39 @@ class PostingTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    private enum Row: Int {
+        case title
+        case price
+        case colorPicker
+        case date
+        case datePicker
+        case text
+        case unknown
+        
+        init(indexPath: IndexPath) {
+            var row = Row.unknown
+            guard let section = PostSection(rawValue: indexPath.section) else { return }
+            switch (section, indexPath.row) {
+            case (.firstSection, 0):
+                row = Row.title
+            case (.firstSection, 1):
+                row = Row.price
+            case (.secondSection, 0):
+                row = Row.colorPicker
+            case (.secondSection, 1):
+                row = Row.date
+            case (.secondSection, 2):
+                row = Row.datePicker
+            case (.thirdSection, 0):
+                row = Row.text
+            default:
+                break
+            }
+//            assert(row != Row.unknown)
+//            self = row
+        }
+        
     }
     
     // MARK: properties
@@ -108,7 +141,6 @@ class PostingTableViewController: UITableViewController {
     }
 //     MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let section = PostSection(rawValue: section) else { return 0 }
         return section.numberOfRowsInSection
     }
@@ -159,8 +191,10 @@ class PostingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (indexPath.section, indexPath.row) {
-        case (1,1):
+        let row = indexPath.row
+        guard let section = PostSection(rawValue: indexPath.section) else { return }
+        switch (section, row) {
+        case (.secondSection, 1):
             self.toggleDatepicker()
         default:
             break
