@@ -55,33 +55,30 @@ class PostingTableViewController: UITableViewController {
         case date
         case datePicker
         case text
-        case unknown
-        
-        init(indexPath: IndexPath) {
-            var row = Row.unknown
+        case none
+
+        init?(indexPath: IndexPath) {
+            self.init(rawValue: indexPath.row)
+//            var row = Row.none
             guard let section = PostSection(rawValue: indexPath.section) else { return }
             switch (section, indexPath.row) {
             case (.firstSection, 0):
-                row = Row.title
+                self = .title
             case (.firstSection, 1):
-                row = Row.price
+                self = .date
             case (.secondSection, 0):
-                row = Row.colorPicker
+                self = .colorPicker
             case (.secondSection, 1):
-                row = Row.date
+                self = .date
             case (.secondSection, 2):
-                row = Row.datePicker
+                self = .datePicker
             case (.thirdSection, 0):
-                row = Row.text
+                self = .text
             default:
                 break
             }
-//            assert(row != Row.unknown)
-//            self = row
         }
-        
     }
-    
     // MARK: properties
     // 타입추론 하는데도 시간이 오래걸리니 타입을 써줄 것!
     private var isHiddenDatePicker: Bool = false
@@ -134,12 +131,11 @@ class PostingTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         //        return PostSection.count.rawValue
         return PostSection.numberOfSection
     }
-//     MARK: numberOfRowsInSection
+    //     MARK: numberOfRowsInSection
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let section = PostSection(rawValue: section) else { return 0 }
         return section.numberOfRowsInSection
@@ -162,7 +158,8 @@ class PostingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(ColorPickerTableViewCell.self, for: indexPath)
             return cell
         case (.secondSection, 1):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DateDetailCell", for: indexPath)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "DateDetailCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
             return cell
         case (.secondSection, 2):
             let cell = tableView.dequeueReusableCell(DateTableViewCell.self, for: indexPath)
@@ -176,20 +173,22 @@ class PostingTableViewController: UITableViewController {
     }
     // MARK: heightForRowAt
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let section = indexPath.section
+        guard let section = PostSection(rawValue: indexPath.section) else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
         let row = indexPath.row
-        if isHiddenDatePicker && section == 1 && row == 2 {
+        if isHiddenDatePicker && section == .secondSection && row == 2 {
             return 0
-        }else {
+        } else {
             switch (section, row) {
-            case (1,2),(2,0):
+            case (.secondSection, 2),(.thirdSection, 0):
                 return 100
             default:
                 return super.tableView(tableView, heightForRowAt: indexPath)
             }
         }
     }
-    
+    // MARK: didSelectRowAt
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
         guard let section = PostSection(rawValue: indexPath.section) else { return }

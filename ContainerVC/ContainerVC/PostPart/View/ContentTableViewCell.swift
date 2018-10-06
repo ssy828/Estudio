@@ -14,7 +14,7 @@ protocol ContentTableViewCellDelegate: class {
 
 class ContentTableViewCell: UITableViewCell {
     // MARK: propeties
-    internal var didAddHandler: ((String?) -> Void)?
+//    internal var didAddHandler: ((String?) -> Void)?
     weak var delegate: ContentTableViewCellDelegate?
     // MARK: IBOutlet
     @IBOutlet weak var contentsTextField: UITextField!
@@ -25,10 +25,10 @@ class ContentTableViewCell: UITableViewCell {
         self.contentsTextField.becomeFirstResponder()
         self.contentsTextField.delegate = self
     }
-    @IBAction func didChange(_ sender: UITextField) {
-        // 텍스트필드를 넘기는 법 -> 이렇게 해도 되나?
-        self.didAddHandler?(sender.text)
-    }
+//    @IBAction func didChange(_ sender: UITextField) {
+//        // 텍스트필드를 넘기는 법 -> 이렇게 해도 되나?
+//        self.didAddHandler?(sender.text)
+//    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
